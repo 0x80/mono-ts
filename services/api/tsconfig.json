@@ -1,0 +1,25 @@
+{
+  "extends": "@mono/tsconfig/base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "NodeNext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "lib": ["esnext"],
+    "sourceMap": true,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../../packages/common"
+    },
+    {
+      "path": "../../packages/backend"
+    }
+  ]
+}

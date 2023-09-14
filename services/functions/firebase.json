@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "source": "./isolate",
+    "runtime": "nodejs20",
+    "predeploy": ["turbo build", "isolate"],
+    "codebase": "fns"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "ui": {
+      "enabled": true
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "pubsub": {
+      "port": 8085
+    }
+  }
+}
