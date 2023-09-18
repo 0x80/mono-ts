@@ -18,10 +18,10 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "prettier": "^3.0.0",
-    "turbo": "^1.10.8",
-    "typescript": "^5.1.6",
-    "vercel": "^31.0.3",
-    "vitest": "^0.33.0"
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.14",
+    "typescript": "^5.2.2",
+    "vercel": "^32.2.4",
+    "vitest": "^0.34.4"
   }
 }
