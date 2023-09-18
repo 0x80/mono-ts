@@ -199,6 +199,7 @@ format. Likely a small tweak in tsconfig...
 
 ## TODO
 
+- [ ] Hook up Nextapp to Firestore and API
 - [ ] Deploy app to vercel
 - [ ] Test demo env var
 - [ ] Upgrade all deps to latest
