@@ -1,4 +1,22 @@
-# Mono Turbo Next Fire
+# Mono TS
+
+This is a quest for the ideal Typescript monorepo setup.
+
+My current projects are based on Node, Next.js and Firebase, so that is what I
+am focussing on. In particular Firebase brings its own set of challenges in
+a monorepo context.
+
+If you use different platforms, this can still be a great starting point, as it
+should be easy to discard any packages that you have no use for. The monorepo
+approach by itself is largely independent of the chosen tool stack.
+
+This is meant as a best-effort approach given the tooling available, so I expect
+this code to change as the ecosystem around Typescript and Javascript continue
+to evolve.
+
+Contributions are welcome within the scope of this example. I doubt there will
+ever be a one-size-fits-all solution, so this code should be viewed as
+opinionated.
 
 <!-- TOC -->
 
@@ -13,26 +31,13 @@
 - [Deployment](#deployment)
 - [Bundling and Path Aliases](#bundling-and-path-aliases)
 - [Go-To-Definition](#go-to-definition)
+- [VSCode Settings](#vscode-settings)
 - [Known Issues and Challenges](#known-issues-and-challenges)
   - [Code Changes in Shared Packages](#code-changes-in-shared-packages)
   - [Import .js extensions](#import-js-extensions)
 - [TODO](#todo)
 
 <!-- /TOC -->
-
-This is the first and probably not the last iteration in a quest for the holy
-grail of Typescript monorepos.
-
-My current projects are based on Node.js, Next.js and Firebase, so that is what
-I am focussing on, but if you use different tools I hope this can still serve as
-good illustration of how you can make things play nicely together. It should be
-easy to discard any packages that you have no use for.
-
-I spent quite a lot of time on this and it is the best I could come up, but of
-course I am always learning and the ecosystem keeps changing. Contributions are
-very much welcome within the scope of this example. I don't think there will
-ever be a single one-size-fits-all type of solution, so this code should be
-viewed as opinionated.
 
 ## Features
 
@@ -62,9 +67,9 @@ using [these instructions](https://pnpm.io/installation).
 Run `pnpm install` from the repository root to install all dependencies for all
 packages at once.
 
-Yarn and NPM should work too, but you might have to make small adjustments to
-the package.json files that use `workspace:*` to denote dependencies. That
-format is not supported by all package managers.
+NPM, Yarn or other package managers should work too, but you might have to make
+small adjustments to the package.json files that use `workspace:*` to denote
+dependencies. That format might not be supported by all package managers.
 
 ## Build
 
@@ -96,9 +101,9 @@ that deploy to Firebase.
 
 ### Services
 
-- [Functions](./services/functions) Internal callable functions and background
-  function that execute on database document events.
-- [API](./services/api) An external API server to handle multiple endpoints
+- [Functions](./services/functions) Cloud
+  functions that execute on document writes, pubsub events etc.
+- [API](./services/api) A 2nd gen (Cloud Run based) API endpoint.
   using Express.
 
 ## Deployment
