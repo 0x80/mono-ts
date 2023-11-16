@@ -1,5 +1,5 @@
 import type { Request } from "express";
 
-export interface TypedRequest<T> extends Request {
+export interface PostRequest<T> extends Request {
   body: T;
 }

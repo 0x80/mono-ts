@@ -12,7 +12,6 @@ export default defineConfig({
      * Files
      */
     firebase: "src/firebase.ts",
-    firestore: "src/firestore.ts",
   },
   format: ["esm"],
   target: "es2022",
