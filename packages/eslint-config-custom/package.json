@@ -4,10 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-turbo": "^1.10.8"
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-turbo": "^1.10.16"
   },
   "publishConfig": {
     "access": "public"

@@ -29,10 +29,10 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "prettier": "^3.0.3",
-    "turbo": "^1.10.14",
+    "prettier": "^3.1.0",
+    "turbo": "^1.10.16",
     "typescript": "^5.2.2",
-    "vercel": "^32.2.4",
-    "vitest": "^0.34.4"
+    "vercel": "^32.5.5",
+    "vitest": "^0.34.6"
   }
 }
