@@ -27,7 +27,8 @@
     "firebase-functions": "^4.5.0",
     "firestore-server-utils": "1.0.0-4",
     "lodash-es": "^4.17.21",
-    "nocache": "^4.0.0"
+    "nocache": "^4.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@mono/eslint-config-custom": "workspace:*",

@@ -1,6 +1,6 @@
 "use client";
 
-import { callAdd, callMultiply, callReset } from "~/lib/api";
+import { add, multiply, reset } from "~/lib/api";
 import { CounterView } from "./components/counter-view";
 import styles from "./page.module.css";
 
@@ -15,13 +15,13 @@ export default function Home() {
       </div>
       <CounterView />
       <div className={styles.description}>
-        <button className={styles.button} onClick={() => callReset()}>
+        <button className={styles.button} onClick={() => reset()}>
           Reset
         </button>
-        <button className={styles.button} onClick={() => callAdd(3)}>
+        <button className={styles.button} onClick={() => add(3)}>
           Increment by 3
         </button>
-        <button className={styles.button} onClick={() => callMultiply(2)}>
+        <button className={styles.button} onClick={() => multiply(2)}>
           Multiply by 2
         </button>
       </div>

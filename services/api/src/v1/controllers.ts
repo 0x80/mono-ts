@@ -6,11 +6,6 @@ import {
   serverTimestamp,
 } from "firestore-server-utils";
 import { refs } from "~/refs.js";
-import { PostRequest } from "~/types.js";
-
-interface Payload {
-  value: number;
-}
 
 export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({
@@ -23,14 +18,20 @@ export async function reset(_req: Request, res: Response) {
   res.status(200).end();
 }
 
-export async function add(req: PostRequest<Payload>, res: Response) {
+import { z } from "zod";
+
+const AddPayload = z.object({
+  n: z.number(),
+});
+
+export async function add(req: Request, res: Response) {
   try {
-    const { value } = req.body;
+    const { n } = AddPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
 
     await counter.ref.update({
-      value: incrementField(value),
+      value: incrementField(n),
     } satisfies Partial<Counter>);
 
     res.status(200).end();
@@ -40,14 +41,18 @@ export async function add(req: PostRequest<Payload>, res: Response) {
   }
 }
 
-export async function multiply(req: PostRequest<Payload>, res: Response) {
+const MultiplyPayload = z.object({
+  n: z.number(),
+});
+
+export async function multiply(req: Request, res: Response) {
   try {
-    const { value } = req.body;
+    const { n } = MultiplyPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
 
     await counter.ref.update({
-      value: counter.data.value * value,
+      value: counter.data.value * n,
     } satisfies Partial<Counter>);
 
     res.status(200).end();

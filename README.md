@@ -3,8 +3,8 @@
 This is a quest for the ideal Typescript monorepo setup.
 
 My current projects are based on Node, Next.js and Firebase, so that is what I
-am focussing on. In particular Firebase brings its own set of challenges in
-a monorepo context.
+am focussing on. In particular Firebase brings its own set of challenges in a
+monorepo context.
 
 If you use different platforms, this can still be a great starting point, as it
 should be easy to discard any packages that you have no use for. The monorepo
@@ -67,9 +67,9 @@ using [these instructions](https://pnpm.io/installation).
 Run `pnpm install` from the repository root to install all dependencies for all
 packages at once.
 
-NPM, Yarn or other package managers should work too, but you might have to make
-small adjustments to the package.json files that use `workspace:*` to denote
-dependencies. That format might not be supported by all package managers.
+If you prefer to use a different package manager, that shouldn't be a problem.
+See [using NPM](#using-npm-instead-of-pnpm) or [using
+Yarn](#using-yarn-instead-of-pnpm).
 
 ## Build
 
@@ -101,10 +101,9 @@ that deploy to Firebase.
 
 ### Services
 
-- [Functions](./services/functions) Cloud
-  functions that execute on document writes, pubsub events etc.
-- [API](./services/api) A 2nd gen (Cloud Run based) API endpoint.
-  using Express.
+- [Functions](./services/functions) Cloud functions that execute on document
+  writes, pubsub events etc.
+- [API](./services/api) A 2nd gen (Cloud Run based) API endpoint. using Express.
 
 ## Deployment
 
@@ -113,6 +112,25 @@ Deployment instructions can be found in the individual packages:
 - [Nextapp](./apps/nextapp/README.md)
 - [Functions](./services/functions/README.md#deployment)
 - [API](./services/api/README.md#deployment)
+
+## Using NPM instead of PNPM
+
+- Delete the root manifest `packageManger` field
+- Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
+- Do a find on `workspace:*` and replace them with `*`.
+- Add a [workspaces
+  configuration](https://docs.npmjs.com/cli/v7/using-npm/workspaces) to the root
+  manifest.
+- Run `npm install` from the root
+
+## Using Yarn instead of PNPM
+
+- Delete the root manifest `packageManger` field
+- Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
+- Add a [workspaces
+  configuration](https://classic.yarnpkg.com/lang/en/docs/workspaces/) to the
+  root manifest.
+- Run `yarn install` from the root
 
 ## Bundling and Path Aliases
 
