@@ -1,10 +1,11 @@
-import { invariant } from "@mono/common";
+/* eslint-disable react/no-unescaped-entities */
+import { Counter } from "@mono/common";
 import { doc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import { useTypedDocument } from "~/lib/firestore";
 import { refs } from "~/refs";
 
 export function CounterView() {
-  const [counter, isLoading] = useDocumentData(
+  const [counter, isLoading] = useTypedDocument<Counter>(
     doc(refs.counters, "my_counter")
   );
 
@@ -12,11 +13,16 @@ export function CounterView() {
     return <div>Loading...</div>;
   }
 
-  invariant(counter, "Missing counter data");
-
   if (counter) {
-    return <div>Counter: {JSON.stringify(counter)}</div>;
+    const { value, mutation_count, mutated_at } = counter.data;
+    return (
+      <ul>
+        <li>Value: {value}</li>
+        <li>Mutation count: {mutation_count}</li>
+        <li>Mutated at: {mutated_at.toDate().toLocaleString()}</li>
+      </ul>
+    );
   } else {
-    return <div>No such document!</div>;
+    return <div>No counter document available. Please press "reset".</div>;
   }
 }
