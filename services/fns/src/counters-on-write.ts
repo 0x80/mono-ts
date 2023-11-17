@@ -3,7 +3,7 @@ import functions from "firebase-functions";
 import { incrementField, serverTimestamp } from "firestore-server-utils";
 import { counterFlagThreshold, region } from "~/config.js";
 
-export const counterOnWrite = functions
+export const countersOnWrite = functions
   .region(region)
   .firestore.document("counters/{documentId}")
   .onWrite(async (change) => {

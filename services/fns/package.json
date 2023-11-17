@@ -14,6 +14,7 @@
     "build": "tsup-node",
     "lint": "eslint \"**/*.ts*\"",
     "deploy": "firebase deploy",
+    "emulate": "turbo build && isolate && firebase emulators:start",
     "db:get-indexes": "firebase firestore:indexes > firestore.indexes.json"
   },
   "license": "MIT",

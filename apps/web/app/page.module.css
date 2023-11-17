@@ -7,6 +7,17 @@
   min-height: 100vh;
 }
 
+.button {
+  padding: 0.5em 1em;
+  background-color: hotpink;
+  border: 1px solid var(--primary);
+}
+.button:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -51,7 +62,9 @@
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  transition:
+    background 200ms,
+    border 200ms;
 }
 
 .card span {
@@ -97,7 +110,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);

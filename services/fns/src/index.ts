@@ -9,4 +9,4 @@
  */
 import "firebase-functions/logger/compat";
 
-export * from "./counter-on-write.js";
+export * from "./counters-on-write.js";
