@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@mono/common": "workspace:*",
-    "@mono/core": "workspace:*",
+    "@mono/backend": "workspace:*",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",

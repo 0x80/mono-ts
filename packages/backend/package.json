@@ -1,5 +1,5 @@
 {
-  "name": "@mono/core",
+  "name": "@mono/backend",
   "version": "0.0.0",
   "type": "module",
   "files": [

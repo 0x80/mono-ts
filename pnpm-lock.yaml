@@ -63,38 +63,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/common:
-    dependencies:
-      firebase:
-        specifier: ^10.6.0
-        version: 10.6.0
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
-    devDependencies:
-      '@mono/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@mono/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/node':
-        specifier: ^20.9.0
-        version: 20.9.1
-      prettier:
-        specifier: ^3.1.0
-        version: 3.1.0
-      tsup:
-        specifier: ^7.2.0
-        version: 7.3.0(typescript@5.2.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      vitest:
-        specifier: ^0.34.6
-        version: 0.34.6
-
-  packages/core:
+  packages/backend:
     dependencies:
       '@mono/common':
         specifier: workspace:*
@@ -134,6 +103,37 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6
 
+  packages/common:
+    dependencies:
+      firebase:
+        specifier: ^10.6.0
+        version: 10.6.0
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
+    devDependencies:
+      '@mono/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@mono/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^20.9.0
+        version: 20.9.1
+      prettier:
+        specifier: ^3.1.0
+        version: 3.1.0
+      tsup:
+        specifier: ^7.2.0
+        version: 7.3.0(typescript@5.2.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vitest:
+        specifier: ^0.34.6
+        version: 0.34.6
+
   packages/eslint-config-custom:
     dependencies:
       '@typescript-eslint/eslint-plugin':
@@ -153,12 +153,12 @@ importers:
 
   services/api:
     dependencies:
+      '@mono/backend':
+        specifier: workspace:*
+        version: link:../../packages/backend
       '@mono/common':
         specifier: workspace:*
         version: link:../../packages/common
-      '@mono/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -232,12 +232,12 @@ importers:
 
   services/fns:
     dependencies:
+      '@mono/backend':
+        specifier: workspace:*
+        version: link:../../packages/backend
       '@mono/common':
         specifier: workspace:*
         version: link:../../packages/common
-      '@mono/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
