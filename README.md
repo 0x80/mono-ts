@@ -21,22 +21,27 @@ opinionated.
 <!-- TOC -->
 
 - [Features](#features)
-- [Definition and Requirements](#definition-and-requirements)
+- [Definition and requirements](#definition-and-requirements)
 - [Install](#install)
 - [Build](#build)
-- [Workspace Packages](#workspace-packages)
+- [Workspace packages](#workspace-packages)
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
 - [Deployment](#deployment)
-- [Bundling and Path Aliases](#bundling-and-path-aliases)
+- [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
+- [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
+- [Bundling and path aliases](#bundling-and-path-aliases)
 - [Go-To-Definition](#go-to-definition)
-- [VSCode Settings](#vscode-settings)
-- [Known Issues and Challenges](#known-issues-and-challenges)
-  - [Code Changes in Shared Packages](#code-changes-in-shared-packages)
-  - [Import .js extensions](#import-js-extensions)
+- [VSCode settings](#vscode-settings)
+- [Code changes in shared packages](#code-changes-in-shared-packages)
+- [Using Turbowatch](#using-turbowatch)
+- [Using the "internal packages"
+  approach](#using-the-internal-packages-approach)
 - [TODO](#todo)
 
+<!-- /TOC -->
+<!-- /TOC -->
 <!-- /TOC -->
 
 ## Features
@@ -57,7 +62,7 @@ opinionated.
 - Vitest
 - PNPM
 
-## Definition and Requirements
+## Definition and requirements
 
 ## Install
 
@@ -80,7 +85,7 @@ instructions in the individual packages that deploy to Vercel and Firebase.
 
 @TODO Make instructions for running everything locally using emulators.
 
-## Workspace Packages
+## Workspace packages
 
 This repo demonstrates the use of two shared packages. One shared between
 between both frontend and backend code, called "common", and one backend-only
@@ -91,29 +96,32 @@ that deploy to Firebase.
 
 ### Packages
 
-- [Common](./packages/common) Code that can be used by both front-end and
-  back-end.
-- [Backend](./packages/backend) Code that is only used by backend services.
+- [common](./packages/common) Code that can shared across both front-end and
+  back-end environments.
+- [backend](./packages/backend) Code that is shared between server environments
+  like cloud functions.
 
 ### Apps
 
-- [Nextapp](./apps/nextapp)
+- [web](./apps/web) A Next.js based web application.
 
 ### Services
 
-- [Functions](./services/functions) Cloud functions that execute on document
-  writes, pubsub events etc.
-- [API](./services/api) A 2nd gen (Cloud Run based) API endpoint. using Express.
+- [fns](./services/fns) Cloud functions that execute on document writes, pubsub
+  events etc.
+- [api](./services/api) A 2nd gen (Cloud Run based) API endpoint, using Express.
 
 ## Deployment
 
 Deployment instructions can be found in the individual packages:
 
-- [Nextapp](./apps/nextapp/README.md)
-- [Functions](./services/functions/README.md#deployment)
-- [API](./services/api/README.md#deployment)
+- [web](./apps/web/README.md)
+- [fns](./services/fns/README.md#deployment)
+- [api](./services/api/README.md#deployment)
 
 ## Using NPM instead of PNPM
+
+You should be able to make this work with NPM using the steps below:
 
 - Delete the root manifest `packageManger` field
 - Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
@@ -125,6 +133,8 @@ Deployment instructions can be found in the individual packages:
 
 ## Using Yarn instead of PNPM
 
+You should be able to make this work with Yarn using the steps below:
+
 - Delete the root manifest `packageManger` field
 - Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
 - Add a [workspaces
@@ -132,12 +142,12 @@ Deployment instructions can be found in the individual packages:
   root manifest.
 - Run `yarn install` from the root
 
-## Bundling and Path Aliases
+## Bundling and path aliases
 
 The code uses TSUP as a bundler. It's a Rollup inspired bundler for Typescript.
 There are several reasons for using this. If you use path aliases like `~/*` or
 `@/*` to reference your source root from deeply nested sources, these paths are
-not converted by the Typescript compiler.
+not converted by the standard Typescript compiler `tsc`.
 
 If your only deployment is a Next.js app, this is not a problem, because using
 the `transpileModules` configuration setting, you can have Next transform and
@@ -145,10 +155,10 @@ bundle things correctly for you. But if you need to target other platforms, like
 Firebase, you do not have this luxury.
 
 A bundler like TSUP can do this transformation for you. In addition, it will
-allow you to output ESM without having to adhere to the stricter import rules
-that come with it (use .js and /index.js for relative imports), because the
-bundler will combine everything in one or more entry files that themselves do
-not use imports.
+allow you to output ESM without having to adhere to the ESM import rules like
+having to use .js and /index.js for relative imports, because the bundler will
+combine everything in one or more entry files that themselves do not use
+relative imports.
 
 ## Go-To-Definition
 
@@ -172,7 +182,7 @@ In order to make go-to-definition work, it seems to be important to also set up
 the typescript project references in the tsconfig files of the packages that use
 them.
 
-## VSCode Settings
+## VSCode settings
 
 The repository also includes some VSCode settings that I think are useful.
 
@@ -184,47 +194,45 @@ The repository also includes some VSCode settings that I think are useful.
   implementation for example, but VSCode regularly imported it from libraries
   like `node:console`, `node:assert` and `Joi` instead.
 
-## Known Issues and Challenges
+## Code changes in shared packages
 
-These are things I would like to improve on. Please enlighten me if you know
-solutions to these things.
-
-### Code Changes in Shared Packages
-
-Each package is treated very similar to a released NPM package, meaning that the
-types are also resolved from the built "dist" output for each module. Adding new
-types and code in common modules therefor requires you to rebuild these
-sometimes. The exception I think is NextJS which can use its "transpileModules"
+Each package is treated similar to a released NPM package, meaning that the code
+and types are resolved from the built "dist" output for each module. Adding new
+types and changing code in shared packages therefor requires you to rebuild
+these. The exception I think is NextJS which can use its "transpileModules"
 configuration to pick things up when the sources of its dependencies change.
 
-I know it is possible to point the manifest `types` field directly to Typescript
-source files, but AFAIK that pattern is not compatible with using path aliases
-like `~/`, and that's not something I would be willing to sacrifice.
+### Using Turbowatch
 
-### Import .js extensions
+Turborepo does not include a watch task (yet) so people have created
+[Turbowatch](https://github.com/gajus/turbowatch) for this purpose. I haven't
+tried it but it looks like a great solution.
 
-When for example @mono/common/index.ts doesn't export files the ESM way, like so
+### Using the "internal packages" approach
 
-```ts
-export * from "./utils/index.js";
-```
+There is also the [internal
+packages](https://turbo.build/blog/you-might-not-need-typescript-project-references)
+strategy as it was coined by Jared Palmer of Turborepo, in which you link
+directly to the package source. With this approach, if you use path aliases like
+`~/`, you need to make sure every package has its own unique alias to point to
+its src folder. Alternatively you could choose to not aliases at all for your
+shared packages. Typically shared packages do not have a deeply nested structure
+anyway.
 
-but
+## Deploying to Firebase
 
-```ts
-export * from "./utils";
-```
+Deploying code to Firebase that uses shared packages from a monorepo comes with
+its own set of challenges, because the Firebase deploy pipeline requires you to
+upload a self-contained package that it can treat similar to an NPM package, by
+installing its dependencies and executing the main entry.
 
-The compiler/build process does not complain, but the depending modules will
-start complaining about missing types. I would like to figure out how to make TS
-generate errors about these mismatches and always force us to use the correct
-format. Likely a small tweak in tsconfig...
+This repo includes a solution based on
+[isolate-package](https://github.com/0x80/isolate-package/) and I encourage you
+to look at that and maybe read the [accompanying article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e) to understand what
+it does and why it is needed.
 
 ## TODO
 
-- [ ] Hook up Nextapp to Firestore and API
-- [ ] Deploy app to vercel
-- [ ] Test demo env var
-- [ ] Upgrade all deps to latest
-- [ ] Describe how to run the demo using only the Firebase emulators so user
-      doesn't have to create a project.
+- [ ] Figure out and describe how to run the demo using only the Firebase
+      emulators so user doesn't have to create a project.
+- [ ] Figure out if we still need project references if we bundle with TSUP
