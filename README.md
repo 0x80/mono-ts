@@ -36,12 +36,11 @@ opinionated.
 - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
 - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [Bundling and path aliases](#bundling-and-path-aliases)
-- [VSCode settings](#vscode-settings)
 - [Code changes in shared packages](#code-changes-in-shared-packages)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Deploying to Firebase](#deploying-to-firebase)
+- [VSCode settings](#vscode-settings)
 
-<!-- /TOC -->
 <!-- /TOC -->
 
 ## Features
@@ -64,22 +63,22 @@ This example tries to showcases what a complete setup could look like:
 
 ## Install
 
-In this example, packages are managed using PNPM, so first make sure you have
-that installed using [these instructions](https://pnpm.io/installation).
+In this setup, packages are managed using PNPM. If you prefer to use a different
+package manager, that should not be a problem. See [using
+NPM](#using-npm-instead-of-pnpm) or [using Yarn](#using-yarn-instead-of-pnpm)
+for more info.
 
-Run `pnpm install` from the repository root to install all dependencies for all
-packages at once.
+If you like to use PNPM and don not have it installed already, see [these
+instructions](https://pnpm.io/installation).
 
-If you prefer to use a different package manager, that shouldn't be a problem.
-See [using NPM](#using-npm-instead-of-pnpm) or [using
-Yarn](#using-yarn-instead-of-pnpm).
+Then, run `pnpm install` from the repository root.
 
 ## Build
 
-You can run `turbo build` from the root of the monorepo to build everything.
+You can run `npx turbo build` from the root of the monorepo to build everything.
 This should be enough to verify that things are working from a compiler point of
-view. If you want to verify that deployments are working you can follow the
-instructions in the individual packages that deploy to Vercel and Firebase.
+view. If you would like to verify that deployments are working you can follow
+the instructions in the individual packages that deploy to Vercel and Firebase.
 
 @TODO Add instructions for running everything locally using emulators.
 
@@ -156,18 +155,6 @@ having to use .js and /index.js for relative imports, because the bundler will
 combine everything in one or more entry files that themselves do not use
 relative imports.
 
-## VSCode settings
-
-The repository also includes some VSCode settings that I think are useful.
-
-- Tell VSCode to append .js to local module imports. Useful if you like to write
-  your code in ESModule format.
-- Keep auto-import paths as short as possible. Use "./" or "../" over absolute
-  paths if the files are relatively close.
-- Exclude certain libraries from auto-imports. I have been using my own `assert`
-  implementation for example, but VSCode regularly imported it from libraries
-  like `node:console`, `node:assert` and `Joi` instead.
-
 ## Code changes in shared packages
 
 Traditionally in a monorepo, each package is treated similar to a released NPM
@@ -200,14 +187,21 @@ There are a few advantages to this approach:
   cmd-click on a type or function in your code), works out of the box, without
   the need for Typescript project references or generating `d.ts.map` files.
 
-I have so far found one downside to this approach; if you use path aliases like
-`~/`, you will need to make sure every package has its own unique aliases. I
-chose to not aliases anymore for my shared packages, because those packages
-typically do not have a deeply nested folder structures anyway.
+There are also two disadvantages that I know of:
+
+- You can not publish the shared packages to NPM, as you do not expose them as
+  Javascript.
+- If you use path aliases like `~/`, you will need to make sure every package
+  has its own unique aliases. I chose to not aliases anymore for my shared
+  packages, because those packages typically do not have a deeply nested folder
+  structures anyway.
 
 This monorepo example uses the internal packages setup for `@mono/common` and
 `@mono/backend` and it is compatible with `isolate-package` for deploying to
 Firebase.
+
+If the disadvantages are deal-breakers, you can check out the v1 branch of this
+repository for a traditional setup that builds each package.
 
 ## Deploying to Firebase
 
@@ -241,3 +235,15 @@ In summary it works like this:
    in the manifest files for those packages will still point to the Typescript
    source files, but these are never used since the shared code was already
    embedded in the bundled output.
+
+## VSCode settings
+
+This example includes some VSCode settings that I think are useful.
+
+- Tell VSCode to append .js to local module imports. Useful if you like to write
+  your code in ES module format like modern JS.
+- Keep auto-import paths as short as possible. Use "./" or "../" over absolute
+  paths if the files are relatively close.
+- Exclude certain libraries from auto-imports. I have been using my own `assert`
+  implementation for example, but VSCode regularly imported it from libraries
+  like `node:console`, `node:assert` and `Joi` instead.
