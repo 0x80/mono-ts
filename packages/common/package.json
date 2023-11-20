@@ -2,16 +2,10 @@
   "name": "@mono/common",
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**"
-  ],
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
     "type-check": "tsc --noEmit",
-    "build": "tsup && tsc --emitDeclarationOnly",
-    "clean": "rm -rf dist && rm tsconfig.tsbuildinfo",
     "test": "vitest",
     "coverage": "vitest run --coverage ",
     "lint": "eslint \"**/*.ts*\""
