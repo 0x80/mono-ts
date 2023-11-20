@@ -35,13 +35,10 @@ opinionated.
 - [Go-To-Definition](#go-to-definition)
 - [VSCode settings](#vscode-settings)
 - [Code changes in shared packages](#code-changes-in-shared-packages)
-- [Using Turbowatch](#using-turbowatch)
-- [Using the "internal packages"
-  approach](#using-the-internal-packages-approach)
-- [TODO](#todo)
+  - [Using Turbowatch](#using-turbowatch)
+  - [Using the "internal packages" approach](#using-the-internal-packages-approach)
+- [Deploying to Firebase](#deploying-to-firebase)
 
-<!-- /TOC -->
-<!-- /TOC -->
 <!-- /TOC -->
 
 ## Features
@@ -230,9 +227,3 @@ This repo includes a solution based on
 [isolate-package](https://github.com/0x80/isolate-package/) and I encourage you
 to look at that and maybe read the [accompanying article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e) to understand what
 it does and why it is needed.
-
-## TODO
-
-- [ ] Figure out and describe how to run the demo using only the Firebase
-      emulators so user doesn't have to create a project.
-- [ ] Figure out if we still need project references if we bundle with TSUP
