@@ -37,7 +37,6 @@ opinionated.
 - [Code changes in shared packages](#code-changes-in-shared-packages)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Deploying to Firebase](#deploying-to-firebase)
-- [TODO](#todo)
 
 <!-- /TOC -->
 
@@ -263,8 +262,3 @@ In summary it works like this:
    in the manifest files for those packages will still point to the Typescript
    source files, but these are never used since the shared code was already
    embedded in the bundled output.
-
-## TODO
-
-- [ ] Figure out and describe how to run the demo using only the Firebase
-      emulators so user doesn't have to create a project.
