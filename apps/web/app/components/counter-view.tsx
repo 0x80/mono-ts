@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Counter } from "@mono/common";
 import { doc } from "firebase/firestore";
-import { useTypedDocument } from "~/lib/firestore";
-import { refs } from "~/refs";
+import { useTypedDocument } from "~/lib/firestore.js";
+import { refs } from "~/refs.js";
 
 export function CounterView() {
   const [counter, isLoading] = useTypedDocument<Counter>(

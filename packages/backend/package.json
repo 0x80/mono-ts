@@ -6,14 +6,16 @@
     "dist"
   ],
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    },
     "./utils": "./dist/utils/index.js",
-    "./firestore": "./dist/firestore.js",
     "./firebase": "./dist/firebase.js"
   },
   "scripts": {
-    "type-check": "tsc --noEmit",
     "build": "tsup && tsc --emitDeclarationOnly",
     "clean": "rm -rf dist && rm tsconfig.tsbuildinfo",
+    "type-check": "tsc --noEmit",
     "test": "vitest",
     "coverage": "vitest run --coverage ",
     "lint": "eslint \"**/*.ts*\""

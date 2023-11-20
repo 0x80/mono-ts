@@ -4,11 +4,10 @@
     "target": "esnext",
     "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": ".",
+    "composite": true,
     "paths": {
-      "~/*": ["src/*"]
-    },
-    "composite": true
+      "~/*": ["./*"]
+    }
   },
   "include": ["src"]
 }

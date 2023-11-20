@@ -3,16 +3,15 @@
 This is a quest for the ideal Typescript monorepo setup.
 
 My current projects are based on Node, Next.js and Firebase, so that is what I
-am focussing on. In particular Firebase brings its own set of challenges in a
-monorepo context.
+am focussing on.
 
 If you use different platforms, this can still be a great starting point, as it
 should be easy to discard any packages that you have no use for. The monorepo
-approach by itself is largely independent of the chosen tool stack.
+approach by itself is largely independent of the chosen technology stack.
 
-This is meant as a best-effort approach given the tooling available, so I expect
-this code to change as the ecosystem around Typescript and Javascript continue
-to evolve.
+This is meant as a best-effort approach given the tooling that is available, so
+I expect this code to change as the ecosystem around Typescript and Javascript
+continue to evolve.
 
 Contributions are welcome within the scope of this example. I doubt there will
 ever be a one-size-fits-all solution, so this code should be viewed as
@@ -21,7 +20,6 @@ opinionated.
 <!-- TOC -->
 
 - [Features](#features)
-- [Definition and requirements](#definition-and-requirements)
 - [Install](#install)
 - [Build](#build)
 - [Workspace packages](#workspace-packages)
@@ -32,64 +30,49 @@ opinionated.
 - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
 - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [Bundling and path aliases](#bundling-and-path-aliases)
-- [Go-To-Definition](#go-to-definition)
-- [VSCode settings](#vscode-settings)
 - [Code changes in shared packages](#code-changes-in-shared-packages)
-  - [Using Turbowatch](#using-turbowatch)
-  - [Using the "internal packages" approach](#using-the-internal-packages-approach)
+- [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Deploying to Firebase](#deploying-to-firebase)
+- [VSCode settings](#vscode-settings)
 
 <!-- /TOC -->
 
 ## Features
 
-- Turborepo to orchestrate the build process with local dependencies
-- A common package for sharing code with both frontend and backend
-- A backend-only shared package
-- Multiple package entry points to improve tree shaking
-- Packages for sharing ESLint and Typescript configurations so it is easy to
-  keep configurations consistent without repeating yourself.
-- Multiple packages deploying to Firebase (1st and 2nd gen functions) without
-  scripting hacks, using
-  [isolate-package](https://github.com/0x80/isolate-package/).
-- A front-end app (Next.js) using shared code
-- ESM build output for all packages
+- Use Turborepo to orchestrate the build process with local dependencies
+- A traditional built package approach, bundling for multiple entry points
+- The ["internal packages"](#the-internal-packages-strategy) strategy
+- Shared configurations for ESLint and Typescript.
+- Multiple backend services deploying to Firebase (1st and 2nd gen functions),
+  using [isolate-package](https://github.com/0x80/isolate-package/).
+- A Next.js web app, with live reloads from shared code
+- Using ES modules throughout, including the Next.js app
 - Path aliases
-- IDE go-to-definition using type definition maps and project references
+- IDE go-to-definition
 - Vitest
-- PNPM
-
-## Definition and requirements
 
 ## Install
 
-Packages are managed using PNPM, so first make sure you have that installed
-using [these instructions](https://pnpm.io/installation).
+In this setup, packages are managed using PNPM. If you prefer to use a different
+package manager, that should not be a problem. See [using
+NPM](#using-npm-instead-of-pnpm) or [using Yarn](#using-yarn-instead-of-pnpm)
+for more info.
 
-Run `pnpm install` from the repository root to install all dependencies for all
-packages at once.
+If you like to use PNPM and don not have it installed already, see [these
+instructions](https://pnpm.io/installation).
 
-If you prefer to use a different package manager, that shouldn't be a problem.
-See [using NPM](#using-npm-instead-of-pnpm) or [using
-Yarn](#using-yarn-instead-of-pnpm).
+Then, run `pnpm install` from the repository root.
 
 ## Build
 
-You can run `turbo build` from the root of the monorepo to build everything.
+You can run `npx turbo build` from the root of the monorepo to build everything.
 This should be enough to verify that things are working from a compiler point of
-view. If you want to verify that deployments are working you can follow the
-instructions in the individual packages that deploy to Vercel and Firebase.
+view. If you would like to verify that deployments are working you can follow
+the instructions in the individual packages that deploy to Vercel and Firebase.
 
-@TODO Make instructions for running everything locally using emulators.
+@TODO Add instructions for running everything locally using emulators.
 
 ## Workspace packages
-
-This repo demonstrates the use of two shared packages. One shared between
-between both frontend and backend code, called "common", and one backend-only
-package called "backend".
-
-In addition there is a user-facing Next.js application, and two backend services
-that deploy to Firebase.
 
 ### Packages
 
@@ -141,10 +124,15 @@ You should be able to make this work with Yarn using the steps below:
 
 ## Bundling and path aliases
 
-The code uses TSUP as a bundler. It's a Rollup inspired bundler for Typescript.
-There are several reasons for using this. If you use path aliases like `~/*` or
-`@/*` to reference your source root from deeply nested sources, these paths are
-not converted by the standard Typescript compiler `tsc`.
+Note: This branch now uses the [internal packages
+strategy](#the-internal-packages-strategy), meaning that the shared packages get
+bundled together with the deployed apps and services, and those packages can
+link directly to the ts source code without requiring a build step.
+
+The deployed services use TSUP as a bundler. It is a Rollup inspired bundler for
+Typescript. There can be several reasons for using this. If you use path aliases
+like `~/*` or `@/*` to reference your source root from deeply nested sources,
+these paths are not converted by the standard Typescript compiler `tsc`.
 
 If your only deployment is a Next.js app, this is not a problem, because using
 the `transpileModules` configuration setting, you can have Next transform and
@@ -157,64 +145,54 @@ having to use .js and /index.js for relative imports, because the bundler will
 combine everything in one or more entry files that themselves do not use
 relative imports.
 
-## Go-To-Definition
-
-One important thing to have working in a monorepo is the IDE go-to-definition
-when you cmd-click on an imported class or function. You want to jump to the
-source and not the compiled dist output location or the type.
-
-In order to do this, it seems we need type-definition maps. They are similar to
-source maps, but then for compiled `.d.ts` output files.
-
-TSUP can generate dts files, but they will represent the already bundled source
-code, and that is not what we want if we want to jump to the origin of the code.
-Also, at the time of writing TSUP can not generate type definition map files.
-
-For this reason, we only use TSUP for bundling, and then run TSC to generate the
-type definitions and the type definition map files, and as a result, in all the
-packages that are imported by others (packages/common and packages/backend) you
-will see `"tsup && tsc --emitDeclarationOnly"` as the build script.
-
-In order to make go-to-definition work, it seems to be important to also set up
-the typescript project references in the tsconfig files of the packages that use
-them.
-
-## VSCode settings
-
-The repository also includes some VSCode settings that I think are useful.
-
-- Tell VSCode to append .js to local module imports. Useful if you like to write
-  your code in ESModule format.
-- Keep auto-import paths as short as possible. Use "./" or "../" over absolute
-  paths if the files are relatively close.
-- Exclude certain libraries from auto-imports. I have been using my own `assert`
-  implementation for example, but VSCode regularly imported it from libraries
-  like `node:console`, `node:assert` and `Joi` instead.
-
 ## Code changes in shared packages
 
-Each package is treated similar to a released NPM package, meaning that the code
-and types are resolved from the built "dist" output for each module. Adding new
-types and changing code in shared packages therefor requires you to rebuild
-these. The exception I think is NextJS which can use its "transpileModules"
-configuration to pick things up when the sources of its dependencies change.
+Traditionally in a monorepo, each package is treated similar to a released NPM
+package, meaning that the code and types are resolved from the built "dist"
+output for each module. Adding new types and changing code in shared packages
+therefor requires you to rebuild these, which can be cumbersome during
+development.
 
-### Using Turbowatch
+Turborepo does not (yet) include a watch task, so
+[Turbowatch](https://github.com/gajus/turbowatch) was created to solve this
+issue. I haven't tried it but it looks like a neat solution. However, you might
+want to use the [internal packages strategy
+instead](#the-internal-packages-strategy).
 
-Turborepo does not include a watch task (yet) so people have created
-[Turbowatch](https://github.com/gajus/turbowatch) for this purpose. I haven't
-tried it but it looks like a great solution.
+## The "internal packages" strategy
 
-### Using the "internal packages" approach
-
-There is also the [internal
+The [internal
 packages](https://turbo.build/blog/you-might-not-need-typescript-project-references)
-strategy as it was coined by Jared Palmer of Turborepo, in which you link
-directly to the package source. With this approach, if you use path aliases like
-`~/`, you need to make sure every package has its own unique alias to point to
-its src folder. Alternatively you could choose to not aliases at all for your
-shared packages. Typically shared packages do not have a deeply nested structure
-anyway.
+strategy, as it was coined by Jared Palmer of Turborepo, removes the build step
+from the internal packages by linking directly to the Typescript source files
+from each package's manifest.
+
+There are a few advantages to this approach:
+
+- Code and types changes can be picked up directly, removing the need for a
+  watch task.
+- Having no build step reduces overall configuration and complexity where you
+  might otherwise use a bundler.
+- IDE go-to-type-definition function (the thing you want to happen when you
+  cmd-click on a type or function in your code), works out of the box, without
+  the need for Typescript project references or generating `d.ts.map` files.
+
+There are also a few disadvantages to this approach:
+
+- You can not publish the shared packages to NPM, as you do not expose them as
+  Javascript.
+- If you use path aliases like `~/`, you will need to make sure every package
+  has its own unique aliases. I chose to not aliases anymore for my shared
+  packages, because those packages typically do not have a deeply nested folder
+  structures anyway.
+- Since all source code gets compiled by the consuming application, build times
+  can start to suffer when the codebase grows. See
+  [caveats](https://turbo.build/blog/you-might-not-need-typescript-project-references#caveats)
+  for more info.
+
+This monorepo example uses the internal packages setup for `@mono/common` and a
+traditional bundling approach for `@mono/backend`. Both are compatible with
+`isolate-package` for deploying to Firebase.
 
 ## Deploying to Firebase
 
@@ -225,5 +203,30 @@ installing its dependencies and executing the main entry.
 
 This repo includes a solution based on
 [isolate-package](https://github.com/0x80/isolate-package/) and I encourage you
-to look at that and maybe read the [accompanying article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e) to understand what
-it does and why it is needed.
+to look at that and maybe read the [accompanying
+article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
+to understand what it does and why it is needed.
+
+## VSCode settings
+
+This example includes some VSCode settings that I think are useful.
+
+- Tell VSCode to append .js to local module imports. Useful if you like to write
+  your code in ES module format like modern JS.
+- Keep auto-import paths as short as possible. Use "./" or "../" over absolute
+  paths if the files are relatively close.
+- Exclude certain libraries from auto-imports. I have been using my own `assert`
+  implementation for example, but VSCode regularly imported it from libraries
+  like `node:console`, `node:assert` and `Joi` instead.
+
+## Still Not Quite There Yet
+
+There are still a few things I would like have figured out:
+
+- [ ] Live code reloads for the "internal packages" like @mono/common. Currently
+      a change in `areWeThereYet` doesn't propagate to the rendered page when the
+      dev server is running.
+- [ ] Live code changes for functions in the Firestore emulator. This would
+      require isolate to become an integral part of the firebase-tools deploy
+      command, so that the isolation only happens on the actual deployment and not
+      pre-deploy, because pre-deploy also affects the emulator.

@@ -13,13 +13,5 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["src"],
-  "references": [
-    {
-      "path": "../../packages/common"
-    },
-    {
-      "path": "../../packages/core"
-    }
-  ]
+  "include": ["src"]
 }

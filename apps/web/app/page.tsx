@@ -1,17 +1,16 @@
 "use client";
 
-import { add, multiply, reset } from "~/lib/api";
-import { CounterView } from "./components/counter-view";
+import { areWeThereYet } from "@mono/common";
+import { add, multiply, reset } from "~/lib/api.js";
+import { CounterView } from "./components/counter-view.jsx";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
+      <h1 className={styles.title}>A quest for the ideal TS monorepo setup</h1>
       <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
+        <p>Are we there yet? {areWeThereYet()}</p>
       </div>
       <CounterView />
       <div className={styles.description}>

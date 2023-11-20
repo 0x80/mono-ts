@@ -2,6 +2,7 @@
   "name": "@mono/web",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,5 +22,8 @@
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "eslint-define-config": "^2.0.0"
   }
 }
