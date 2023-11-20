@@ -3,25 +3,19 @@
 This is a quest for the ideal Typescript monorepo setup.
 
 My current projects are based on Node, Next.js and Firebase, so that is what I
-am focussing on. In particular Firebase brings its own set of challenges in a
-monorepo context.
+am focussing on.
 
 If you use different platforms, this can still be a great starting point, as it
 should be easy to discard any packages that you have no use for. The monorepo
-approach by itself is largely independent of the chosen tool stack.
+approach by itself is largely independent of the chosen technology stack.
 
-This is meant as a best-effort approach given the tooling available, so I expect
-this code to change as the ecosystem around Typescript and Javascript continue
-to evolve.
+This is meant as a best-effort approach given the tooling that is available, so
+I expect this code to change as the ecosystem around Typescript and Javascript
+continue to evolve.
 
 Contributions are welcome within the scope of this example. I doubt there will
 ever be a one-size-fits-all solution, so this code should be viewed as
 opinionated.
-
-> NOTE: This branch uses the [internal packages
-> strategy](#the-internal-packages-strategy). If you want to view the example
-> using a more traditional approach where each package is built separately, you
-> can check out the v1 branch on this repo.
 
 <!-- TOC -->
 
@@ -45,18 +39,14 @@ opinionated.
 
 ## Features
 
-This example tries to showcases what a complete setup could look like:
-
 - Use Turborepo to orchestrate the build process with local dependencies
-- The "internal packages" strategy
-- A common package for sharing code with both frontend and backend
-- A backend-only shared package, exporting multiple entry points to improve tree
-  shaking
+- A traditional built package approach, bundling for multiple entry points
+- The ["internal packages"](#the-internal-packages-strategy) strategy
 - Shared configurations for ESLint and Typescript.
-- Multiple packages deploying to Firebase (1st and 2nd gen functions) using
-  [isolate-package](https://github.com/0x80/isolate-package/).
-- A web app (Next.js) using shared code
-- Using ES modules for all but Next.js
+- Multiple backend services deploying to Firebase (1st and 2nd gen functions),
+  using [isolate-package](https://github.com/0x80/isolate-package/).
+- A Next.js web app, with live reloads from shared code
+- Using ES modules throughout, including the Next.js app
 - Path aliases
 - IDE go-to-definition
 - Vitest
@@ -187,7 +177,7 @@ There are a few advantages to this approach:
   cmd-click on a type or function in your code), works out of the box, without
   the need for Typescript project references or generating `d.ts.map` files.
 
-There are also two disadvantages that I know of:
+There are also a few disadvantages to this approach:
 
 - You can not publish the shared packages to NPM, as you do not expose them as
   Javascript.
@@ -195,13 +185,14 @@ There are also two disadvantages that I know of:
   has its own unique aliases. I chose to not aliases anymore for my shared
   packages, because those packages typically do not have a deeply nested folder
   structures anyway.
+- Since all source code gets compiled by the consuming application, build times
+  can start to suffer when the codebase grows. See
+  [caveats](https://turbo.build/blog/you-might-not-need-typescript-project-references#caveats)
+  for more info.
 
-This monorepo example uses the internal packages setup for `@mono/common` and
-`@mono/backend` and it is compatible with `isolate-package` for deploying to
-Firebase.
-
-If the disadvantages are deal-breakers, you can check out the v1 branch of this
-repository for a traditional setup that builds each package.
+This monorepo example uses the internal packages setup for `@mono/common` and a
+traditional bundling approach for `@mono/backend`. Both are compatible with
+`isolate-package` for deploying to Firebase.
 
 ## Deploying to Firebase
 
@@ -216,26 +207,6 @@ to look at that and maybe read the [accompanying
 article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
 to understand what it does and why it is needed.
 
-Recently I changed this setup to use [the internal packages
-strategy](#the-internal-packages-strategy) and I was happy to find that the
-approach is compatible with `isolate-packages`.
-
-In summary it works like this:
-
-1. The package to be deployed lists its internal dependencies as usual, but the
-   manifest files for those packages point directly to the Typescript source.
-2. You tell the bundler to include the source code for those package in its
-   output bundle. In the case of the TSUP for the API service it is:
-   `noExternal: ["@mono/common", "@mono/backend"]`
-3. When `isolate` runs, it does the exact same thing as always. It will pick up
-   the shared packages, and copy and link them to the target package in the
-   isolate output folder. Then, when deploying to Firebase the cloud pipeline
-   will look at the manifest and install all dependencies of the target package
-   including any dependencies of the linked internal packages. The entry points
-   in the manifest files for those packages will still point to the Typescript
-   source files, but these are never used since the shared code was already
-   embedded in the bundled output.
-
 ## VSCode settings
 
 This example includes some VSCode settings that I think are useful.
@@ -247,3 +218,15 @@ This example includes some VSCode settings that I think are useful.
 - Exclude certain libraries from auto-imports. I have been using my own `assert`
   implementation for example, but VSCode regularly imported it from libraries
   like `node:console`, `node:assert` and `Joi` instead.
+
+## Still Not Quite There Yet
+
+There are still a few things I would like have figured out:
+
+- [ ] Live code reloads for the "internal packages" like @mono/common. Currently
+      a change in `areWeThereYet` doesn't propagate to the rendered page when the
+      dev server is running.
+- [ ] Live code changes for functions in the Firestore emulator. This would
+      require isolate to become an integral part of the firebase-tools deploy
+      command, so that the isolation only happens on the actual deployment and not
+      pre-deploy, because pre-deploy also affects the emulator.

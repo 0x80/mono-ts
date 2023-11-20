@@ -2,14 +2,19 @@
   "name": "@mono/backend",
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
-    "./utils": "./src/utils/index.ts",
-    "./firebase": "./src/firebase.ts",
     ".": {
-      "types": "./src/index.ts"
-    }
+      "types": "./dist/index.d.ts"
+    },
+    "./utils": "./dist/utils/index.js",
+    "./firebase": "./dist/firebase.js"
   },
   "scripts": {
+    "build": "tsup && tsc --emitDeclarationOnly",
+    "clean": "rm -rf dist && rm tsconfig.tsbuildinfo",
     "type-check": "tsc --noEmit",
     "test": "vitest",
     "coverage": "vitest run --coverage ",

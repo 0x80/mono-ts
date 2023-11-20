@@ -1,8 +1,12 @@
-import type { Counter } from "@mono/common";
+import { areWeThereYet, type Counter } from "@mono/common";
 import functions from "firebase-functions";
 import { incrementField, serverTimestamp } from "firestore-server-utils";
 import { counterFlagThreshold, region } from "~/config.js";
 
+/**
+ * This is a bit of a contrived example, and by no means a demonstration of
+ * solid production grade code.
+ */
 export const countersOnWrite = functions
   .region(region)
   .firestore.document("counters/{documentId}")
@@ -27,9 +31,14 @@ export const countersOnWrite = functions
       return;
     }
 
+    /**
+     * Just a test to link something from common
+     */
+    console.log(areWeThereYet());
+
     const updateData: Partial<Counter> = {
-      mutation_count: incrementField(1),
       mutated_at: serverTimestamp(),
+      mutation_count: incrementField(1),
     };
 
     if (after.value < counterFlagThreshold && after.is_flagged) {
