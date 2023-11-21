@@ -9,7 +9,7 @@ import type { Timestamp } from "firebase/firestore";
  * method, so in order to freely share the document type definitions between
  * client and server code, we need to omit the toJSON method.
  */
-type FsTimestamp = Omit<Timestamp, "toJSON">;
+export type FsTimestamp = Omit<Timestamp, "toJSON">;
 
 export type Counter = {
   value: number;

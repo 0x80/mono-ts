@@ -3,6 +3,7 @@ import { Counter } from "@mono/common";
 import { doc } from "firebase/firestore";
 import { useTypedDocument } from "~/lib/firestore.js";
 import { refs } from "~/refs.js";
+import KeyValueList from "./key-value-list.jsx";
 
 export function CounterView() {
   const [counter, isLoading] = useTypedDocument<Counter>(
@@ -14,13 +15,15 @@ export function CounterView() {
   }
 
   if (counter) {
-    const { value, mutation_count, mutated_at } = counter.data;
     return (
-      <ul>
-        <li>Value: {value}</li>
-        <li>Mutation count: {mutation_count}</li>
-        <li>Mutated at: {mutated_at.toDate().toLocaleString()}</li>
-      </ul>
+      <KeyValueList
+        data={counter.data}
+        labels={[
+          ["value", "Current Value"],
+          ["mutation_count", "Mutation Count"],
+          ["mutated_at", "Last mutated at"],
+        ]}
+      />
     );
   } else {
     return <div>No counter document available. Please press "reset".</div>;

@@ -2,6 +2,7 @@
 
 import { areWeThereYet } from "@mono/common";
 import { add, multiply, reset } from "~/lib/api.js";
+import CardWithAction from "./components/card-with-action.jsx";
 import { CounterView } from "./components/counter-view.jsx";
 import styles from "./page.module.css";
 
@@ -12,17 +13,28 @@ export default function Home() {
       <div className={styles.description}>
         <p>Are we there yet? {areWeThereYet()}</p>
       </div>
-      <CounterView />
       <div className={styles.description}>
-        <button className={styles.button} onClick={() => reset()}>
-          Reset
-        </button>
-        <button className={styles.button} onClick={() => add(3)}>
-          Increment by 3
-        </button>
-        <button className={styles.button} onClick={() => multiply(2)}>
-          Multiply by 2
-        </button>
+        <CardWithAction
+          title="Counter"
+          description="A remote counter. Mutations are slow, because they flow via an API call and background functions, triggered by document onWrite events. This is just for demonstration and not an example of how you would want to implement an actual counter."
+          action={{ label: "Reset", handler: () => reset() }}
+        >
+          <CounterView />
+        </CardWithAction>
+      </div>
+
+      <div className={styles.description}>
+        <CardWithAction
+          title="Add"
+          description="Increments the counter value"
+          action={{ label: "3", handler: () => add(3) }}
+        />
+
+        <CardWithAction
+          title="Multiply"
+          description="Multiplies the counter value"
+          action={{ label: "2", handler: () => multiply(2) }}
+        />
       </div>
     </main>
   );

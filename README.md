@@ -13,8 +13,8 @@ This is meant as a best-effort approach given the tooling that is available, so
 I expect this code to change as the ecosystem around Typescript and Javascript
 continue to evolve.
 
-Contributions are welcome within the scope of this example. I doubt there will
-ever be a one-size-fits-all solution, so this code should be viewed as
+Contributions are welcome within the scope of this example, but I doubt there
+will ever be a one-size-fits-all solution, so this code should be viewed as
 opinionated.
 
 <!-- TOC -->
@@ -189,6 +189,9 @@ There are also a few disadvantages to this approach:
   can start to suffer when the codebase grows. See
   [caveats](https://turbo.build/blog/you-might-not-need-typescript-project-references#caveats)
   for more info.
+- Since the consuming application is treating the package as a regular source
+  file, you can not make your package an ESM module if your consuming context is
+  not configured to use ESM.
 
 This monorepo example uses the internal packages setup for `@mono/common` and a
 traditional bundling approach for `@mono/backend`. Both are compatible with
@@ -219,14 +222,14 @@ This example includes some VSCode settings that I think are useful.
   implementation for example, but VSCode regularly imported it from libraries
   like `node:console`, `node:assert` and `Joi` instead.
 
-## Still Not Quite There Yet
+## Not Quite There Yet
 
 There are still a few things I would like have figured out:
 
 - [ ] Live code reloads for the "internal packages" like @mono/common. Currently
-      a change in `areWeThereYet` doesn't propagate to the rendered page when the
-      dev server is running.
+      a change in `areWeThereYet` doesn't seem to propagate to the rendered page
+      when the dev server is running.
 - [ ] Live code changes for functions in the Firestore emulator. This would
       require isolate to become an integral part of the firebase-tools deploy
-      command, so that the isolation only happens on the actual deployment and not
-      pre-deploy, because pre-deploy also affects the emulator.
+      command, so that the isolation only happens on the actual deployment and
+      not pre-deploy, because pre-deploy also affects the emulator.
