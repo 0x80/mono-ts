@@ -39,16 +39,18 @@ opinionated.
 
 ## Features
 
-- Use Turborepo to orchestrate the build process with local dependencies
-- A traditional built package approach, bundling for multiple entry points
-- The ["internal packages"](#the-internal-packages-strategy) strategy
+- Turborepo for orchestrating the build process with internal packages
+- A traditional built package approach, showing how to bundle for multiple entry
+  points
+- The ["internal packages"](#the-internal-packages-strategy) strategy for live
+  shared code updates without using watch tasks.
 - Shared configurations for ESLint and Typescript.
 - Multiple backend services deploying to Firebase (1st and 2nd gen functions),
   using [isolate-package](https://github.com/0x80/isolate-package/).
-- A Next.js web app, with live reloads from shared code
+- A web app based on Next.js with ShadCN and Tailwind
 - Using ES modules throughout, including the Next.js app
 - Path aliases
-- IDE go-to-definition
+- IDE go-to-type-definition using `.d.ts.map` files
 - Vitest
 
 ## Install
@@ -58,19 +60,19 @@ package manager, that should not be a problem. See [using
 NPM](#using-npm-instead-of-pnpm) or [using Yarn](#using-yarn-instead-of-pnpm)
 for more info.
 
-If you like to use PNPM and don not have it installed already, see [these
+If you like to use PNPM and do not have it installed already, follow [these
 instructions](https://pnpm.io/installation).
 
-Then, run `pnpm install` from the repository root.
+Run `pnpm install` from the repository root.
 
-## Build
+## Using
 
-You can run `npx turbo build` from the root of the monorepo to build everything.
-This should be enough to verify that things are working from a compiler point of
-view. If you would like to verify that deployments are working you can follow
-the instructions in the individual packages that deploy to Vercel and Firebase.
+Run `pnpm dev`. This will:
 
-@TODO Add instructions for running everything locally using emulators.
+- Build the dependencies of the web app and start its dev server
+- Build the backend services and their dependencies, and
+  [isolate](#deploying-to-firebase) the output
+- Start the backend emulators
 
 ## Workspace packages
 
@@ -122,7 +124,7 @@ You should be able to make this work with Yarn using the steps below:
   root manifest.
 - Run `yarn install` from the root
 
-## Bundling and path aliases
+## Bundling
 
 Note: This branch now uses the [internal packages
 strategy](#the-internal-packages-strategy), meaning that the shared packages get
@@ -145,7 +147,7 @@ having to use .js and /index.js for relative imports, because the bundler will
 combine everything in one or more entry files that themselves do not use
 relative imports.
 
-## Code changes in shared packages
+## Live code changes from internal packages
 
 Traditionally in a monorepo, each package is treated similar to a released NPM
 package, meaning that the code and types are resolved from the built "dist"
@@ -167,35 +169,35 @@ strategy, as it was coined by Jared Palmer of Turborepo, removes the build step
 from the internal packages by linking directly to the Typescript source files
 from each package's manifest.
 
-There are a few advantages to this approach:
+There are some advantages to this approach:
 
 - Code and types changes can be picked up directly, removing the need for a
-  watch task.
-- Having no build step reduces overall configuration and complexity where you
-  might otherwise use a bundler.
-- IDE go-to-type-definition function (the thing you want to happen when you
-  cmd-click on a type or function in your code), works out of the box, without
-  the need for Typescript project references or generating `d.ts.map` files.
+  watch task in development mode.
+- Removing the build step reduces overall complexity where you might otherwise
+  use a bundler with configuration.
+- IDE go-to-definition, in which cmd-clicking on a reference takes you to the
+  source location instead of the typed exports, works without the need for
+  Typescript project references or generating `d.ts.map` files.
 
-There are also a few disadvantages to this approach:
+But, as always, there are also some disadvantages you should be aware of:
 
 - You can not publish the shared packages to NPM, as you do not expose them as
   Javascript.
 - If you use path aliases like `~/`, you will need to make sure every package
-  has its own unique aliases. I chose to not aliases anymore for my shared
-  packages, because those packages typically do not have a deeply nested folder
-  structures anyway.
+  has its own unique aliases. You might not need aliases, because shared
+  packages typically do not have a deeply nested folder structure anyway.
 - Since all source code gets compiled by the consuming application, build times
   can start to suffer when the codebase grows. See
   [caveats](https://turbo.build/blog/you-might-not-need-typescript-project-references#caveats)
   for more info.
 - Since the consuming application is treating the package as a regular source
-  file, you can not make your package an ESM module if your consuming context is
-  not configured to use ESM.
+  code, you can not make your package an ESM module if your consuming context is
+  not configured to use ESM. This demo shows how to use ESM for all packages
+  including the Next.js app.
 
-This monorepo example uses the internal packages setup for `@mono/common` and a
-traditional bundling approach for `@mono/backend`. Both are compatible with
-`isolate-package` for deploying to Firebase.
+Purely for demonstration purposes, mono-ts uses the internal packages approach
+for `@mono/common` and a traditional bundling approach for `@mono/backend`. Both
+are compatible with `isolate-package` for deploying to Firebase.
 
 ## Deploying to Firebase
 
@@ -221,15 +223,3 @@ This example includes some VSCode settings that I think are useful.
 - Exclude certain libraries from auto-imports. I have been using my own `assert`
   implementation for example, but VSCode regularly imported it from libraries
   like `node:console`, `node:assert` and `Joi` instead.
-
-## Not Quite There Yet
-
-There are still a few things I would like have figured out:
-
-- [ ] Live code reloads for the "internal packages" like @mono/common. Currently
-      a change in `areWeThereYet` doesn't seem to propagate to the rendered page
-      when the dev server is running.
-- [ ] Live code changes for functions in the Firestore emulator. This would
-      require isolate to become an integral part of the firebase-tools deploy
-      command, so that the isolation only happens on the actual deployment and
-      not pre-deploy, because pre-deploy also affects the emulator.

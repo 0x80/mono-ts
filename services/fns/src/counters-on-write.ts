@@ -18,7 +18,7 @@ export const countersOnWrite = functions
       return;
     }
 
-    if (before && before.value === after.value) {
+    if (before?.value === after.value || after.value === 0) {
       /**
        * This check is important, because otherwise the update below will
        * trigger an endless loop of onWrite events. Writing to the same document

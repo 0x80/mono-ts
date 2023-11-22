@@ -5,9 +5,9 @@ import { useTypedDocument } from "~/lib/firestore.js";
 import { refs } from "~/refs.js";
 import KeyValueList from "./key-value-list.jsx";
 
-export function CounterView() {
+export function CounterView(props: { counterId: string }) {
   const [counter, isLoading] = useTypedDocument<Counter>(
-    doc(refs.counters, "my_counter")
+    doc(refs.counters, props.counterId)
   );
 
   if (isLoading) {

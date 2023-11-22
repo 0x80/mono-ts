@@ -4,36 +4,37 @@ import { areWeThereYet } from "@mono/common";
 import { add, multiply, reset } from "~/lib/api.js";
 import CardWithAction from "./components/card-with-action.jsx";
 import { CounterView } from "./components/counter-view.jsx";
-import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <h1 className={styles.title}>A quest for the ideal TS monorepo setup</h1>
-      <div className={styles.description}>
-        <p>Are we there yet? {areWeThereYet()}</p>
-      </div>
-      <div className={styles.description}>
+    <main className={"flex flex-col justify-between gap-10 p-10"}>
+      <h1 className={"text-xl"}>A quest for the ideal TS monorepo setup</h1>
+
+      <div className="grid grid-cols-2 gap-4">
         <CardWithAction
-          title="Counter"
-          description="A remote counter. Mutations are slow, because they flow via an API call and background functions, triggered by document onWrite events. This is just for demonstration and not an example of how you would want to implement an actual counter."
+          title="Are we there yet? "
+          description={areWeThereYet()}
+        />
+        <CardWithAction
+          title="Remote Counter"
+          description="Implemented by mutating a Firestore document. Mutations will be slow as they flow through an API call and logic triggered by document onWrite events. Also, Firestore documents have a 1 write/sec limitation and so triggering mutations quickly could cause lagging or errors. This setup is aimed at integrating two separate Firebase services, and is not an example of how you would implement a reliable mechanism."
           action={{ label: "Reset", handler: () => reset() }}
         >
-          <CounterView />
+          <CounterView counterId="my_counter" />
         </CardWithAction>
       </div>
 
-      <div className={styles.description}>
+      <div className="grid grid-cols-2 gap-4">
         <CardWithAction
-          title="Add"
+          title="Addition"
           description="Increments the counter value"
-          action={{ label: "3", handler: () => add(3) }}
+          action={{ label: "Add 3", handler: () => add(3) }}
         />
 
         <CardWithAction
-          title="Multiply"
+          title="Multiplication"
           description="Multiplies the counter value"
-          action={{ label: "2", handler: () => multiply(2) }}
+          action={{ label: "Multiply by 2", handler: () => multiply(2) }}
         />
       </div>
     </main>

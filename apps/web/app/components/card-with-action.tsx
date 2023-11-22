@@ -12,7 +12,7 @@ export default function CardWithAction(props: {
   title: string;
   description: string;
   children?: React.ReactNode;
-  action: {
+  action?: {
     label: string;
     handler: () => void;
   };
@@ -26,11 +26,13 @@ export default function CardWithAction(props: {
       {props.children && (
         <CardContent className="text-sm">{props.children}</CardContent>
       )}
-      <CardFooter className="bg-zinc-100 py-4 dark:bg-zinc-800">
-        <Button size="sm" onClick={props.action.handler}>
-          {props.action.label}
-        </Button>
-      </CardFooter>
+      {props.action && (
+        <CardFooter className="bg-zinc-100 py-4 dark:bg-zinc-800">
+          <Button size="sm" onClick={props.action.handler}>
+            {props.action.label}
+          </Button>
+        </CardFooter>
+      )}
     </Card>
   );
 }
