@@ -106,12 +106,17 @@ Deployment instructions can be found in the individual packages:
 You should be able to make this work with NPM using the steps below:
 
 - Delete the root manifest `packageManger` field
-- Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
+- Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
 - Do a find on `workspace:*` and replace them with `*`.
-- Add a [workspaces
-  configuration](https://docs.npmjs.com/cli/v7/using-npm/workspaces) to the root
-  manifest.
-- Run `npm install` from the root
+- Add the following config to the root package.json:
+  ```
+   "workspaces": [
+    "./packages/*",
+    "./apps/*",
+    "./services/*"
+  ],
+  ```
+- Run `npm install` from the root and commit the resulting `package-lock.json` file.
 
 ## Using Yarn instead of PNPM
 
