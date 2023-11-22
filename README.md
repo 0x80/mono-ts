@@ -55,15 +55,19 @@ opinionated.
 
 ## Install
 
-In this setup, packages are managed using PNPM. If you prefer to use a different
-package manager, that should not be a problem. See [using
-NPM](#using-npm-instead-of-pnpm) or [using Yarn](#using-yarn-instead-of-pnpm)
-for more info.
+In this setup, packages are managed using PNPM. I encourage anyone to give it a
+try if you haven't already. In my experience it is more convenient and much more
+performant than NPM or Yarn, and I get the overall impression that it is
+designed better.
 
 If you like to use PNPM and do not have it installed already, follow [these
 instructions](https://pnpm.io/installation).
 
 Run `pnpm install` from the repository root.
+
+If you prefer to use a different package manager, that should not be a problem.
+See [using NPM](#using-npm-instead-of-pnpm) or [using
+Yarn](#using-yarn-instead-of-pnpm) for more info.
 
 ## Using
 
@@ -116,41 +120,65 @@ You should be able to make this work with NPM using the steps below:
     "./services/*"
   ],
   ```
-- Run `npm install` from the root and commit the resulting `package-lock.json` file.
+- Run `npm install` from the root and commit the resulting `package-lock.json`
+  file.
 
 ## Using Yarn instead of PNPM
 
 You should be able to make this work with Yarn using the steps below:
 
 - Delete the root manifest `packageManger` field
-- Delete the pnpm-lock.yaml and pnpm-workspace.yaml files
-- Add a [workspaces
-  configuration](https://classic.yarnpkg.com/lang/en/docs/workspaces/) to the
-  root manifest.
-- Run `yarn install` from the root
+- Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
+- Add the following config to the root package.json:
+  ```
+   "workspaces": [
+    "./packages/*",
+    "./apps/*",
+    "./services/*"
+  ],
+  ```
+- Run `yarn install` from the root and commit the resulting `yarn.lock` file.
 
 ## Bundling
 
-Note: This branch now uses the [internal packages
-strategy](#the-internal-packages-strategy), meaning that the shared packages get
-bundled together with the deployed apps and services, and those packages can
-link directly to the ts source code without requiring a build step.
+This setup, besides using the [internal packages
+strategy](#the-internal-packages-strategy) also demonstrates how to use a
+traditional approach where the package output is being built. You can use
+Typscript `tsc` compiler for this, but likely you will want to use a bundler.
 
-The deployed services use TSUP as a bundler. It is a Rollup inspired bundler for
-Typescript. There can be several reasons for using this. If you use path aliases
-like `~/*` or `@/*` to reference your source root from deeply nested sources,
-these paths are not converted by the standard Typescript compiler `tsc`.
+The `services` in this codebase use TSUP as a bundler. It is a Rollup inspired
+bundler for Typescript.
 
-If your only deployment is a Next.js app, this is not a problem, because using
-the `transpileModules` configuration setting, you can have Next transform and
-bundle things correctly for you. But if you need to target other platforms, like
-Firebase, you do not have this luxury.
+There can be several reasons for using a bundler, and they are discussed below.
 
-A bundler like TSUP can do this transformation for you. In addition, it will
-allow you to output ESM without having to adhere to the ESM import rules like
-having to use .js and /index.js for relative imports, because the bundler will
-combine everything in one or more entry files that themselves do not use
-relative imports.
+### Path aliases
+
+If you use path aliases like `~/*` or `@/*` to conveniently reference top-level
+folders from deeply nested import statements, these paths are not converted by
+the Typescript `tsc` compiler.
+
+If your only target is a platform like Next.js, that uses a bundler under the
+hood, this these aliases are handled for you. But if you target other platforms
+like Firebase, you might have to convert them. A bundler like TSUP can do this
+transformation.
+
+### ESM import extensions
+
+A bundler will allow you to output ESM compatible code without having to adhere
+to the ESM import rules. ESM requires all relative imports to be explicit with
+.js file extensions and imports from folders using /index.js.
+
+A bundler will combine all code in one or more entry files that themselves do
+not use relative imports, but only have imports from `node_modules`.
+
+An advantage of writing your code as ESM is that you can import both ES modules
+and CommonJS without conversion. An application that uses CJS can not import ESM
+directly, because CJS imports are synchronous and ESM imports are asynchronous.
+
+### Tree shaking
+
+Some bundlers like TSUP are capable of eliminating dead code by tree-shaking the
+build output, so that less code remains to be deployed.
 
 ## Live code changes from internal packages
 
