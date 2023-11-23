@@ -21,7 +21,7 @@ opinionated.
 
 - [Features](#features)
 - [Install](#install)
-- [Build](#build)
+- [Using](#using)
 - [Workspace packages](#workspace-packages)
   - [Packages](#packages)
   - [Apps](#apps)
@@ -29,34 +29,44 @@ opinionated.
 - [Deployment](#deployment)
 - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
 - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
-- [Bundling and path aliases](#bundling-and-path-aliases)
-- [Code changes in shared packages](#code-changes-in-shared-packages)
+- [The "built packages" strategy](#the-built-packages-strategy)
+  - [Convert path aliases](#convert-path-aliases)
+  - [Write ESM without import extensions](#write-esm-without-import-extensions)
+  - [Tree shaking](#tree-shaking)
+  - [](#)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
+- [Live code changes from internal packages](#live-code-changes-from-internal-packages)
 - [Deploying to Firebase](#deploying-to-firebase)
 - [VSCode settings](#vscode-settings)
 
+<!-- /TOC -->
+<!-- /TOC -->
+<!-- /TOC -->
+<!-- /TOC -->
+<!-- /TOC -->
+<!-- /TOC -->
 <!-- /TOC -->
 
 ## Features
 
 - Turborepo for orchestrating the build process with internal packages
-- A traditional built package approach, showing how to bundle for multiple entry
-  points
+- A traditional built packages approach, showing how to bundle for multiple
+  entry points
 - The ["internal packages"](#the-internal-packages-strategy) strategy for live
-  shared code updates without using watch tasks.
+  shared code updates without the need for watch tasks.
 - Shared configurations for ESLint and Typescript.
 - Multiple backend services deploying to Firebase (1st and 2nd gen functions),
   using [isolate-package](https://github.com/0x80/isolate-package/).
 - A web app based on Next.js with ShadCN and Tailwind
 - Using ES modules throughout, including the Next.js app
 - Path aliases
-- IDE go-to-type-definition using `.d.ts.map` files
+- Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - Vitest
 
 ## Install
 
-In this setup, packages are managed using PNPM. I encourage anyone to give it a
-try if you haven't already. In my experience it is more convenient and much more
+In this example, packages are managed using PNPM. I encourage anyone to give it
+a try if you haven't already. In my experience it is more convenient and
 performant than NPM or Yarn, and I get the overall impression that it is
 designed better.
 
@@ -139,60 +149,68 @@ You should be able to make this work with Yarn using the steps below:
   ```
 - Run `yarn install` from the root and commit the resulting `yarn.lock` file.
 
-## Bundling
+## The "built packages" strategy
 
-This setup, besides using the [internal packages
-strategy](#the-internal-packages-strategy) also demonstrates how to use a
-traditional approach where the package output is being built. You can use
-Typscript `tsc` compiler for this, but likely you will want to use a bundler.
+In a traditional monorepo setup, each package exposes its code as if it was a
+published NPM package. For Typescript this means the code has to be transpiled
+and the manifest entry points reference to the build output files. You can use
+Typescript `tsc` compiler for this, but it is likely you will want to use a
+bundler for reasons explained below.
 
-The `services` in this codebase use TSUP as a bundler. It is a Rollup inspired
-bundler for Typescript.
+The `services` in this codebase use TSUP as a bundler. It is a modern, simple to
+use, Rollup-inspired bundler for Typescript.
 
-There can be several reasons for using a bundler, and they are discussed below.
+The advantages of using a bundler are discussed below.
 
-### Path aliases
+### Convert path aliases
 
 If you use path aliases like `~/*` or `@/*` to conveniently reference top-level
 folders from deeply nested import statements, these paths are not converted by
-the Typescript `tsc` compiler.
+the standard Typescript `tsc` compiler.
 
 If your only target is a platform like Next.js, that uses a bundler under the
-hood, this these aliases are handled for you. But if you target other platforms
-like Firebase, you might have to convert them. A bundler like TSUP can do this
-transformation.
+hood, this is not an issue because these aliases are handled for you. But if you
+target other platforms like Firebase, you might have to convert them. A bundler
+like TSUP can do this transformation.
 
-### ESM import extensions
+### Write ESM without import extensions
 
 A bundler will allow you to output ESM compatible code without having to adhere
-to the ESM import rules. ESM requires all relative imports to be explicit with
-.js file extensions and imports from folders using /index.js.
+to the ESM import rules. ESM requires all relative imports to be explicit,
+appending a `.js` file extensions for importing TS files and appending
+`/index.js` when importing from the root of a directory.
 
-A bundler will combine all code in one or more entry files that themselves do
-not use relative imports, but only have imports from `node_modules`.
+The reason you need to use `.js` and not `.ts` is because these imports, like
+path aliases, are not converted by the Typescript compiler, and so at runtime
+the transpiled JS file is what is getting imported.
+
+Because a bundler, by nature, will bundle code into one or more isolated files,
+they themselves do not use relative imports and only contain imports from
+`node_modules`, which do not require a file extension. For this reason, a
+bundled js file which uses import and export keywords is an ES module.
 
 An advantage of writing your code as ESM is that you can import both ES modules
 and CommonJS without conversion. An application that uses CJS can not import ESM
 directly, because CJS imports are synchronous and ESM imports are asynchronous.
 
+Not having to use ESM import extensions can be especially valuable if you are
+trying to convert a large codebase to ESM, because I have yet to find a solution
+that can convert existing imports. There is [this ESLint
+plugin](https://github.com/solana-labs/eslint-plugin-require-extensions) that
+you could use in combination with the --fix flag to inject the extensions, but
+at the time of writing it does not understand path aliases.
+
 ### Tree shaking
 
 Some bundlers like TSUP are capable of eliminating dead code by tree-shaking the
-build output, so that less code remains to be deployed.
+build output, so that less code remains to be deployed. Eliminating dead code is
+most important for client-side code that is shipped to the user, but for the
+backend it can also reduce cold-start times for serverless functions, although
+in most situations it is probably not going to be noticeable.
 
-## Live code changes from internal packages
+###
 
-Traditionally in a monorepo, each package is treated similar to a released NPM
-package, meaning that the code and types are resolved from the built "dist"
-output for each module. Adding new types and changing code in shared packages
-therefor requires you to rebuild these, which can be cumbersome during
-development.
-
-Turborepo does not (yet) include a watch task, so
-[Turbowatch](https://github.com/gajus/turbowatch) was created to solve this
-issue. I haven't tried it but it looks like a neat solution. However, you might
-want to use the [internal packages strategy
-instead](#the-internal-packages-strategy).
+No external
 
 ## The "internal packages" strategy
 
@@ -200,7 +218,7 @@ The [internal
 packages](https://turbo.build/blog/you-might-not-need-typescript-project-references)
 strategy, as it was coined by Jared Palmer of Turborepo, removes the build step
 from the internal packages by linking directly to the Typescript source files
-from each package's manifest.
+in the package manifest.
 
 There are some advantages to this approach:
 
@@ -228,9 +246,23 @@ But, as always, there are also some disadvantages you should be aware of:
   not configured to use ESM. This demo shows how to use ESM for all packages
   including the Next.js app.
 
-Purely for demonstration purposes, mono-ts uses the internal packages approach
-for `@mono/common` and a traditional bundling approach for `@mono/backend`. Both
+For testing and comparison, mono-ts uses the internal packages approach
+for `@mono/common` and a traditional built approach for `@mono/backend`. Both
 are compatible with `isolate-package` for deploying to Firebase.
+
+## Live code changes from internal packages
+
+Traditionally in a monorepo, each package is treated similar to a released NPM
+package, meaning that the code and types are resolved from the built "dist"
+output for each module. Adding new types and changing code in shared packages
+therefor requires you to rebuild these, which can be cumbersome during
+development.
+
+Turborepo does not (yet) include a watch task, so
+[Turbowatch](https://github.com/gajus/turbowatch) was created to solve this
+issue. I haven't tried it but it looks like a neat solution. However, you might
+want to use the [internal packages strategy
+instead](#the-internal-packages-strategy).
 
 ## Deploying to Firebase
 
@@ -247,7 +279,7 @@ to understand what it does and why it is needed.
 
 ## VSCode settings
 
-This example includes some VSCode settings that I think are useful.
+This example includes some VSCode settings that I find useful:
 
 - Tell VSCode to append .js to local module imports. Useful if you like to write
   your code in ES module format like modern JS.
