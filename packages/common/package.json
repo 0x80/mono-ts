@@ -23,7 +23,7 @@
     "@mono/eslint-config-custom": "workspace:*",
     "@mono/tsconfig": "workspace:*",
     "prettier": "^3.1.0",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   }
 }

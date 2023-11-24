@@ -23,7 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@mono/common": "workspace:*",
-    "firebase-admin": "11.11.0",
+    "firebase-admin": "11.11.1",
     "firebase-functions": "^4.5.0",
     "lodash-es": "^4.17.21",
     "ts-is-present": "^1.2.2"
@@ -31,10 +31,10 @@
   "devDependencies": {
     "@mono/eslint-config-custom": "workspace:*",
     "@mono/tsconfig": "workspace:*",
-    "@types/lodash-es": "^4.17.11",
-    "@types/node": "^20.9.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   }
 }
