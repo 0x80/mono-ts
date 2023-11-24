@@ -5,10 +5,8 @@
   "files": [
     "dist"
   ],
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts"
-    },
     "./utils": "./dist/utils/index.js",
     "./firebase": "./dist/firebase.js"
   },
@@ -23,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@mono/common": "workspace:*",
+    "@sindresorhus/is": "^6.1.0",
     "firebase-admin": "11.11.1",
     "firebase-functions": "^4.5.0",
     "lodash-es": "^4.17.21",

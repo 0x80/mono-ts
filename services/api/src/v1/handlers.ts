@@ -1,3 +1,4 @@
+import { isPlainObject } from "@mono/backend/utils";
 import { Counter, getErrorMessage } from "@mono/common";
 import { Request, Response } from "express";
 import {
@@ -26,6 +27,10 @@ const AddPayload = z.object({
 
 export async function add(req: Request, res: Response) {
   try {
+    if (isPlainObject(req.body)) {
+      console.log("+++ reg.body is a plain object");
+    }
+
     const { n } = AddPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
