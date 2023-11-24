@@ -1,6 +1,7 @@
 {
   "name": "mono-ts",
   "description": "A quest for the ideal TS monorepo setup",
+  "version": "0.0.0",
   "keywords": [
     "typescript",
     "monorepo",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "prettier": "^3.1.0",
+    "prettier-plugin-jsdoc": "^1.1.1",
     "turbo": "^1.10.16",
     "typescript": "^5.2.2",
     "vercel": "^32.5.5",

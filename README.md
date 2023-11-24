@@ -35,7 +35,8 @@ opinionated.
   - [Tree shaking](#tree-shaking)
   - [](#)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
-- [Live code changes from internal packages](#live-code-changes-from-internal-packages)
+- [Live code changes from internal
+  packages](#live-code-changes-from-internal-packages)
 - [Deploying to Firebase](#deploying-to-firebase)
 - [VSCode settings](#vscode-settings)
 
@@ -65,12 +66,12 @@ opinionated.
 
 ## Install
 
-In this example, packages are managed using PNPM. I encourage anyone to give it
-a try if you haven't already. In my experience it is more convenient and
-performant than NPM or Yarn, and I get the overall impression that it is
-designed better.
+In this codebase, packages are managed by PNPM. I encourage anyone to give it a
+try if you haven't already, because in my experience it is really the better
+choice, especially for monorepos. See the [feature comparison to NPN and
+Yarn](https://pnpm.io/feature-comparison).
 
-If you like to use PNPM and do not have it installed already, follow [these
+If you like to use PNPM but do not have it installed yet, follow [these
 instructions](https://pnpm.io/installation).
 
 Run `pnpm install` from the repository root.
@@ -79,7 +80,7 @@ If you prefer to use a different package manager, that should not be a problem.
 See [using NPM](#using-npm-instead-of-pnpm) or [using
 Yarn](#using-yarn-instead-of-pnpm) for more info.
 
-## Using
+## Usage
 
 Run `pnpm dev`. This will:
 
@@ -217,8 +218,8 @@ No external
 The [internal
 packages](https://turbo.build/blog/you-might-not-need-typescript-project-references)
 strategy, as it was coined by Jared Palmer of Turborepo, removes the build step
-from the internal packages by linking directly to the Typescript source files
-in the package manifest.
+from the internal packages by linking directly to the Typescript source files in
+the package manifest.
 
 There are some advantages to this approach:
 
@@ -246,9 +247,9 @@ But, as always, there are also some disadvantages you should be aware of:
   not configured to use ESM. This demo shows how to use ESM for all packages
   including the Next.js app.
 
-For testing and comparison, mono-ts uses the internal packages approach
-for `@mono/common` and a traditional built approach for `@mono/backend`. Both
-are compatible with `isolate-package` for deploying to Firebase.
+For testing and comparison, mono-ts uses the internal packages approach for
+`@mono/common` and a traditional built approach for `@mono/backend`. Both are
+compatible with `isolate-package` for deploying to Firebase.
 
 ## Live code changes from internal packages
 
