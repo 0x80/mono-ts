@@ -2,7 +2,7 @@
   "functions": {
     "source": "./isolate",
     "runtime": "nodejs20",
-    "predeploy": ["turbo build", "isolate"],
+    // "predeploy": ["turbo build", "isolate"],
     "codebase": "api"
   },
   "emulators": {
