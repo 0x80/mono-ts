@@ -29,13 +29,11 @@ app.use("/v1", v1);
 /**
  * Exposed endpoints
  *
- * Emulator: http://localhost:5002/your-project-name/europe-west3/api/v1
- * Live: https://europe-west3-your-project-name.cloudfunctions.net/api/v1
+ * Emulator: http://localhost:5002/your-project-name/europe-west3/api/v1 Live:
+ * https://europe-west3-your-project-name.cloudfunctions.net/api/v1
  */
 
-/**
- * Exports the function as "api". This will result in a url prefix /api,
- */
+/** Exports the function as "api". This will result in a url prefix /api, */
 export const api = onRequest(
   {
     region,

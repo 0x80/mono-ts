@@ -7,6 +7,9 @@ export type { DecodedIdToken } from "firebase-admin/auth";
 export { FieldValue, Timestamp } from "firebase-admin/firestore";
 export type { Firestore } from "firebase-admin/firestore";
 
+export type { UpdateData } from "firebase-admin/firestore";
+
+
 if (!admin.apps.length) {
   admin.initializeApp();
 

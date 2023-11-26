@@ -17,11 +17,13 @@ Contributions are welcome within the scope of this example, but I doubt there
 will ever be a one-size-fits-all solution, so this code should be viewed as
 opinionated.
 
+> Disclaimer: This example is not finished yet to the standard that I would like it to be. While the setup it is working great, some of the code could be improved, and I am still in the middle if integrating isolate-package as part of firebase-tools. Once that is done I will write an article about this.
+
 <!-- TOC -->
 
 - [Features](#features)
 - [Install](#install)
-- [Using](#using)
+- [Usage](#usage)
 - [Workspace packages](#workspace-packages)
   - [Packages](#packages)
   - [Apps](#apps)
@@ -35,17 +37,10 @@ opinionated.
   - [Tree shaking](#tree-shaking)
   - [](#)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
-- [Live code changes from internal
-  packages](#live-code-changes-from-internal-packages)
+- [Live code changes from internal packages](#live-code-changes-from-internal-packages)
 - [Deploying to Firebase](#deploying-to-firebase)
 - [VSCode settings](#vscode-settings)
 
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
 <!-- /TOC -->
 
 ## Features

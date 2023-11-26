@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+echo "Deleting node_modules recursively:"
+find . -name 'node_modules' -type d -prune
+
+find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+
