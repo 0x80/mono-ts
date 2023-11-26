@@ -2,7 +2,7 @@
 
 This is a quest for the ideal Typescript monorepo setup.
 
-My current projects are based on Node, Next.js and Firebase, so that is what I
+My current projects are based on Node, Next.js, and Firebase, so that is what I
 am focussing on.
 
 If you use different platforms, this can still be a great starting point, as it
@@ -17,7 +17,7 @@ Contributions are welcome within the scope of this example, but I doubt there
 will ever be a one-size-fits-all solution, so this code should be viewed as
 opinionated.
 
-> Disclaimer: This example is not finished yet to the standard that I would like it to be. While the setup is already working fine, some of the code could be improved. I am in the middle of integrating isolate-package as part of firebase-tools. Once that is done I will write an article about this setup.
+> Disclaimer: This example is not yet finished to the standard that I would like. While the setup works fine, some of the code could be improved. I am in the middle of integrating isolate-package as part of firebase-tools. Once that is done I will write an article about this setup.
 
 <!-- TOC -->
 
@@ -46,7 +46,7 @@ opinionated.
 ## Features
 
 - Turborepo for orchestrating the build process with internal packages
-- A traditional built packages approach, showing how to bundle for multiple
+- A traditional built packages approach, showing how to bundle multiple
   entry points
 - The ["internal packages"](#the-internal-packages-strategy) strategy for live
   shared code updates without the need for watch tasks.
@@ -62,7 +62,7 @@ opinionated.
 ## Install
 
 In this codebase, packages are managed by PNPM. I encourage anyone to give it a
-try if you haven't already, because in my experience it is really the better
+try if you haven't already because in my experience it is really the better
 choice, especially for monorepos. See the [feature comparison to NPN and
 Yarn](https://pnpm.io/feature-comparison).
 
@@ -151,10 +151,10 @@ In a traditional monorepo setup, each package exposes its code as if it was a
 published NPM package. For Typescript this means the code has to be transpiled
 and the manifest entry points reference to the build output files. You can use
 Typescript `tsc` compiler for this, but it is likely you will want to use a
-bundler for reasons explained below.
+bundler for the reasons explained below.
 
 The `services` in this codebase use TSUP as a bundler. It is a modern, simple to
-use, Rollup-inspired bundler for Typescript.
+use Rollup-inspired bundler for Typescript.
 
 The advantages of using a bundler are discussed below.
 
@@ -171,19 +171,19 @@ like TSUP can do this transformation.
 
 ### Write ESM without import extensions
 
-A bundler will allow you to output ESM compatible code without having to adhere
+A bundler will allow you to output ESM-compatible code without having to adhere
 to the ESM import rules. ESM requires all relative imports to be explicit,
-appending a `.js` file extensions for importing TS files and appending
+appending a `.js` file extension for importing TS files and appending
 `/index.js` when importing from the root of a directory.
 
 The reason you need to use `.js` and not `.ts` is because these imports, like
-path aliases, are not converted by the Typescript compiler, and so at runtime
+path aliases are not converted by the Typescript compiler, and so at runtime
 the transpiled JS file is what is getting imported.
 
 Because a bundler, by nature, will bundle code into one or more isolated files,
 they themselves do not use relative imports and only contain imports from
 `node_modules`, which do not require a file extension. For this reason, a
-bundled js file which uses import and export keywords is an ES module.
+bundled js file that uses import and export keywords is an ES module.
 
 An advantage of writing your code as ESM is that you can import both ES modules
 and CommonJS without conversion. An application that uses CJS can not import ESM
@@ -193,7 +193,7 @@ Not having to use ESM import extensions can be especially valuable if you are
 trying to convert a large codebase to ESM, because I have yet to find a solution
 that can convert existing imports. There is [this ESLint
 plugin](https://github.com/solana-labs/eslint-plugin-require-extensions) that
-you could use in combination with the --fix flag to inject the extensions, but
+you could use it in combination with the --fix flag to inject the extensions, but
 at the time of writing it does not understand path aliases.
 
 ### Tree shaking
@@ -202,7 +202,7 @@ Some bundlers like TSUP are capable of eliminating dead code by tree-shaking the
 build output, so that less code remains to be deployed. Eliminating dead code is
 most important for client-side code that is shipped to the user, but for the
 backend it can also reduce cold-start times for serverless functions, although
-in most situations it is probably not going to be noticeable.
+in most situations, it is probably not going to be noticeable.
 
 ###
 
@@ -218,7 +218,7 @@ the package manifest.
 
 There are some advantages to this approach:
 
-- Code and types changes can be picked up directly, removing the need for a
+- Code and type changes can be picked up directly, removing the need for a
   watch task in development mode.
 - Removing the build step reduces overall complexity where you might otherwise
   use a bundler with configuration.
@@ -248,10 +248,10 @@ compatible with `isolate-package` for deploying to Firebase.
 
 ## Live code changes from internal packages
 
-Traditionally in a monorepo, each package is treated similar to a released NPM
+Traditionally in a monorepo, each package is treated similarly to a released NPM
 package, meaning that the code and types are resolved from the built "dist"
 output for each module. Adding new types and changing code in shared packages
-therefor requires you to rebuild these, which can be cumbersome during
+therefore requires you to rebuild these, which can be cumbersome during
 development.
 
 Turborepo does not (yet) include a watch task, so
@@ -264,7 +264,7 @@ instead](#the-internal-packages-strategy).
 
 Deploying code to Firebase that uses shared packages from a monorepo comes with
 its own set of challenges, because the Firebase deploy pipeline requires you to
-upload a self-contained package that it can treat similar to an NPM package, by
+upload a self-contained package that can be treated similarly to an NPM package, by
 installing its dependencies and executing the main entry.
 
 This repo includes a solution based on
@@ -277,10 +277,10 @@ to understand what it does and why it is needed.
 
 This example includes some VSCode settings that I find useful:
 
-- Tell VSCode to append .js to local module imports. Useful if you like to write
+- Tell VSCode to append .js to local module imports, which can be useful if you like to write
   your code in ES module format like modern JS.
 - Keep auto-import paths as short as possible. Use "./" or "../" over absolute
   paths if the files are relatively close.
 - Exclude certain libraries from auto-imports. I have been using my own `assert`
   implementation for example, but VSCode regularly imported it from libraries
-  like `node:console`, `node:assert` and `Joi` instead.
+  like `node:console`, `node:assert`, and `Joi` instead.
