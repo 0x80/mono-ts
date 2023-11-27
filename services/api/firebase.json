@@ -1,6 +1,6 @@
 {
   "functions": {
-    "source": "./dist",
+    "source": ".",
     "runtime": "nodejs20",
     "isolate": true,
     "predeploy": ["turbo build"],
