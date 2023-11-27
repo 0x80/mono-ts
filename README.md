@@ -326,3 +326,13 @@ I have stored these in `.env` files in the respective service packages. Normally
 you would want to store them in a file that is not part of the repository like
 `.env.local` but by placing them in `.env` I prevent having to give instructions
 for setting them up just for running the demo.
+
+### Secrets
+
+The api services uses a secret for DEMO_API_KEY. In order to make secrets work
+with the emulator you currently have to add the secret to `.secret.local` and
+also an `.env` or `.env.local` file. See
+[this issue](https://github.com/firebase/firebase-tools/issues/5520) for more
+info. I have place it in `.env` which is part of the repo, so you don't have to
+set anything up, but .env.local is where you would put it normally, because that
+file is not checked into git.
