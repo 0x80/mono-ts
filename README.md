@@ -27,22 +27,21 @@ opinionated.
 - [Features](#features)
 - [Install](#install)
 - [Usage](#usage)
-- [Workspace packages](#workspace-packages)
+- [Workspace](#workspace)
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
 - [Deployment](#deployment)
+- [Running Firebase using Emulators](#running-firebase-using-emulators)
 - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
 - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
-  - [Write ESM without import extensions](#write-esm-without-import-extensions)
+  - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
   - [Tree shaking](#tree-shaking)
-  - [](#)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Live code changes from internal packages](#live-code-changes-from-internal-packages)
 - [Deploying to Firebase](#deploying-to-firebase)
-- [VSCode settings](#vscode-settings)
 
 <!-- /TOC -->
 
@@ -87,18 +86,14 @@ See [using NPM](#using-npm-instead-of-pnpm) or
 
 ## Usage
 
-First, create a file named `.env` or `.env.local` in
-[services/api](services/api) and add `DEMO_API_KEY=any`. You can give it a
-different value but it has to match `DEMO_API_KEY` in
-[apps/web/.env.development](apps/web/.env.development)
-
-Then, run `npx turbo dev`.
+Run `npx turbo dev`
 
 This will:
 
 - Build the dependencies of the `web` app and start its dev server
 - Build the `api` and `fns` backend services and their dependencies
-- Start the Firebase emulators
+- Start the Firebase emulators. See
+  [running Firebase emulators](#running-firebase-emulators) for more info
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
@@ -127,7 +122,8 @@ More info can be found in the README files of the various packages.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
   as an API endpoint, using Express. This package shows how to use
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-  to have the isolation integrated as part of the `firebase deploy` command.
+  to have the isolation integrated as part of the `firebase deploy` command. In
+  addition it illustrates how to use secrets.
 
 ## Deployment
 
@@ -310,7 +306,23 @@ upload a self-contained package that can be treated similarly to an NPM package,
 by installing its dependencies and executing the main entry.
 
 This repo includes a solution based on
-[isolate-package](https://github.com/0x80/isolate-package/) and I encourage you
-to look at that and maybe read the
-[accompanying article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
-to understand what it does and why it is needed.
+[isolate-package](https://github.com/0x80/isolate-package/). I wrote this
+[article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
+explaining what it does and why it is needed.
+
+You might notice `@google-cloud/functions-framework` as a dependency in the
+service package even though it is not being used in code imports. It is
+currently required for Firebase to be able to deploy a PNPM workspace. Without
+it you will get an error asking you to install the dependency. I don't quite
+understand how the two are related, but it works.
+
+## Running Firebase Emulators
+
+For Firebase Functions each service (api and fns) start separate emulators on
+port 5001 and 5002. The backend serviced (using the firebase-admin api) connect
+to emulators by setting various environment variables.
+
+I have stored these in `.env` files in the respective service packages. Normally
+you would want to store them in a file that is not part of the repository like
+`.env.local` but by placing them in `.env` I prevent having to give instructions
+for setting them up just for running the demo.

@@ -14,7 +14,7 @@ export default function KeyValueList(props: {
   labels: Array<[string, string]>;
 }) {
   const rows = props.labels.map(([key, label]) => (
-    <TableRow className="bg-white">
+    <TableRow className="bg-white" key={key}>
       <TableCell className="px-4 py-3 text-sm font-medium text-gray-900">
         {label}
       </TableCell>
