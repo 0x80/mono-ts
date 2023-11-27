@@ -3,24 +3,18 @@
 This is a quest for the ideal Typescript monorepo setup.
 
 My current projects are based on Node.js, Next.js, and Firebase, so that is what
-I am focussing on.
-
-If you use different platforms, this can still be a great starting point, as it
-should be easy to discard any packages that you have no use for. The monorepo
-approach by itself is largely independent of the chosen technology stack.
+I am focussing on. If you use different platforms, this can still be a great
+starting point, as discarding packages you have no use for should be easy. The
+monorepo approach by itself is independent of the chosen technology stack.
 
 This is meant as a best-effort approach given the tooling that is available, so
 expect this repository to change as the ecosystem around Typescript and
-Javascript continue to evolve.
+Javascript evolves. Also, I am currently working on two Firestore libraries
+(server and client) that likely will make it in here in the coming months.
 
-Contributions are welcome within the scope of this example, but I doubt there
-will ever be a one-size-fits-all solution, so this code should be viewed as
-opinionated.
-
-> Disclaimer: This example is not yet finished to the standard that I would
-> like. While the setup works fine, some of the code could be improved. I am in
-> the middle of integrating isolate-package as part of firebase-tools. Once that
-> is done I will write an article about this setup.
+Contributions and suggestions are welcome within the scope of this example, but
+I doubt there ever will be a one-size-fits-all solution, so this code should be
+viewed as opinionated.
 
 <!-- TOC -->
 
@@ -98,6 +92,13 @@ This will:
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
 
+Alternatively, you can start the emulators and dev server separately. It makes
+the console output more readable and preserves coloring:
+
+- In `apps/web` run `pnpm dev`
+- In `services/fns` run `pnpm emulate`
+- In `services/api` run `pnpm emulate`
+
 More info can be found in the README files of the various packages.
 
 ## Workspace
@@ -123,24 +124,24 @@ More info can be found in the README files of the various packages.
   as an API endpoint, using Express. This package shows how to use
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
   to have the isolation integrated as part of the `firebase deploy` command. In
-  addition it illustrates how to use secrets.
+  addition, it illustrates how to use secrets.
 
 ## Deployment
 
 I consider deployment a bit out-of-scope for this demo.
 
-For deployment to Firebase you will have to set up and configure an actual
+For deployment to Firebase, you will have to set up and configure an actual
 project, but it is not required to run this demo since it can use the emulators.
 Additional info about the use of
 [isolate-package](https://github.com/0x80/isolate-package) (used by fns) and
 [firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-(used by api) can be found in the instructions of each package.
+(used by api) can be found in the instructions for each package.
 
 ## Running Firebase using Emulators
 
-Throughout this repository we use the a Firebase demo project called
-`demo-mono-ts` which allows us to run emulators for the different components
-like database without actually creating any Firebase projects or resources.
+Throughout this repository, we use a Firebase demo project called `demo-mono-ts`
+which allows us to run emulators for the different components like database
+without actually creating any Firebase projects or resources.
 
 To make this work we pass the `--project` flag when starting the emulator. You
 can use any name that starts with `demo-`.
@@ -223,7 +224,7 @@ path aliases are not converted by the Typescript compiler, and so at runtime the
 transpiled JS file is what is getting imported.
 
 Because a bundler, by nature, will bundle code into one or more isolated files,
-they themselves do not use relative imports and only contain imports from
+those files do not use relative imports and only contain imports from
 `node_modules`, which do not require a file extension. For this reason, a
 bundled js file that uses import and export keywords is an ES module.
 
@@ -319,7 +320,7 @@ understand how the two are related, but it works.
 ## Running Firebase Emulators
 
 For Firebase Functions each service (api and fns) start separate emulators on
-port 5001 and 5002. The backend serviced (using the firebase-admin api) connect
+port 5001 and 5002. The backend service (using the firebase-admin api) connects
 to emulators by setting various environment variables.
 
 I have stored these in `.env` files in the respective service packages. Normally
@@ -329,10 +330,10 @@ for setting them up just for running the demo.
 
 ### Secrets
 
-The api services uses a secret for DEMO_API_KEY. In order to make secrets work
-with the emulator you currently have to add the secret to `.secret.local` and
-also an `.env` or `.env.local` file. See
+The api service uses a secret for DEMO_API_KEY. To make secrets work with the
+emulator you currently have to add the secret to `.secret.local` and also a
+`.env` or `.env.local` file. See
 [this issue](https://github.com/firebase/firebase-tools/issues/5520) for more
-info. I have place it in `.env` which is part of the repo, so you don't have to
-set anything up, but .env.local is where you would put it normally, because that
+info. I have placed it in `.env` which is part of the repo, so you don't have to
+set anything up, but .env.local is the proper location probably because that
 file is not checked into git.
