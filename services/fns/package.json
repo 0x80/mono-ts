@@ -12,9 +12,10 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "build": "tsup-node",
+    "dev": "concurrently \"npm:build:watch\" \"npm:emulate\"",
     "lint": "eslint \"**/*.ts*\"",
     "deploy": "firebase deploy",
-    "emulate": "turbo build && isolate && firebase emulators:start",
+    "emulate": "turbo build && isolate && firebase emulators:start --project demo-mono-ts",
     "db:get-indexes": "firebase firestore:indexes > firestore.indexes.json"
   },
   "license": "MIT",

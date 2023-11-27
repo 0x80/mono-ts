@@ -1,6 +1,7 @@
 "use client";
 
 import { areWeThereYet } from "@mono/common";
+import { CardDescription } from "~/components/ui/card.jsx";
 import { add, multiply, reset } from "~/lib/api.js";
 import CardWithAction from "./components/card-with-action.jsx";
 import { CounterView } from "./components/counter-view.jsx";
@@ -8,16 +9,23 @@ import { CounterView } from "./components/counter-view.jsx";
 export default function Home() {
   return (
     <main className={"flex flex-col justify-between gap-10 p-10"}>
-      <h1 className={"text-xl"}>A quest for the ideal TS monorepo setup</h1>
+      <h1 className={"text-xl"}>A quest for the ideal TS monorepo</h1>
 
       <div className="grid grid-cols-2 gap-4">
         <CardWithAction
           title="Are we there yet? "
           description={areWeThereYet()}
-        />
+        >
+          <CardDescription>
+            To test live updates to the backend services while the emulator is
+            running, you can update code in `services/api/src/v1/handlers.ts`.
+            For example change the multiplication `counter.data.value * n` to
+            `counter.data.value * n * 10`
+          </CardDescription>
+        </CardWithAction>
         <CardWithAction
-          title="Remote Counter"
-          description="Implemented by mutating a Firestore document. Mutations will be slow as they flow through an API call and logic triggered by document onWrite events. Also, Firestore documents have a 1 write/sec limitation and so triggering mutations quickly could cause lagging or errors. This setup is aimed at integrating two separate Firebase services, and is not an example of how you would implement a reliable mechanism."
+          title="Dodgy Counter"
+          description="Implemented using a Firestore document. Mutations flow through an API endpoint and logic triggered by document onWrite events. In the emulator it works without noticeable lag but in real life it does not. This is a contrived example, aimed at demonstrating two separate Firebase services. It is not an illustration of how to implement an efficient and reliable mechanism."
           action={{ label: "Reset", handler: () => reset() }}
         >
           <CounterView counterId="my_counter" />

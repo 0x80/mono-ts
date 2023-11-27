@@ -1,19 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-pnpm dev
-```
+This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Deploy on Vercel
 
-Because this app uses Firebase, you'll need to create a project there first.
-Then go to project overview => Settings => General => Your Apps => Register web
-app => Add firebase SDK => Use Npm => ... and copy the different values to
-env variables in a `.env.local` file like so:
+Because this app uses Firebase, and we do not want to have to create actual
+Firebase resources just to run this code we use a so-called "demo" project. Any
+project name starting with `demo-` passed to the emulators will make them run
+without ever talking to real cloud resources.
+
+variables in a `.env.development` file like so:
 
 ```bash
 NEXT_PUBLIC_FIREBASE_API_KEY=
@@ -32,9 +27,19 @@ first deploy that.
 
 The value for `NEXT_PUBLIC_DEMO_API_ENDPOINT` should be
 `"http://localhost:5002/mono-ts/europe-west3/api/v1"` if you use the local
-firebase emulator. Otherwise it should point to your firebase function instance in the
-correct region.
+firebase emulator. Otherwise it should point to your firebase function instance
+in the correct region.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the
+[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our
+[Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
+details.
+
+## Run dev server
+
+```bash
+pnpm dev
+```

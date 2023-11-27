@@ -11,9 +11,11 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "build": "tsup-node",
+    "build:watch": "tsup-node --watch",
+    "emulate": "firebase emulators:start --project demo-mono-ts --only functions",
+    "dev": "concurrently \"npm:build:watch\" \"npm:emulate\"",
     "lint": "eslint \"**/*.ts*\"",
-    "deploy": "firebase deploy --only functions",
-    "emulate": "turbo build && isolate && firebase emulators:start --only functions"
+    "deploy": "firebase deploy --project demo-mono-ts --only functions"
   },
   "license": "MIT",
   "dependencies": {

@@ -7,6 +7,9 @@
     "codebase": "api"
   },
   "emulators": {
+    "ui": {
+      "enabled": false
+    },
     "functions": {
       "port": 5002
     }
