@@ -2,16 +2,16 @@
 
 This is a quest for the ideal Typescript monorepo setup.
 
-My current projects are based on Node, Next.js, and Firebase, so that is what I
-am focussing on.
+My current projects are based on Node.js, Next.js, and Firebase, so that is what
+I am focussing on.
 
 If you use different platforms, this can still be a great starting point, as it
 should be easy to discard any packages that you have no use for. The monorepo
 approach by itself is largely independent of the chosen technology stack.
 
 This is meant as a best-effort approach given the tooling that is available, so
-I expect this code to change as the ecosystem around Typescript and Javascript
-continue to evolve.
+expect this repository to change as the ecosystem around Typescript and
+Javascript continue to evolve.
 
 Contributions are welcome within the scope of this example, but I doubt there
 will ever be a one-size-fits-all solution, so this code should be viewed as
@@ -80,16 +80,32 @@ If you prefer to use a different package manager, that should not be a problem.
 See [using NPM](#using-npm-instead-of-pnpm) or
 [using Yarn](#using-yarn-instead-of-pnpm) for more info.
 
+> NOTE that at the moment, PNPM is the only package manager for which
+> [isolate-package](https://github.com/0x80/isolate-package/) will generate a
+> compatible lockfile for deployment. For other package managers the lockfile is
+> omitted and therefor deployments are not deterministic.
+
 ## Usage
 
-Run `pnpm dev`. This will:
+First, create a file named `.env` or `.env.local` in
+[services/api](services/api) and add `DEMO_API_KEY=any`. You can give it a
+different value but it has to match `DEMO_API_KEY` in
+[apps/web/.env.development](apps/web/.env.development)
 
-- Build the dependencies of the web app and start its dev server
-- Build the backend services and their dependencies, and
-  [isolate](#deploying-to-firebase) the output
-- Start the backend emulators
+Then, run `npx turbo dev`.
 
-## Workspace packages
+This will:
+
+- Build the dependencies of the `web` app and start its dev server
+- Build the `api` and `fns` backend services and their dependencies
+- Start the Firebase emulators
+
+The web app should become available on http://localhost:3000 and the emulators
+UI on http://localhost:4000.
+
+More info can be found in the README files of the various packages.
+
+## Workspace
 
 ### Packages
 
@@ -100,30 +116,46 @@ Run `pnpm dev`. This will:
 
 ### Apps
 
-- [web](./apps/web) A Next.js based web application.
+- [web](./apps/web) A Next.js based web application configured to use Tailwind
+  CSS and ShadCN components.
 
 ### Services
 
-- [fns](./services/fns) Cloud functions that execute on document writes, pubsub
-  events etc. This package shows how to set up the firebase.json config if you
-  would like to use isolate-package as part of your predeploy script. The
-  downside of this is that a watch task on your build does not result in live
-  code updates when running the emulator, because the results would then still
-  need to be isolated.
-- [api](./services/api) A 2nd gen (Cloud Run based) API endpoint, using Express.
-  This package shows how to use
+- [fns](./services/fns) Various Firebase functions that execute on document
+  writes, pubsub events etc. This package shows how to use [isolate-package]
+  explicitly as part of the predeploy phase.
+- [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
+  as an API endpoint, using Express. This package shows how to use
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-  in order to have the isolation process integrated as part of the
-  `firebase deploy` command. This does not interfere in any way and allows you
-  to use a build watch task to keep live code updates flowing to the emulator.
+  to have the isolation integrated as part of the `firebase deploy` command.
 
 ## Deployment
 
-Deployment instructions can be found in the individual packages:
+I consider deployment a bit out-of-scope for this demo.
 
-- [web](./apps/web/README.md)
-- [fns](./services/fns/README.md#deployment)
-- [api](./services/api/README.md#deployment)
+For deployment to Firebase you will have to set up and configure an actual
+project, but it is not required to run this demo since it can use the emulators.
+Additional info about the use of
+[isolate-package](https://github.com/0x80/isolate-package) (used by fns) and
+[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+(used by api) can be found in the instructions of each package.
+
+## Running Firebase using Emulators
+
+Throughout this repository we use the a Firebase demo project called
+`demo-mono-ts` which allows us to run emulators for the different components
+like database without actually creating any Firebase projects or resources.
+
+To make this work we pass the `--project` flag when starting the emulator. You
+can use any name that starts with `demo-`.
+
+When passing configuration to initializeApp you can use any non-empty string for
+the API keys as you can see in
+[apps/web/.env.development](apps/web/.env.development)
+
+Currently, if you want to make use of Firebase secrets,
+[you need to make sure they are also available in .env or .env.local](https://github.com/firebase/firebase-tools/issues/5520)
+for the emulators to work.
 
 ## Using NPM instead of PNPM
 
