@@ -1,9 +1,9 @@
 {
   "functions": {
-    "source": "./isolate",
+    "source": "./dist",
     "runtime": "nodejs20",
     "isolate": true,
-    "predeploy": ["turbo build", "isolate"],
+    "predeploy": ["turbo build"],
     "codebase": "api"
   },
   "emulators": {
