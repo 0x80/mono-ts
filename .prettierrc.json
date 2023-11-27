@@ -1,4 +1,5 @@
 {
   "trailingComma": "es5",
+  "proseWrap": "always",
   "plugins": ["./node_modules/prettier-plugin-jsdoc/dist/index.js"]
 }
