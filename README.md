@@ -174,8 +174,6 @@ You can convert this repo to NPM following the steps below:
   file.
 - Set the packageManager field to the correct manager@version or run
   `npx @turbo/codemod add-package-manager`.
-- It seems that Firebase deploy also wants you to set a packageManager field in
-  the package that you deploy. It doesn't ask for this when using PNPM.
 
 > Tip: If you already did an install with PNPM you might want to run
 > `bin/delete-all-node-modules` to delete all node_modules folders recursively
