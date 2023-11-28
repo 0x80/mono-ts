@@ -186,6 +186,8 @@ You should be able to make this work with NPM using the steps below:
   ```
 - Run `npm install` from the root and commit the resulting `package-lock.json`
   file.
+- Set the packageManager field to the correct manager@version or run
+  `npx @turbo/codemod add-package-manager`.
 
 > Tip: If you already did an install with PNPM you might want to run
 > `bin/delete-all-node-modules` to delete all node_modules folders recursively
@@ -208,6 +210,8 @@ You should be able to make this work with Yarn using the steps below:
   ],
   ```
 - Run `yarn install` from the root and commit the resulting `yarn.lock` file.
+- Set the packageManager field to the correct manager@version or run
+  `npx @turbo/codemod add-package-manager`.
 
 > Tip: If you already did an install with PNPM you might want to run
 > `bin/delete-all-node-modules` to delete all node_modules folders recursively
