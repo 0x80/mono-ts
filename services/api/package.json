@@ -8,6 +8,7 @@
     "dist",
     ".env.*"
   ],
+  "packageManager": "npm@10.2.3",
   "scripts": {
     "type-check": "tsc --noEmit",
     "build": "tsup-node",

@@ -336,9 +336,18 @@ upload a self-contained package that can be treated similarly to an NPM package,
 by installing its dependencies and executing the main entry.
 
 This repo includes a solution based on
-[isolate-package](https://github.com/0x80/isolate-package/). I wrote this
+[isolate-package](https://github.com/0x80/isolate-package/) I wrote an
 [article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
 explaining what it does and why it is needed.
+
+This demo can be run using only the emulators, but if you would like to see the
+deployment to Firebase working you can simply execute
+`npx firebase deploy --project your-project-name` from any of the service
+packages. For `services/fns` this will trigger a deploy using `isolate-package`
+and the standard `firebase-tools`, and for `services/api` this will invoke a
+deploy using the
+[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+fork where both are integrated.
 
 You might notice `@google-cloud/functions-framework` as a dependency in the
 service package even though it is not being used in code imports. It is
