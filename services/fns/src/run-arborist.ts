@@ -7,7 +7,6 @@ console.log("+++ generateLockfile");
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const isolateDir = path.join(__dirname, "../isolate");
-console.log("+++ isolateDir", isolateDir);
 
 const internalPackageNames = [
   "@mono/common",
@@ -16,13 +15,11 @@ const internalPackageNames = [
   "@mono/tsconfig",
 ];
 
-console.log("+++ internal packages", internalPackageNames);
-
-/** Should be a list of local package names I think */
+const targetPackageDir = path.join(__dirname, "../");
 
 // Create a tree of the dependencies for this workspace.
-// const arborist = new Arborist({ path: workspaceRootDir });
-const arborist = new Arborist();
+const arborist = new Arborist({ path: targetPackageDir });
+// const arborist = new Arborist();
 const { meta } = await arborist.buildIdealTree({ rm: internalPackageNames });
 meta?.commit();
 
