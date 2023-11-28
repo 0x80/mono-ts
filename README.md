@@ -171,7 +171,12 @@ for the emulators to work.
 
 ### Using NPM instead of PNPM
 
-You should be able to make this work with NPM using the steps below:
+> Tip: There is branch named
+> [use-npm](https://github.com/0x80/mono-ts/tree/use-npm) that contains a
+> version of this repo where NPM is being used so you do not have to follow the
+> instructions below.
+
+You can convert this repo to NPM following the steps below:
 
 - Delete the root manifest `packageManger` field
 - Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
@@ -199,7 +204,7 @@ You should be able to make this work with NPM using the steps below:
 
 ### Using Yarn instead of PNPM
 
-You should be able to make this work with Yarn using the steps below:
+You can convert this repo to Yarn following the steps below:
 
 - Delete the root manifest `packageManger` field
 - Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
