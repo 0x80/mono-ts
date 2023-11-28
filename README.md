@@ -11,18 +11,20 @@
   - [Apps](#apps)
   - [Services](#services)
 - [Deployment](#deployment)
-- [Running Firebase using Emulators](#running-firebase-using-emulators)
-- [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
-- [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
+- [Using a different package manager](#using-a-different-package-manager)
+  - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
+  - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
   - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
   - [Tree shaking](#tree-shaking)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Live code changes from internal packages](#live-code-changes-from-internal-packages)
-- [Deploying to Firebase](#deploying-to-firebase)
-- [Running Firebase Emulators](#running-firebase-emulators)
-  - [Secrets](#secrets)
+- [Firebase](#firebase)
+  - [Demo Project](#demo-project)
+  - [Deploying](#deploying)
+  - [Running Emulators](#running-emulators)
+    - [Secrets](#secrets)
 
 <!-- /TOC -->
 
@@ -36,10 +38,10 @@ great reference, and it is probably easy to discard anything you have no use
 for. The monorepo approach by itself is independent of the chosen technology
 stack.
 
-This is meant as a best-effort approach given the tooling that is available, so
-expect this repository to change as the ecosystem around Typescript and
-Javascript evolves. Also, I am still working on two Firestore libraries (server
-and client) that will likely make it in here in the coming months.
+This is the best I could come up with given the tooling that is available, so
+expect this repository to change over time as the ecosystem around Typescript
+and Javascript evolves. Also, I am still working on two Firestore libraries
+(server and client) that will likely make it in here in the coming months.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
@@ -68,24 +70,19 @@ viewed as opinionated.
 
 ## Install
 
-In this codebase, packages are managed by PNPM. I encourage anyone to give it a
-try if you haven't already because in my experience it is the better choice,
-especially for monorepos. See the
+In the main branch of this repo, packages are managed with PNPM. I encourage
+anyone to give it a try if you haven't already, because in my experience it is
+the better choice, especially for monorepos. Here is a
 [feature comparison to NPN and Yarn](https://pnpm.io/feature-comparison).
 
-If you like to use PNPM but do not have it installed yet, follow
+If you like to try PNPM but do not have it installed yet, follow
 [these instructions](https://pnpm.io/installation).
 
 Run `pnpm install` from the repository root.
 
-If you prefer to use a different package manager, that should not be a problem.
-See [using NPM](#using-npm-instead-of-pnpm) or
+If you prefer to use a different package manager, see
+[using NPM](#using-npm-instead-of-pnpm) or
 [using Yarn](#using-yarn-instead-of-pnpm) for more info.
-
-> NOTE that at the moment, PNPM is the only package manager for which
-> [isolate-package](https://github.com/0x80/isolate-package/) will generate a
-> compatible lockfile for deployment. For other package managers the lockfile is
-> omitted and therefor deployments are not deterministic.
 
 ## Usage
 
@@ -146,26 +143,16 @@ Additional info about the use of
 [firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 (used by api) can be found in the instructions for each package.
 
-## Running Firebase using Emulators
+## Using a different package manager
 
-Throughout this repository, we use a Firebase demo project called `demo-mono-ts`
-which allows us to run emulators for the different components like database
-without actually creating any Firebase projects or resources.
+### Using NPM instead of PNPM
 
-To make this work we pass the `--project` flag when starting the emulator. You
-can use any name that starts with `demo-`.
+> Note: For convenience, there is a branch named
+> [use-npm](https://github.com/0x80/mono-ts/tree/use-npm) that contains a
+> version of this repo with NPM, so you do not have to follow the instructions
+> below.
 
-When passing configuration to initializeApp you can use any non-empty string for
-the API keys as you can see in
-[apps/web/.env.development](apps/web/.env.development)
-
-Currently, if you want to make use of Firebase secrets,
-[you need to make sure they are also available in .env or .env.local](https://github.com/firebase/firebase-tools/issues/5520)
-for the emulators to work.
-
-## Using NPM instead of PNPM
-
-You should be able to make this work with NPM using the steps below:
+You can convert this repo to NPM following the steps below:
 
 - Delete the root manifest `packageManger` field
 - Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
@@ -178,12 +165,20 @@ You should be able to make this work with NPM using the steps below:
     "./services/*"
   ],
   ```
-- Run `npm install` from the root and commit the resulting `package-lock.json`
-  file.
+- Run `npm install --workspaces` from the root and commit the resulting
+  `package-lock.json` file.
+- Set the packageManager field to the correct manager@version or run
+  `npx @turbo/codemod add-package-manager`.
 
-## Using Yarn instead of PNPM
+> Tip: If you already did an install with PNPM you might want to run
+> `bin/delete-all-node-modules` to delete all node_modules folders recursively
+> from the root and all packages, because without it you might run into
+> uninformative errors during NPM install like "Cannot read properties of null
+> (reading 'matches')"
 
-You should be able to make this work with Yarn using the steps below:
+### Using Yarn instead of PNPM
+
+You can convert this repo to Yarn following the steps below:
 
 - Delete the root manifest `packageManger` field
 - Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
@@ -196,6 +191,12 @@ You should be able to make this work with Yarn using the steps below:
   ],
   ```
 - Run `yarn install` from the root and commit the resulting `yarn.lock` file.
+- Set the packageManager field to the correct manager@version or run
+  `npx @turbo/codemod add-package-manager`.
+
+> Tip: If you already did an install with PNPM you might want to run
+> `bin/delete-all-node-modules` to delete all node_modules folders recursively
+> from the root and all packages.
 
 ## The "built packages" strategy
 
@@ -308,7 +309,21 @@ issue. I haven't tried it but it looks like a neat solution. However, you might
 want to use the
 [internal packages strategy instead](#the-internal-packages-strategy).
 
-## Deploying to Firebase
+## Firebase
+
+### Demo Project
+
+Throughout this repository, we use a Firebase demo project called `demo-mono-ts`
+A demo project allows you to run emulators for the different components like
+database without creating a Firebase projects with resources. To make this work
+you pass the `--project` flag when starting the emulator, and you need to use a
+name that starts with `demo-`.
+
+When passing configuration to initializeApp you can use any non-empty string for
+the API keys as you can see in
+[apps/web/.env.development](apps/web/.env.development).
+
+### Deploying
 
 Deploying code to Firebase that uses shared packages from a monorepo comes with
 its own set of challenges, because the Firebase deploy pipeline requires you to
@@ -316,9 +331,18 @@ upload a self-contained package that can be treated similarly to an NPM package,
 by installing its dependencies and executing the main entry.
 
 This repo includes a solution based on
-[isolate-package](https://github.com/0x80/isolate-package/). I wrote this
+[isolate-package](https://github.com/0x80/isolate-package/) I wrote an
 [article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
 explaining what it does and why it is needed.
+
+This demo can be run using only the emulators, but if you would like to see the
+deployment to Firebase working you can simply execute
+`npx firebase deploy --project your-project-name` from any of the service
+packages. For `services/fns` this will trigger a deploy using `isolate-package`
+and the standard `firebase-tools`, and for `services/api` this will invoke a
+deploy using the
+[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+fork where both are integrated.
 
 You might notice `@google-cloud/functions-framework` as a dependency in the
 service package even though it is not being used in code imports. It is
@@ -326,7 +350,7 @@ currently required for Firebase to be able to deploy a PNPM workspace. Without
 it you will get an error asking you to install the dependency. I don't quite
 understand how the two are related, but it works.
 
-## Running Firebase Emulators
+### Running Emulators
 
 For Firebase Functions each service (api and fns) start separate emulators on
 port 5001 and 5002. The backend service (using the firebase-admin api) connects
@@ -337,7 +361,7 @@ you would want to store them in a file that is not part of the repository like
 `.env.local` but by placing them in `.env` I prevent having to give instructions
 for setting them up just for running the demo.
 
-### Secrets
+#### Secrets
 
 The api service uses a secret for DEMO_API_KEY. To make secrets work with the
 emulator you currently have to add the secret to `.secret.local` and also a
