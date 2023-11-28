@@ -12,6 +12,7 @@
     "turborepo",
     "nextjs"
   ],
+  "packageManager": "npm",
   "private": true,
   "author": "Thijs Koerselman",
   "license": "MIT",
@@ -36,5 +37,10 @@
     "typescript": "^5.3.2",
     "vercel": "^32.5.6",
     "vitest": "^0.34.6"
-  }
+  },
+  "workspaces": [
+    "./packages/*",
+    "./apps/*",
+    "./services/*"
+  ]
 }

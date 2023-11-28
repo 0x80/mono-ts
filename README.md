@@ -187,6 +187,12 @@ You should be able to make this work with NPM using the steps below:
 - Run `npm install` from the root and commit the resulting `package-lock.json`
   file.
 
+> Tip: If you already did an install with PNPM you might want to run
+> `bin/delete-all-node-modules` to delete all node_modules folders recursively
+> from the root and all packages, because without it you might run into
+> uninformative errors during NPM install like "Cannot read properties of null
+> (reading 'matches')"
+
 ### Using Yarn instead of PNPM
 
 You should be able to make this work with Yarn using the steps below:
@@ -202,6 +208,10 @@ You should be able to make this work with Yarn using the steps below:
   ],
   ```
 - Run `yarn install` from the root and commit the resulting `yarn.lock` file.
+
+> Tip: If you already did an install with PNPM you might want to run
+> `bin/delete-all-node-modules` to delete all node_modules folders recursively
+> from the root and all packages.
 
 ## The "built packages" strategy
 

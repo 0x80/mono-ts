@@ -9,7 +9,12 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const isolateDir = path.join(__dirname, "../isolate");
 console.log("+++ isolateDir", isolateDir);
 
-const internalPackageNames = ["@mono/common", "@mono/backend"];
+const internalPackageNames = [
+  "@mono/common",
+  "@mono/backend",
+  "@mono/eslint-config-custom",
+  "@mono/tsconfig",
+];
 
 console.log("+++ internal packages", internalPackageNames);
 
