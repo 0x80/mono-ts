@@ -18,9 +18,13 @@ export default function Home() {
         >
           <CardDescription>
             To test live updates to the backend services while the emulator is
-            running, you can update code in `services/api/src/v1/handlers.ts`.
-            For example change the multiplication `counter.data.value * n` to
-            `counter.data.value * n * 10`
+            running, you can update code in{" "}
+            <code className="text-zinc-800">
+              services/api/src/v1/handlers.ts
+            </code>
+            . For example change the multiplication{" "}
+            <code className="text-zinc-800">counter.data.value * n</code> to{" "}
+            <code className="text-zinc-800">counter.data.value * n * 10</code>
           </CardDescription>
         </CardWithAction>
         <CardWithAction
