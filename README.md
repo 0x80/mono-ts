@@ -1,23 +1,8 @@
 # Mono TS
 
-This is a quest for the ideal Typescript monorepo setup.
-
-My current projects are based on Node.js, Next.js, and Firebase, so that is what
-I am focussing on. If you use different platforms, this can still be a great
-starting point, as discarding packages you have no use for should be easy. The
-monorepo approach by itself is independent of the chosen technology stack.
-
-This is meant as a best-effort approach given the tooling that is available, so
-expect this repository to change as the ecosystem around Typescript and
-Javascript evolves. Also, I am currently working on two Firestore libraries
-(server and client) that likely will make it in here in the coming months.
-
-Contributions and suggestions are welcome within the scope of this example, but
-I doubt there ever will be a one-size-fits-all solution, so this code should be
-viewed as opinionated.
-
 <!-- TOC -->
 
+- [Introduction](#introduction)
 - [Features](#features)
 - [Install](#install)
 - [Usage](#usage)
@@ -36,26 +21,50 @@ viewed as opinionated.
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Live code changes from internal packages](#live-code-changes-from-internal-packages)
 - [Deploying to Firebase](#deploying-to-firebase)
+- [Running Firebase Emulators](#running-firebase-emulators)
+  - [Secrets](#secrets)
 
 <!-- /TOC -->
 
+## Introduction
+
+This is a quest for the ideal Typescript monorepo setup.
+
+My current projects are based on Node.js, Next.js, and Firebase, so that is what
+I am focussing on. If you use different platforms, I think this can still be a
+great reference, and it is probably easy to discard anything you have no use
+for. The monorepo approach by itself is independent of the chosen technology
+stack.
+
+This is meant as a best-effort approach given the tooling that is available, so
+expect this repository to change as the ecosystem around Typescript and
+Javascript evolves. Also, I am still working on two Firestore libraries (server
+and client) that will likely make it in here in the coming months.
+
+Contributions and suggestions are welcome within the scope of this example, but
+I doubt there ever will be a one-size-fits-all solution, so this code should be
+viewed as opinionated.
+
 ## Features
 
-- Turborepo for orchestrating the build process with internal packages.
-- A traditional built packages approach, showing how to bundle multiple entry
-  points.
-- The ["internal packages"](#the-internal-packages-strategy) strategy for live
-  code updates without the need for a watch task.
-- Multiple backend services deploying to Firebase (1st and 2nd gen functions),
-  using [isolate-package](https://github.com/0x80/isolate-package/) and
-  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate).
-- A web app based on Next.js with ShadCN and Tailwind.
-- Using ES modules throughout, including the Next.js app.
-- Shared configurations for ESLint and Typescript.
-- Path aliases.
-- Working IDE go-to-definition and go-to-type-definition using `.d.ts.map`
-  files.
-- Vitest.
+- [Turborepo](https://turbo.build/) to orchestrate the build process and
+  dependencies
+- A traditional "built package" with multiple entry points as well as the
+  ["internal packages"](#the-internal-packages-strategy) strategy referencing
+  Typescript code directly
+- Firebase monorepo support with live code updates in the emulators
+- Multiple separate Firebase Functions deployments, one using
+  [isolate-package](https://github.com/0x80/isolate-package/) and the other
+  using
+  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+  for live code updates
+- A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
+  [Tailwind CSS](https://tailwindcss.com/)
+- Using ESM throughout, including the Next.js app
+- Shared configurations for ESLint and Typescript
+- Path aliases
+- Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
+- Vitest
 
 ## Install
 
@@ -80,14 +89,14 @@ See [using NPM](#using-npm-instead-of-pnpm) or
 
 ## Usage
 
-Run `npx turbo dev`
+To get started quickly run `npx turbo dev` from the root.
 
 This will:
 
-- Build the dependencies of the `web` app and start its dev server
-- Build the `api` and `fns` backend services and their dependencies
-- Start the Firebase emulators. See
-  [running Firebase emulators](#running-firebase-emulators) for more info
+- Build the `web` app and start its dev server
+- Build the `api` and `fns` backend services and starts their Firebase
+  emulators. See [running Firebase emulators](#running-firebase-emulators) for
+  more info.
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
@@ -99,7 +108,7 @@ the console output more readable and preserves coloring:
 - In `services/fns` run `pnpm emulate`
 - In `services/api` run `pnpm emulate`
 
-More info can be found in the README files of the various packages.
+Additional information can be found in the README files of the various packages.
 
 ## Workspace
 
