@@ -3,6 +3,7 @@
   "compilerOptions": {
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "target": "ESNext",
     "outDir": "dist",
     "rootDir": "src",
     "lib": ["esnext"],

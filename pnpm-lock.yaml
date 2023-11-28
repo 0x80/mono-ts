@@ -318,6 +318,9 @@ importers:
       '@mono/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@npmcli/arborist':
+        specifier: ^7.2.1
+        version: 7.2.1
       '@types/body-parser':
         specifier: ^1.19.5
         version: 1.19.5
