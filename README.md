@@ -36,10 +36,10 @@ great reference, and it is probably easy to discard anything you have no use
 for. The monorepo approach by itself is independent of the chosen technology
 stack.
 
-This is meant as a best-effort approach given the tooling that is available, so
-expect this repository to change as the ecosystem around Typescript and
-Javascript evolves. Also, I am still working on two Firestore libraries (server
-and client) that will likely make it in here in the coming months.
+This is the best I could come up with given the tooling that is available, so
+expect this repository to change over time as the ecosystem around Typescript
+and Javascript evolves. Also, I am still working on two Firestore libraries
+(server and client) that will likely make it in here in the coming months.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
