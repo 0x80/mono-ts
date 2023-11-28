@@ -12,8 +12,10 @@
   - [Services](#services)
 - [Deployment](#deployment)
 - [Running Firebase using Emulators](#running-firebase-using-emulators)
-- [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
-- [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
+  - [Using Secrets](#using-secrets)
+- [Using a different package manager](#using-a-different-package-manager)
+  - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
+  - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
   - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
@@ -159,11 +161,15 @@ When passing configuration to initializeApp you can use any non-empty string for
 the API keys as you can see in
 [apps/web/.env.development](apps/web/.env.development)
 
+### Using Secrets
+
 Currently, if you want to make use of Firebase secrets,
-[you need to make sure they are also available in .env or .env.local](https://github.com/firebase/firebase-tools/issues/5520)
+[you need to make them available in both .secret.local and .env or .env.local](https://github.com/firebase/firebase-tools/issues/5520)
 for the emulators to work.
 
-## Using NPM instead of PNPM
+## Using a different package manager
+
+### Using NPM instead of PNPM
 
 You should be able to make this work with NPM using the steps below:
 
@@ -181,7 +187,7 @@ You should be able to make this work with NPM using the steps below:
 - Run `npm install` from the root and commit the resulting `package-lock.json`
   file.
 
-## Using Yarn instead of PNPM
+### Using Yarn instead of PNPM
 
 You should be able to make this work with Yarn using the steps below:
 
