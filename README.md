@@ -70,24 +70,19 @@ viewed as opinionated.
 
 ## Install
 
-In this codebase, packages are managed by PNPM. I encourage anyone to give it a
-try if you haven't already because in my experience it is the better choice,
-especially for monorepos. See the
+In the main branch of this repo, packages are managed with PNPM. I encourage
+anyone to give it a try if you haven't already, because in my experience it is
+the better choice, especially for monorepos. Here is a
 [feature comparison to NPN and Yarn](https://pnpm.io/feature-comparison).
 
-If you like to use PNPM but do not have it installed yet, follow
+If you like to try PNPM but do not have it installed yet, follow
 [these instructions](https://pnpm.io/installation).
 
 Run `pnpm install` from the repository root.
 
-If you prefer to use a different package manager, that should not be a problem.
-See [using NPM](#using-npm-instead-of-pnpm) or
+If you prefer to use a different package manager, see
+[using NPM](#using-npm-instead-of-pnpm) or
 [using Yarn](#using-yarn-instead-of-pnpm) for more info.
-
-> NOTE that at the moment, PNPM is the only package manager for which
-> [isolate-package](https://github.com/0x80/isolate-package/) will generate a
-> compatible lockfile for deployment. For other package managers the lockfile is
-> omitted and therefor deployments are not deterministic.
 
 ## Usage
 
@@ -152,10 +147,10 @@ Additional info about the use of
 
 ### Using NPM instead of PNPM
 
-> Tip: There is branch named
+> Note: For convenience, there is a branch named
 > [use-npm](https://github.com/0x80/mono-ts/tree/use-npm) that contains a
-> version of this repo where NPM is being used so you do not have to follow the
-> instructions below.
+> version of this repo with NPM, so you do not have to follow the instructions
+> below.
 
 You can convert this repo to NPM following the steps below:
 
