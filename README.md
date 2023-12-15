@@ -11,8 +11,6 @@
   - [Apps](#apps)
   - [Services](#services)
 - [Deployment](#deployment)
-- [Running Firebase using Emulators](#running-firebase-using-emulators)
-  - [Using Secrets](#using-secrets)
 - [Using a different package manager](#using-a-different-package-manager)
   - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
   - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
@@ -22,9 +20,11 @@
   - [Tree shaking](#tree-shaking)
 - [The "internal packages" strategy](#the-internal-packages-strategy)
 - [Live code changes from internal packages](#live-code-changes-from-internal-packages)
-- [Deploying to Firebase](#deploying-to-firebase)
-- [Running Firebase Emulators](#running-firebase-emulators)
-  - [Secrets](#secrets)
+- [Firebase](#firebase)
+  - [Demo Project](#demo-project)
+  - [Deploying](#deploying)
+  - [Running Emulators](#running-emulators)
+    - [Secrets](#secrets)
 
 <!-- /TOC -->
 
@@ -170,8 +170,8 @@ You can convert this repo to NPM following the steps below:
     "./services/*"
   ],
   ```
-- Run `npm install` from the root and commit the resulting `package-lock.json`
-  file.
+- Run `npm install --workspaces` from the root and commit the resulting
+  `package-lock.json` file.
 - Set the packageManager field to the correct manager@version or run
   `npx @turbo/codemod add-package-manager`.
 
