@@ -258,8 +258,8 @@ importers:
         specifier: ^20.10.0
         version: 20.10.0
       firebase-tools-with-isolate:
-        specifier: 12.9.1
-        version: 12.9.1(@pnpm/logger@5.0.0)
+        specifier: 13.0.2
+        version: 13.0.2
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(typescript@5.3.2)
@@ -337,8 +337,8 @@ importers:
         specifier: 12.9.1
         version: 12.9.1
       isolate-package:
-        specifier: ^1.4.0
-        version: 1.4.0(@pnpm/logger@5.0.0)
+        specifier: ^1.8.0
+        version: 1.8.0
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(typescript@5.3.2)
@@ -5788,9 +5788,9 @@ packages:
       - supports-color
     dev: false
 
-  /firebase-tools-with-isolate@12.9.1(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-Z9MvAEXUiakUCpqcNxjXGvq/do3kivspg/SKTLebTDm7BivjA6pMJB+8UF4KW7RBOaaVwWUJYReo66DJ4VA1Fg==}
-    engines: {node: '>=18.0.0'}
+  /firebase-tools-with-isolate@13.0.2:
+    resolution: {integrity: sha512-tpUI24ICwmDiWMKXRmvOaQHOSyQtk8CZpiNXKDJFtNtrFjQxJ9Zs0ewQwv1JOXi1oks+3XVkoBsbC/0gnqjmvQ==}
+    engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
       '@google-cloud/pubsub': 3.7.5
@@ -5818,7 +5818,7 @@ packages:
       glob: 7.2.3
       google-auth-library: 7.14.1
       inquirer: 8.2.6
-      isolate-package: 1.5.0(@pnpm/logger@5.0.0)
+      isolate-package: 1.8.0
       js-yaml: 3.14.1
       jsonwebtoken: 9.0.2
       leven: 3.1.0
@@ -5836,7 +5836,6 @@ packages:
       portfinder: 1.0.32
       progress: 2.0.3
       proxy-agent: 6.3.1
-      request: 2.88.2
       retry: 0.13.1
       rimraf: 3.0.2
       semver: 7.5.4
@@ -5855,7 +5854,6 @@ packages:
       winston-transport: 4.6.0
       ws: 7.5.9
     transitivePeerDependencies:
-      - '@pnpm/logger'
       - bluebird
       - bufferutil
       - encoding
@@ -7119,39 +7117,15 @@ packages:
     requiresBuild: true
     dev: true
 
-  /isolate-package@1.4.0(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-GP1I4Tb3yYnId4XmvMMkmeTr5YOn8iPdtZFRUTrmUB5AWBg1zdLZ5Sj5RFg4Aqs05XVJPveuxzAedqqhY+f/2A==}
-    hasBin: true
-    dependencies:
-      '@pnpm/exec': 2.0.0
-      '@pnpm/exportable-manifest': 5.0.9
-      '@pnpm/lockfile-file': 8.1.4(@pnpm/logger@5.0.0)
-      '@pnpm/prune-lockfile': 5.0.7
-      '@pnpm/read-project-manifest': 5.0.8
-      '@pnpm/types': 9.4.0
-      chalk: 5.3.0
-      fs-extra: 11.1.1
-      glob: 10.3.10
-      lodash-es: 4.17.21
-      outdent: 0.8.0
-      ramda: 0.29.1
-      rename-overwrite: 4.0.4
-      source-map-support: 0.5.21
-      strip-json-comments: 5.0.1
-      tar-fs: 2.1.1
-      yaml: 2.3.4
-    transitivePeerDependencies:
-      - '@pnpm/logger'
-    dev: true
-
-  /isolate-package@1.5.0(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-4fLUfxZl0N7fM0QYrfJ1w1T+mA9C2HxmFf1TfXgwv4dafdPhx1Sds+d2LQD9PnyrdOG2tNGLcjRwiYVCuEAVGQ==}
+  /isolate-package@1.8.0:
+    resolution: {integrity: sha512-zFPHXFoSKiep7yLLV0SVk/DmqnczeAG+jcyK6tPcjCugXXIjonXRxqYJ4mZC7e4qbI4enVjG0nUBhKZ1Qfkelg==}
     hasBin: true
     dependencies:
       '@npmcli/arborist': 7.2.1
       '@pnpm/exec': 2.0.0
       '@pnpm/exportable-manifest': 5.0.9
       '@pnpm/lockfile-file': 8.1.4(@pnpm/logger@5.0.0)
+      '@pnpm/logger': 5.0.0
       '@pnpm/prune-lockfile': 5.0.7
       '@pnpm/read-project-manifest': 5.0.8
       '@pnpm/types': 9.4.0
@@ -7167,7 +7141,6 @@ packages:
       type-fest: 4.8.2
       yaml: 2.3.4
     transitivePeerDependencies:
-      - '@pnpm/logger'
       - bluebird
       - supports-color
     dev: true
@@ -7565,6 +7538,7 @@ packages:
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash._objecttypes@2.4.1:
     resolution: {integrity: sha512-XpqGh1e7hhkOzftBfWE7zt+Yn9mVHFkDhicVttvKLsoCMLVVL+xTQjfjB4X4vtznauxv0QZ5ZAeqjvat0dh62Q==}

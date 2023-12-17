@@ -51,12 +51,10 @@ viewed as opinionated.
 - A traditional "built package" with multiple entry points as well as the
   ["internal packages"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
-- Firebase monorepo support with live code updates in the emulators
-- Multiple separate Firebase Functions deployments, one using
-  [isolate-package](https://github.com/0x80/isolate-package/) and the other
-  using
+- Multiple separate Firebase Functions deployments, using
+  [isolate-package](https://github.com/0x80/isolate-package/)
+- Firebase monorepo support with live code updates in the emulators using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-  for live code updates
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
 - Using ESM throughout, including the Next.js app
@@ -67,18 +65,20 @@ viewed as opinionated.
 
 ## Install
 
-In the main branch of this repo, packages are managed with PNPM, but if you prefer to use a different package manager, there is [a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and [a branch using modern Yarn](https://github.com/0x80/mono-ts/tree/use-yarn)
+In the main branch of this repo, packages are managed with PNPM, but if you
+prefer to use a different package manager, there is
+[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and
+[a branch using modern Yarn](https://github.com/0x80/mono-ts/tree/use-yarn)
 
-I encourage
-anyone to give PNPM a try if you haven't already.
+I encourage anyone to give PNPM a try if you haven't already.
 
 <!-- If you like to try PNPM but do not have it installed yet, follow
 [these instructions](https://pnpm.io/installation). -->
 
 You can install PNPM with `corepack` which is part of modern Node.js versions:
 
-* `corepack enable` (if you have not used it before)
-* `corepack prepare pnpm@latest --activate`
+- `corepack enable` (if you have not used it before)
+- `corepack prepare pnpm@latest --activate`
 
 Then run `pnpm install` from the repository root.
 
@@ -135,12 +135,11 @@ Additional information can be found in the README files of the various packages.
 I consider deployment a bit out-of-scope for this demo.
 
 For deployment to Firebase, you will have to set up and configure an actual
-project, but it is not required to run this demo since it can use the emulators.
-Additional info about the use of
+project, but it is not required to run this demo since by default it runs on
+local emulators. Additional info about the use of
 [isolate-package](https://github.com/0x80/isolate-package) (used by fns) and
 [firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 (used by api) can be found in the instructions for each package.
-
 
 ## The "built packages" strategy
 
