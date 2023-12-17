@@ -6,7 +6,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "type-check": "tsc --noEmit",
     "test": "vitest",
