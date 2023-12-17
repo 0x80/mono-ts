@@ -2075,7 +2075,7 @@ const RAW_RUNTIME_STATE =
           ["express", "npm:4.18.2"],\
           ["firebase-admin", "npm:11.11.1"],\
           ["firebase-functions", "virtual:7a0d6b6ffd38fba8bebbfe35f0c020fdb39799c074ef63bfbbfa71a2c49db7537b1359e70e004d6641e64bfd31fa7112c8bd6e2cd19708bb6bf523fedd00bb7a#npm:4.5.0"],\
-          ["firebase-tools", "npm:12.9.1"],\
+          ["firebase-tools", "npm:13.0.2"],\
           ["firestore-server-utils", "virtual:fa31a228849e1b0d3697d897f30c476a136f404317710f48569f1a8feb523a951e621e0731dc1e224d0c8183d0837fc7716785f254df91bb069040b6a1574f75#npm:1.0.0-4"],\
           ["isolate-package", "npm:1.7.1"],\
           ["lodash-es", "npm:4.17.21"],\
@@ -8241,10 +8241,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["firebase-tools", [\
-      ["npm:12.9.1", {\
-        "packageLocation": "../../.yarn/berry/cache/firebase-tools-npm-12.9.1-b9619e6ac2-10c0.zip/node_modules/firebase-tools/",\
+      ["npm:13.0.2", {\
+        "packageLocation": "../../.yarn/berry/cache/firebase-tools-npm-13.0.2-6f18aa4662-10c0.zip/node_modules/firebase-tools/",\
         "packageDependencies": [\
-          ["firebase-tools", "npm:12.9.1"],\
+          ["firebase-tools", "npm:13.0.2"],\
           ["@google-cloud/pubsub", "npm:3.7.5"],\
           ["abort-controller", "npm:3.0.0"],\
           ["ajv", "npm:6.12.6"],\
@@ -8287,7 +8287,6 @@ const RAW_RUNTIME_STATE =
           ["portfinder", "npm:1.0.32"],\
           ["progress", "npm:2.0.3"],\
           ["proxy-agent", "npm:6.3.1"],\
-          ["request", "npm:2.88.2"],\
           ["retry", "npm:0.13.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.5.4"],\

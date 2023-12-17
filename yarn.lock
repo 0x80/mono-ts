@@ -1347,9 +1347,9 @@ __metadata:
     express: "npm:^4.18.2"
     firebase-admin: "npm:11.11.1"
     firebase-functions: "npm:^4.5.0"
-    firebase-tools: "npm:12.9.1"
+    firebase-tools: "npm:^13.0.2"
     firestore-server-utils: "npm:1.0.0-4"
-    isolate-package: "npm:^1.4.0"
+    isolate-package: "npm:^1.7.1"
     lodash-es: "npm:^4.17.21"
     nocache: "npm:^4.0.0"
     ts-is-present: "npm:^1.2.2"
@@ -6591,9 +6591,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:12.9.1":
-  version: 12.9.1
-  resolution: "firebase-tools@npm:12.9.1"
+"firebase-tools@npm:^13.0.2":
+  version: 13.0.2
+  resolution: "firebase-tools@npm:13.0.2"
   dependencies:
     "@google-cloud/pubsub": "npm:^3.0.1"
     abort-controller: "npm:^3.0.0"
@@ -6637,7 +6637,6 @@ __metadata:
     portfinder: "npm:^1.0.32"
     progress: "npm:^2.0.3"
     proxy-agent: "npm:^6.3.0"
-    request: "npm:^2.87.0"
     retry: "npm:^0.13.1"
     rimraf: "npm:^3.0.0"
     semver: "npm:^7.5.2"
@@ -6657,7 +6656,7 @@ __metadata:
     ws: "npm:^7.2.3"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 769311e352417bb315eb693556cdba6d402ddd8bd858b66ae064a7dd26cbce4e4641857273ca942e3f884466b106f80f253c97ece4c431f822757a5b4e34e9b4
+  checksum: 5c42760a885ba78623464bdb84e742ce388b1702ab94664382867c7b5089a5ce27f510673512fcb0bcdc11ba70db44d531540d4458580d45dafabc2cdb953415
   languageName: node
   linkType: hard
 
@@ -8256,7 +8255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isolate-package@npm:^1.4.0, isolate-package@npm:^1.4.1-8":
+"isolate-package@npm:^1.4.1-8, isolate-package@npm:^1.7.1":
   version: 1.7.1
   resolution: "isolate-package@npm:1.7.1"
   dependencies:
