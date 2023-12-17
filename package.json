@@ -13,7 +13,7 @@
     "nextjs"
   ],
   "private": true,
-  "packageManager": "pnpm@8",
+  "packageManager": "pnpm@8.12.1",
   "author": "Thijs Koerselman",
   "license": "MIT",
   "repository": {
