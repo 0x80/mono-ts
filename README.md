@@ -68,7 +68,7 @@ viewed as opinionated.
 In the main branch of this repo, packages are managed with PNPM, but if you
 prefer to use a different package manager, there is
 [a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and
-[a branch using modern Yarn](https://github.com/0x80/mono-ts/tree/use-yarn)
+[a branch using Yarn v1](https://github.com/0x80/mono-ts/tree/use-yarn-classic)
 
 I encourage anyone to give PNPM a try if you haven't already.
 
