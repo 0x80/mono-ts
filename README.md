@@ -11,9 +11,6 @@
   - [Apps](#apps)
   - [Services](#services)
 - [Deployment](#deployment)
-- [Using a different package manager](#using-a-different-package-manager)
-  - [Using NPM instead of PNPM](#using-npm-instead-of-pnpm)
-  - [Using Yarn instead of PNPM](#using-yarn-instead-of-pnpm)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
   - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
@@ -54,12 +51,10 @@ viewed as opinionated.
 - A traditional "built package" with multiple entry points as well as the
   ["internal packages"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
-- Firebase monorepo support with live code updates in the emulators
-- Multiple separate Firebase Functions deployments, one using
-  [isolate-package](https://github.com/0x80/isolate-package/) and the other
-  using
+- Multiple separate Firebase Functions deployments, using
+  [isolate-package](https://github.com/0x80/isolate-package/)
+- Firebase monorepo support with live code updates in the emulators using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-  for live code updates
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
 - Using ESM throughout, including the Next.js app
@@ -70,19 +65,22 @@ viewed as opinionated.
 
 ## Install
 
-In the main branch of this repo, packages are managed with PNPM. I encourage
-anyone to give it a try if you haven't already, because in my experience it is
-the better choice, especially for monorepos. Here is a
-[feature comparison to NPN and Yarn](https://pnpm.io/feature-comparison).
+In the main branch of this repo, packages are managed with PNPM, but if you
+prefer to use a different package manager, there is
+[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and
+[a branch using Yarn v1](https://github.com/0x80/mono-ts/tree/use-yarn-classic)
 
-If you like to try PNPM but do not have it installed yet, follow
-[these instructions](https://pnpm.io/installation).
+I encourage anyone to give PNPM a try if you haven't already.
 
-Run `pnpm install` from the repository root.
+<!-- If you like to try PNPM but do not have it installed yet, follow
+[these instructions](https://pnpm.io/installation). -->
 
-If you prefer to use a different package manager, see
-[using NPM](#using-npm-instead-of-pnpm) or
-[using Yarn](#using-yarn-instead-of-pnpm) for more info.
+You can install PNPM with `corepack` which is part of modern Node.js versions:
+
+- `corepack enable` (if you have not used it before)
+- `corepack prepare pnpm@latest --activate`
+
+Then run `pnpm install` from the repository root.
 
 ## Usage
 
@@ -137,66 +135,11 @@ Additional information can be found in the README files of the various packages.
 I consider deployment a bit out-of-scope for this demo.
 
 For deployment to Firebase, you will have to set up and configure an actual
-project, but it is not required to run this demo since it can use the emulators.
-Additional info about the use of
+project, but it is not required to run this demo since by default it runs on
+local emulators. Additional info about the use of
 [isolate-package](https://github.com/0x80/isolate-package) (used by fns) and
 [firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 (used by api) can be found in the instructions for each package.
-
-## Using a different package manager
-
-### Using NPM instead of PNPM
-
-> Note: For convenience, there is a branch named
-> [use-npm](https://github.com/0x80/mono-ts/tree/use-npm) that contains a
-> version of this repo with NPM, so you do not have to follow the instructions
-> below.
-
-You can convert this repo to NPM following the steps below:
-
-- Delete the root manifest `packageManger` field
-- Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
-- Do a find on `workspace:*` and replace them with `*`.
-- Add the following config to the root package.json:
-  ```
-   "workspaces": [
-    "./packages/*",
-    "./apps/*",
-    "./services/*"
-  ],
-  ```
-- Run `npm install --workspaces` from the root and commit the resulting
-  `package-lock.json` file.
-- Set the packageManager field to the correct manager@version or run
-  `npx @turbo/codemod add-package-manager`.
-
-> Tip: If you already did an install with PNPM you might want to run
-> `bin/delete-all-node-modules` to delete all node_modules folders recursively
-> from the root and all packages, because without it you might run into
-> uninformative errors during NPM install like "Cannot read properties of null
-> (reading 'matches')"
-
-### Using Yarn instead of PNPM
-
-You can convert this repo to Yarn following the steps below:
-
-- Delete the root manifest `packageManger` field
-- Delete the `pnpm-lock.yaml` and `pnpm-workspace.yaml` files
-- Add the following config to the root package.json:
-  ```
-   "workspaces": [
-    "./packages/*",
-    "./apps/*",
-    "./services/*"
-  ],
-  ```
-- Run `yarn install` from the root and commit the resulting `yarn.lock` file.
-- Set the packageManager field to the correct manager@version or run
-  `npx @turbo/codemod add-package-manager`.
-
-> Tip: If you already did an install with PNPM you might want to run
-> `bin/delete-all-node-modules` to delete all node_modules folders recursively
-> from the root and all packages.
 
 ## The "built packages" strategy
 
