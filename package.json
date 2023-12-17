@@ -13,7 +13,7 @@
     "nextjs"
   ],
   "private": true,
-  "packageManager": "yarn@1.22.21",
+  "packageManager": "yarn@4.0.2",
   "workspaces": [
     "./packages/*",
     "./apps/*",
