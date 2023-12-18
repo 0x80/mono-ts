@@ -36,8 +36,8 @@
   ],
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "prettier-plugin-jsdoc": "^1.1.1",
     "prettier": "^3.1.1",
+    "prettier-plugin-jsdoc": "^1.1.1",
     "turbo": "^1.11.2",
     "typescript": "^5.3.3",
     "vercel": "^32.7.2",
