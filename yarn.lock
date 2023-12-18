@@ -1349,7 +1349,7 @@ __metadata:
     firebase-functions: "npm:^4.5.0"
     firebase-tools: "npm:13.0.2"
     firestore-server-utils: "npm:1.0.0-4"
-    isolate-package: "npm:1.9.0"
+    isolate-package: "npm:^1.9.1"
     lodash-es: "npm:^4.17.21"
     nocache: "npm:^4.0.0"
     ts-is-present: "npm:^1.2.2"
@@ -8124,9 +8124,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isolate-package@npm:1.9.0":
-  version: 1.9.0
-  resolution: "isolate-package@npm:1.9.0"
+"isolate-package@npm:^1.8.0, isolate-package@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "isolate-package@npm:1.9.1"
   dependencies:
     "@npmcli/arborist": "npm:^7.2.1"
     "@pnpm/exec": "npm:^2.0.0"
@@ -8149,36 +8149,7 @@ __metadata:
     yaml: "npm:^2.2.2"
   bin:
     isolate: dist/isolate-bin.mjs
-  checksum: b81e1df20d0d991121edaec90465bbb6cb6ea80f2722ba259b650f9801701d818bf685cec905e43ee82a747265f1a92f91ae5e3167336297392a633493c7523a
-  languageName: node
-  linkType: hard
-
-"isolate-package@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "isolate-package@npm:1.8.0"
-  dependencies:
-    "@npmcli/arborist": "npm:^7.2.1"
-    "@pnpm/exec": "npm:^2.0.0"
-    "@pnpm/exportable-manifest": "npm:^5.0.9"
-    "@pnpm/lockfile-file": "npm:^8.1.4"
-    "@pnpm/logger": "npm:^5.0.0"
-    "@pnpm/prune-lockfile": "npm:^5.0.7"
-    "@pnpm/read-project-manifest": "npm:^5.0.8"
-    "@pnpm/types": "npm:^9.4.0"
-    chalk: "npm:^5.2.0"
-    fs-extra: "npm:^11.1.1"
-    glob: "npm:^10.2.2"
-    outdent: "npm:^0.8.0"
-    ramda: "npm:^0.29.1"
-    rename-overwrite: "npm:^4.0.4"
-    source-map-support: "npm:^0.5.21"
-    strip-json-comments: "npm:^5.0.1"
-    tar-fs: "npm:^2.1.1"
-    type-fest: "npm:^4.8.2"
-    yaml: "npm:^2.2.2"
-  bin:
-    isolate: dist/isolate-bin.mjs
-  checksum: 7fc8796f246b74f0ffa9ba0115c8ab3703a92a9e9a67dcbe86636c00d355f3d599afd6dd3f107fb5d9c5d12bcd3c0287d51d97b159158440bd0ba611035e2a1a
+  checksum: eb298177cde47413750669ed4bb1f6306ee8c699c4d076a055cd40a511e155c378c77c199bacf5d808ea76454738612687ac2ff9cb620dc8ab98f0a563ea4125
   languageName: node
   linkType: hard
 
