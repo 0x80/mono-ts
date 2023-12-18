@@ -337,8 +337,8 @@ importers:
         specifier: 13.0.2
         version: 13.0.2
       isolate-package:
-        specifier: ^1.8.0
-        version: 1.8.0
+        specifier: 1.9.0
+        version: 1.9.0
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(typescript@5.3.3)
@@ -5413,7 +5413,7 @@ packages:
       glob: 7.2.3
       google-auth-library: 7.14.1
       inquirer: 8.2.6
-      isolate-package: 1.8.0
+      isolate-package: 1.9.0
       js-yaml: 3.14.1
       jsonwebtoken: 9.0.2
       leven: 3.1.0
@@ -6683,8 +6683,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /isolate-package@1.8.0:
-    resolution: {integrity: sha512-zFPHXFoSKiep7yLLV0SVk/DmqnczeAG+jcyK6tPcjCugXXIjonXRxqYJ4mZC7e4qbI4enVjG0nUBhKZ1Qfkelg==}
+  /isolate-package@1.9.0:
+    resolution: {integrity: sha512-MrheYmZjU68WmuDHjyAKbVKpmQcaLN25Qx/sFbECPPZrVfoSkf0OfedKRQNxsJldVcC+xVhLDsjflWYIZ9Kq7g==}
     hasBin: true
     dependencies:
       '@npmcli/arborist': 7.2.2
