@@ -4706,7 +4706,7 @@ firebase-functions@^4.5.0:
     node-fetch "^2.6.7"
     protobufjs "^7.2.2"
 
-firebase-tools-with-isolate@^13.0.2:
+firebase-tools-with-isolate@13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/firebase-tools-with-isolate/-/firebase-tools-with-isolate-13.0.2.tgz#aadc1e9de32614e605363c292c3f025feb71f4d5"
   integrity sha512-tpUI24ICwmDiWMKXRmvOaQHOSyQtk8CZpiNXKDJFtNtrFjQxJ9Zs0ewQwv1JOXi1oks+3XVkoBsbC/0gnqjmvQ==
@@ -4772,7 +4772,7 @@ firebase-tools-with-isolate@^13.0.2:
     winston-transport "^4.4.0"
     ws "^7.2.3"
 
-firebase-tools@^13.0.2:
+firebase-tools@13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-13.0.2.tgz#ae2786e4e28dcf5ad0c8a1a6b004e65e37f6e967"
   integrity sha512-8XL1Xm/RnuWc4XoGwuAB30zU8t+13PP+YwZVOiZuhGbp9TtqrKK/43R17rX5igGs/8e2PrMnzytlzUxwmI/rZA==
@@ -6021,6 +6021,31 @@ isexe@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-3.1.1.tgz#4a407e2bd78ddfb14bea0c27c6f7072dde775f0d"
   integrity sha512-LpB/54B+/2J5hqQ7imZHfdU31OlgQqx7ZicVlkm9kzg9/w8GKLEcFfJl/t7DCEDueOyBAD6zCCwTO6Fzs0NoEQ==
+
+isolate-package@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/isolate-package/-/isolate-package-1.9.0.tgz#b6a25d8800d25f55b32c81ba9dd1ece1e094b404"
+  integrity sha512-MrheYmZjU68WmuDHjyAKbVKpmQcaLN25Qx/sFbECPPZrVfoSkf0OfedKRQNxsJldVcC+xVhLDsjflWYIZ9Kq7g==
+  dependencies:
+    "@npmcli/arborist" "^7.2.1"
+    "@pnpm/exec" "^2.0.0"
+    "@pnpm/exportable-manifest" "^5.0.9"
+    "@pnpm/lockfile-file" "^8.1.4"
+    "@pnpm/logger" "^5.0.0"
+    "@pnpm/prune-lockfile" "^5.0.7"
+    "@pnpm/read-project-manifest" "^5.0.8"
+    "@pnpm/types" "^9.4.0"
+    chalk "^5.2.0"
+    fs-extra "^11.1.1"
+    glob "^10.2.2"
+    outdent "^0.8.0"
+    ramda "^0.29.1"
+    rename-overwrite "^4.0.4"
+    source-map-support "^0.5.21"
+    strip-json-comments "^5.0.1"
+    tar-fs "^2.1.1"
+    type-fest "^4.8.2"
+    yaml "^2.2.2"
 
 isolate-package@^1.8.0:
   version "1.8.0"
