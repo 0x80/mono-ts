@@ -27,18 +27,19 @@
 
 ## Introduction
 
-This is a quest for the ideal Typescript monorepo setup.
+This is a personal quest for the perfect Typescript monorepo setup.
+
+It is the best I could come up with given the tooling that is available, so
+expect this repository to change over time as the ecosystem around Typescript
+and Javascript evolves.
 
 My current projects are based on Node.js, Next.js, and Firebase, so that is what
 I am focussing on. If you use different platforms, I think this can still be a
-great reference, and it is probably easy to discard anything you have no use
-for. The monorepo approach by itself is independent of the chosen technology
-stack.
+great reference, and it should be easy discard anything you have no use for. The
+monorepo approach by itself is independent of the chosen technology stack.
 
-This is the best I could come up with given the tooling that is available, so
-expect this repository to change over time as the ecosystem around Typescript
-and Javascript evolves. Also, I am still working on two Firestore libraries
-(server and client) that will likely make it in here in the coming months.
+Also, I am still working on two Firestore libraries (server and client-side)
+that might make it in here in the coming months.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
