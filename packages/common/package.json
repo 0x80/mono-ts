@@ -1,5 +1,5 @@
 {
-  "name": "@mono/common",
+  "name": "@repo/common",
   "version": "0.0.0",
   "type": "module",
   "types": "./src/index.ts",
@@ -21,8 +21,8 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@mono/eslint-config-custom": "workspace:*",
-    "@mono/tsconfig": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "eslint-plugin-require-extensions": "^0.1.3",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",

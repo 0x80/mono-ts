@@ -45,16 +45,21 @@ Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
 viewed as opinionated.
 
+I ended up basing a lot of things on the
+[Turborepo starter](https://turbo.build/repo/docs/getting-started/create-new),
+and I recommend reading
+[their monorepo handbook](https://turbo.build/repo/docs/handbook).
+
 ## Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
   dependencies
-- A traditional "built package" with multiple entry points as well as the
-  ["internal packages"](#the-internal-packages-strategy) strategy referencing
+- Showing a traditional "built package" with multiple entry points as well as
+  the ["internal package"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
-- Multiple separate Firebase Functions deployments, using
+- Multiple isolated Firebase deployments, using
   [isolate-package](https://github.com/0x80/isolate-package/)
-- Firebase monorepo support with live code updates in the emulators using
+- Firebase emulators with live code updates using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
@@ -236,7 +241,7 @@ But, as always, there are also some disadvantages you should be aware of:
   including the Next.js app.
 
 For testing and comparison, mono-ts uses the internal packages approach for
-`@mono/common` and a traditional built approach for `@mono/backend`. Both are
+`@repo/common` and a traditional built approach for `@repo/backend`. Both are
 compatible with `isolate-package` for deploying to Firebase.
 
 ## Live code changes from internal packages

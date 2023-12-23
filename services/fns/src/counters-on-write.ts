@@ -1,4 +1,4 @@
-import { areWeThereYet, type Counter } from "@mono/common";
+import { areWeThereYet, type Counter } from "@repo/common";
 import functions from "firebase-functions";
 import { incrementField, serverTimestamp } from "firestore-server-utils";
 import { counterFlagThreshold, region } from "~/config.js";
@@ -31,9 +31,7 @@ export const countersOnWrite = functions
       return;
     }
 
-    /**
-     * Just a test to link something from common
-     */
+    /** Just a test to link something from common */
     console.log(areWeThereYet());
 
     const updateData: Partial<Counter> = {

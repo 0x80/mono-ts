@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@mono/custom"]
+  "extends": ["@repo/custom"]
 }

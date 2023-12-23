@@ -1,5 +1,5 @@
 {
-  "name": "@mono/api",
+  "name": "@repo/api",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -20,8 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
-    "@mono/backend": "workspace:*",
-    "@mono/common": "workspace:*",
+    "@repo/backend": "workspace:*",
+    "@repo/common": "workspace:*",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -34,8 +34,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@mono/eslint-config-custom": "workspace:*",
-    "@mono/tsconfig": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@types/body-parser": "^1.19.5",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",

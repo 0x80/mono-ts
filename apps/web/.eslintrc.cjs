@@ -3,7 +3,7 @@ const { defineConfig } = require("eslint-define-config");
 
 module.exports = defineConfig({
   root: true,
-  extends: ["@mono/custom", "next/core-web-vitals"],
+  extends: ["@repo/custom", "next/core-web-vitals"],
   overrides: [
     {
       files: ["*.mjs"],

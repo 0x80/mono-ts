@@ -4,10 +4,13 @@
   "globalEnv": ["PORT", "NODE_ENV"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^type-check", "^build"],
+      "dependsOn": ["^build"],
       // note: output globs are relative to each package's `package.json`
       // (and not the monorepo root)
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
     },
     "test": {
       "dependsOn": ["^build"],
@@ -19,14 +22,10 @@
     "type-check": {
       "dependsOn": ["^type-check"]
     },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
     "clean": {
       "dependsOn": ["^clean"]
     },
     "dev": {
-      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
     }

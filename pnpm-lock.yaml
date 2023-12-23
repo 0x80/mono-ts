@@ -32,15 +32,15 @@ importers:
 
   apps/web:
     dependencies:
-      '@mono/common':
-        specifier: workspace:*
-        version: link:../../packages/common
       '@radix-ui/react-icons':
         specifier: ^1.3.0
         version: 1.3.0(react@18.2.0)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.45)(react@18.2.0)
+      '@repo/common':
+        specifier: workspace:*
+        version: link:../../packages/common
       '@types/node':
         specifier: ^20.10.4
         version: 20.10.4
@@ -105,7 +105,7 @@ importers:
 
   packages/backend:
     dependencies:
-      '@mono/common':
+      '@repo/common':
         specifier: workspace:*
         version: link:../common
       '@sindresorhus/is':
@@ -124,10 +124,10 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
     devDependencies:
-      '@mono/eslint-config-custom':
+      '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@mono/tsconfig':
+        version: link:../eslint-config
+      '@repo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@types/lodash-es':
@@ -155,10 +155,10 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
     devDependencies:
-      '@mono/eslint-config-custom':
+      '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@mono/tsconfig':
+        version: link:../eslint-config
+      '@repo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint-plugin-require-extensions:
@@ -174,7 +174,7 @@ importers:
         specifier: ^1.0.4
         version: 1.0.4(@types/node@14.18.33)
 
-  packages/eslint-config-custom:
+  packages/eslint-config:
     dependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.14.0
@@ -191,15 +191,17 @@ importers:
 
   packages/tsconfig: {}
 
+  packages/typescript-config: {}
+
   services/api:
     dependencies:
       '@google-cloud/functions-framework':
         specifier: ^3.3.0
         version: 3.3.0
-      '@mono/backend':
+      '@repo/backend':
         specifier: workspace:*
         version: link:../../packages/backend
-      '@mono/common':
+      '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common
       body-parser:
@@ -233,10 +235,10 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
-      '@mono/eslint-config-custom':
+      '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
-      '@mono/tsconfig':
+        version: link:../../packages/eslint-config
+      '@repo/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/body-parser':
@@ -275,10 +277,10 @@ importers:
       '@google-cloud/functions-framework':
         specifier: ^3.3.0
         version: 3.3.0
-      '@mono/backend':
+      '@repo/backend':
         specifier: workspace:*
         version: link:../../packages/backend
-      '@mono/common':
+      '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common
       body-parser:
@@ -312,10 +314,10 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2
     devDependencies:
-      '@mono/eslint-config-custom':
+      '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
-      '@mono/tsconfig':
+        version: link:../../packages/eslint-config
+      '@repo/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/body-parser':

@@ -1,5 +1,5 @@
 {
-  "name": "@mono/backend",
+  "name": "@repo/backend",
   "version": "0.0.0",
   "type": "module",
   "files": [
@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mono/common": "workspace:*",
+    "@repo/common": "workspace:*",
     "@sindresorhus/is": "^6.1.0",
     "firebase-admin": "^11",
     "firebase-functions": "^4.5.0",
@@ -28,8 +28,8 @@
     "ts-is-present": "^1.2.2"
   },
   "devDependencies": {
-    "@mono/eslint-config-custom": "workspace:*",
-    "@mono/tsconfig": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.10.4",
     "tsup": "^8.0.1",

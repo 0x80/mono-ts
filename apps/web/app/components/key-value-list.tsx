@@ -1,4 +1,4 @@
-import { FsTimestamp, isDefined } from "@mono/common";
+import { FsTimestamp, isDefined } from "@repo/common";
 import { Timestamp } from "firebase/firestore";
 import {
   Table,
