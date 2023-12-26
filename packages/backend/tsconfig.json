@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/tsconfig/library.json",
+  "extends": "@repo/typescript-config/library.json",
   "compilerOptions": {
     "target": "esnext",
     "rootDir": "src",

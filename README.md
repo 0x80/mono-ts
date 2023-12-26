@@ -73,8 +73,10 @@ and I recommend reading
 
 In the main branch of this repo, packages are managed with PNPM, but if you
 prefer to use a different package manager, there is
-[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and
-[a branch using Yarn v1](https://github.com/0x80/mono-ts/tree/use-yarn-classic)
+[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm),
+[a branch using classic Yarn (v1)](https://github.com/0x80/mono-ts/tree/use-yarn-classic),
+and
+[a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
 
 I encourage anyone to give PNPM a try if you haven't already.
 
@@ -95,9 +97,7 @@ To get started quickly run `npx turbo dev` from the root.
 This will:
 
 - Build the `web` app and start its dev server
-- Build the `api` and `fns` backend services and starts their Firebase
-  emulators. See [running Firebase emulators](#running-firebase-emulators) for
-  more info.
+- Build the `api` and `fns` backend services and start their emulators.
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
@@ -106,8 +106,8 @@ Alternatively, you can start the emulators and dev server separately. It makes
 the console output more readable and preserves coloring:
 
 - In `apps/web` run `pnpm dev`
-- In `services/fns` run `pnpm emulate`
-- In `services/api` run `pnpm emulate`
+- In `services/fns` run `pnpm dev`
+- In `services/api` run `pnpm dev`
 
 Additional information can be found in the README files of the various packages.
 
