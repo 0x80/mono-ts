@@ -1,5 +1,5 @@
 {
-  "name": "@mono/web",
+  "name": "@repo/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mono/common": "workspace:*",
+    "@repo/common": "workspace:*",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/node": "^20.10.4",

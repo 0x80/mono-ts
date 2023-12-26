@@ -1,6 +1,6 @@
 "use client";
 
-import { areWeThereYet } from "@mono/common";
+import { areWeThereYet } from "@repo/common";
 import { CardDescription } from "~/components/ui/card.jsx";
 import { add, multiply, reset } from "~/lib/api.js";
 import CardWithAction from "./components/card-with-action.jsx";
