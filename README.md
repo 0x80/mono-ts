@@ -27,33 +27,39 @@
 
 ## Introduction
 
-This is a quest for the ideal Typescript monorepo setup.
+This is a personal quest for the perfect Typescript monorepo setup.
+
+It is the best I could come up with given the tooling that is available, so
+expect this repository to change over time as the ecosystem around Typescript
+and Javascript evolves.
 
 My current projects are based on Node.js, Next.js, and Firebase, so that is what
 I am focussing on. If you use different platforms, I think this can still be a
-great reference, and it is probably easy to discard anything you have no use
-for. The monorepo approach by itself is independent of the chosen technology
-stack.
+great reference, and it should be easy discard anything you have no use for. The
+monorepo approach by itself is independent of the chosen technology stack.
 
-This is the best I could come up with given the tooling that is available, so
-expect this repository to change over time as the ecosystem around Typescript
-and Javascript evolves. Also, I am still working on two Firestore libraries
-(server and client) that will likely make it in here in the coming months.
+Also, I am still working on two Firestore libraries (server and client-side)
+that might make it in here in the coming months.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
 viewed as opinionated.
 
+I ended up basing a lot of things on the
+[Turborepo starter](https://turbo.build/repo/docs/getting-started/create-new),
+and I recommend reading
+[their monorepo handbook](https://turbo.build/repo/docs/handbook).
+
 ## Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
   dependencies
-- A traditional "built package" with multiple entry points as well as the
-  ["internal packages"](#the-internal-packages-strategy) strategy referencing
+- Showing a traditional "built package" with multiple entry points as well as
+  the ["internal package"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
-- Multiple separate Firebase Functions deployments, using
+- Multiple isolated Firebase deployments, using
   [isolate-package](https://github.com/0x80/isolate-package/)
-- Firebase monorepo support with live code updates in the emulators using
+- Firebase emulators with live code updates using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
@@ -67,8 +73,10 @@ viewed as opinionated.
 
 In the main branch of this repo, packages are managed with PNPM, but if you
 prefer to use a different package manager, there is
-[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm) and
-[a branch using Yarn v1](https://github.com/0x80/mono-ts/tree/use-yarn-classic)
+[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm),
+[a branch using classic Yarn (v1)](https://github.com/0x80/mono-ts/tree/use-yarn-classic),
+and
+[a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
 
 I encourage anyone to give PNPM a try if you haven't already.
 
@@ -89,9 +97,7 @@ To get started quickly run `npx turbo dev` from the root.
 This will:
 
 - Build the `web` app and start its dev server
-- Build the `api` and `fns` backend services and starts their Firebase
-  emulators. See [running Firebase emulators](#running-firebase-emulators) for
-  more info.
+- Build the `api` and `fns` backend services and start their emulators.
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
@@ -100,8 +106,8 @@ Alternatively, you can start the emulators and dev server separately. It makes
 the console output more readable and preserves coloring:
 
 - In `apps/web` run `pnpm dev`
-- In `services/fns` run `pnpm emulate`
-- In `services/api` run `pnpm emulate`
+- In `services/fns` run `pnpm dev`
+- In `services/api` run `pnpm dev`
 
 Additional information can be found in the README files of the various packages.
 
@@ -235,7 +241,7 @@ But, as always, there are also some disadvantages you should be aware of:
   including the Next.js app.
 
 For testing and comparison, mono-ts uses the internal packages approach for
-`@mono/common` and a traditional built approach for `@mono/backend`. Both are
+`@repo/common` and a traditional built approach for `@repo/backend`. Both are
 compatible with `isolate-package` for deploying to Firebase.
 
 ## Live code changes from internal packages

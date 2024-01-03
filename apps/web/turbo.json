@@ -1,25 +1,22 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
   "globalDependencies": [".env", "**/.env.*local"],
-  "globalEnv": [
-    "PORT",
-    "NODE_ENV",
-    "NEXT_PUBLIC_DEMO_API_ENDPOINT",
-    "NEXT_PUBLIC_DEMO_API_KEY",
-    "NEXT_PUBLIC_FIREBASE_API_KEY",
-    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
-    "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
-    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
-    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
-    "NEXT_PUBLIC_FIREBASE_APP_ID",
-    "NEXT_PUBLIC_USE_EMULATORS"
-  ],
   "pipeline": {
     "build": {
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_DEMO_API_ENDPOINT",
+        "NEXT_PUBLIC_DEMO_API_KEY",
+        "NEXT_PUBLIC_FIREBASE_API_KEY",
+        "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+        "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+        "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+        "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+        "NEXT_PUBLIC_FIREBASE_APP_ID",
+        "NEXT_PUBLIC_USE_EMULATORS"
+      ],
       "dependsOn": ["^build"],
-      // note: output globs are relative to each package's `package.json`
-      // (and not the monorepo root)
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
