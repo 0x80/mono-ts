@@ -1,9 +1,9 @@
 {
   "extends": ["//"],
   "globalDependencies": [".env"],
-  "globalEnv": [],
   "pipeline": {
     "build": {
+      "env": ["DEMO_ENV_VAR"],
       "dependsOn": ["^build"],
       // note: output globs are relative to each package's `package.json`
       // (and not the monorepo root)
