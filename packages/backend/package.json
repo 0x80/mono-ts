@@ -21,7 +21,7 @@
     "clean": "del dist tsconfig.tsbuildinfo",
     "test": "vitest",
     "coverage": "vitest run --coverage ",
-    "lint": "eslint \"**/*.ts*\""
+    "lint": "eslint . --max-warnings 0"
   },
   "license": "MIT",
   "dependencies": {

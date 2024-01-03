@@ -14,7 +14,7 @@
     "build:watch": "tsup-node --watch",
     "emulate": "firebase emulators:start --project demo-mono-ts --only functions",
     "dev": "run-p build:watch emulate",
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint . --max-warnings 0",
     "deploy": "firebase deploy --project demo-mono-ts --only functions"
   },
   "license": "MIT",

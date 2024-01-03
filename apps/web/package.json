@@ -31,6 +31,8 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.16",
     "eslint-define-config": "^2.0.0",
     "postcss": "^8.4.32",

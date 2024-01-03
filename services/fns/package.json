@@ -14,7 +14,7 @@
     "build": "tsup-node",
     "dev": "run-s build isolate emulate",
     "isolate": "isolate",
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint . --max-warnings 0",
     "deploy": "firebase deploy",
     "emulate": "firebase emulators:start --project demo-mono-ts",
     "db:get-indexes": "firebase firestore:indexes > firestore.indexes.json"

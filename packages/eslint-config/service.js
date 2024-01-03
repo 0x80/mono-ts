@@ -10,11 +10,7 @@ module.exports = {
     "prettier",
     "eslint-config-turbo",
   ],
-  plugins: ["only-warn", "@typescript-eslint"],
-  globals: {
-    React: true,
-    JSX: true,
-  },
+  plugins: ["only-warn"],
   env: {
     node: true,
   },

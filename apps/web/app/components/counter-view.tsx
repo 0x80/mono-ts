@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Counter } from "@repo/common";
 import { doc } from "firebase/firestore";
 import { useTypedDocument } from "~/lib/firestore.js";
