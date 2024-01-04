@@ -30,7 +30,7 @@ export default function Home() {
         <CardWithAction
           title="Dodgy Counter"
           description="Implemented using a Firestore document. Mutations flow through an API endpoint and logic triggered by document onWrite events. In the emulator it works without noticeable lag but in real life it does not. This is a contrived example, aimed at demonstrating two separate Firebase services. It is not an illustration of how to implement an efficient and reliable mechanism."
-          action={{ label: "Reset", handler: () => reset() }}
+          action={{ label: "Reset", handler: () => void reset() }}
         >
           <CounterView counterId="my_counter" />
         </CardWithAction>
@@ -40,13 +40,13 @@ export default function Home() {
         <CardWithAction
           title="Addition"
           description="Increments the counter value"
-          action={{ label: "Add 3", handler: () => add(3) }}
+          action={{ label: "Add 3", handler: () => void add(3) }}
         />
 
         <CardWithAction
           title="Multiplication"
           description="Multiplies the counter value"
-          action={{ label: "Multiply by 2", handler: () => multiply(2) }}
+          action={{ label: "Multiply by 2", handler: () => void multiply(2) }}
         />
       </div>
     </main>
