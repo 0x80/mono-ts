@@ -1,4 +1,4 @@
-import { DocumentReference } from "firebase/firestore";
+import type { DocumentReference } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 
 type FsDocument<T> = {

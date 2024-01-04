@@ -12,6 +12,7 @@
   "scripts": {
     "type:check": "tsc --noEmit",
     "build": "tsup-node",
+    "?": "This is not the recommended way to integrate isolate, see services/api and docs instead",
     "dev": "run-s build isolate emulate",
     "isolate": "isolate",
     "lint": "eslint . --max-warnings 0",
