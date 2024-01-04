@@ -27,6 +27,10 @@
 
 ## Introduction
 
+> There is an accompanying article
+> ["My quest for the perfect TS monorepo"](https://thijs-koerselman.medium.com/my-quest-for-the-perfect-ts-monorepo-62653d3047eb)
+> that you might want to read for context.
+
 This is a personal quest for the perfect Typescript monorepo setup.
 
 It is the best I could come up with given the tooling that is available, so
@@ -34,12 +38,12 @@ expect this repository to change over time as the ecosystem around Typescript
 and Javascript evolves.
 
 My current projects are based on Node.js, Next.js, and Firebase, so that is what
-I am focussing on. If you use different platforms, I think this can still be a
-great reference, and it should be easy discard anything you have no use for. The
-monorepo approach by itself is independent of the chosen technology stack.
+I am focussing on. If you use different platforms, I believe this is still a
+great reference, as it should be easy discard anything you have no use for. The
+approach itself is largely independent of the chosen technology stack.
 
-Also, I am still working on two Firestore libraries (server and client-side)
-that might make it in here in the coming months.
+Also, I am still working on some Firestore abstractions (server and client-side)
+that will hopefully make it in here in the coming months.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
@@ -112,6 +116,17 @@ the console output more readable and preserves coloring:
 Additional information can be found in the README files of the various packages.
 
 ## Workspace
+
+### Namespace
+
+Typically in a monorepo, you will never publish the packages to NPM, and because
+of that, the namespace you use to prefix your package names does not matter. You
+might as well pick a generic one that you can use in every private codebase.
+
+At first I used `@mono`, and later I switched to `@repo` when I discovered that
+in the Turborepo examples. I like both, because they are equally short and
+clear, but I went with `@repo` because I expect it is more likely to become a
+standard.
 
 ### Packages
 
