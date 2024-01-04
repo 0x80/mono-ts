@@ -1,7 +1,3 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
-
 /*
  * This is a custom ESLint configuration for use with
  * internal (bundled by their consumer) libraries
@@ -15,13 +11,10 @@ const project = resolve(process.cwd(), "tsconfig.json");
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    resolve("@vercel/style-guide/eslint/next"),
-    "eslint-config-turbo",
+    "./partials/base.js",
+    require.resolve("@vercel/style-guide/eslint/next"),
+    "./partials/additional-rules.js",
   ],
-  plugins: ["only-warn"],
   globals: {
     React: true,
     JSX: true,
@@ -29,21 +22,4 @@ module.exports = {
   env: {
     browser: true,
   },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-    },
-  },
-  ignorePatterns: [
-    ".*.cjs", // Ignore dot-files
-    "*.config.ts", // Ignore config files
-    "node_modules/",
-    "dist/",
-  ],
-  overrides: [
-    // Force ESLint to detect .tsx files
-    { files: ["*.js?(x)", "*.ts?(x)"] },
-  ],
 };

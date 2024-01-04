@@ -1,4 +1,4 @@
-import { Counter } from "@repo/common";
+import type { Counter } from "@repo/common";
 import { doc } from "firebase/firestore";
 import { useTypedDocument } from "~/lib/firestore.js";
 import { refs } from "~/refs.js";
