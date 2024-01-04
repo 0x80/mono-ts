@@ -1,9 +1,7 @@
-import { NextFunction, Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { defineSecret } from "firebase-functions/params";
 
-/**
- * See https://firebase.google.com/docs/functions/config-env?gen=2nd
- */
+/** See https://firebase.google.com/docs/functions/config-env?gen=2nd */
 const demoApiKey = defineSecret("DEMO_API_KEY");
 
 const API_KEY_HEADER_NAME = "X-Demo-API-Key";

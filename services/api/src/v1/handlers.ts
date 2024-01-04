@@ -1,6 +1,7 @@
 import { isPlainObject } from "@repo/backend/utils";
-import { Counter, getErrorMessage } from "@repo/common";
-import { Request, Response } from "express";
+import type { Counter } from "@repo/common";
+import { getErrorMessage } from "@repo/common";
+import type { Request, Response } from "express";
 import {
   getDocument,
   incrementField,
