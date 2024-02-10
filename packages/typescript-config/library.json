@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Javascript Library",
+  "display": "A shared library",
   "extends": "./base.json",
   "compilerOptions": {
     "lib": ["ESNext"],

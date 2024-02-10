@@ -1,13 +1,7 @@
 {
-  "extends": "@repo/typescript-config/base.json",
+  "extends": "@repo/typescript-config/service.json",
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
     "outDir": "dist",
-    "rootDir": "src",
-    "lib": ["esnext"],
-    "sourceMap": true,
-    "types": ["node"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
