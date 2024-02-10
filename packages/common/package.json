@@ -18,15 +18,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "firebase": "^10.7.1",
+    "firebase": "^10.8.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint-plugin-require-extensions": "^0.1.3",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.4"
+    "vitest": "^1.2.2"
   }
 }
