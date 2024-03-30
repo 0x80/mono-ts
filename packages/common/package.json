@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "firebase": "^10.8.0",
-    "lodash-es": "^4.17.21"
+    "remeda": "^1.56.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

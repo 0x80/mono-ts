@@ -120,9 +120,6 @@ importers:
       firebase-functions:
         specifier: ^4.7.0
         version: 4.7.0(firebase-admin@12.0.0)
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       ts-is-present:
         specifier: ^1.2.2
         version: 1.2.2
@@ -133,9 +130,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
       '@types/node':
         specifier: ^20.11.17
         version: 20.11.17
@@ -160,9 +154,9 @@ importers:
       firebase:
         specifier: ^10.8.0
         version: 10.8.0
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
+      remeda:
+        specifier: ^1.56.0
+        version: 1.56.0
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -244,12 +238,12 @@ importers:
       firestore-server-utils:
         specifier: 1.0.0-4
         version: 1.0.0-4(firebase-admin@12.0.0)
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       nocache:
         specifier: ^4.0.0
         version: 4.0.0
+      remeda:
+        specifier: ^1.56.0
+        version: 1.56.0
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -272,9 +266,6 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
       '@types/node':
         specifier: ^20.11.17
         version: 20.11.17
@@ -326,12 +317,12 @@ importers:
       firestore-server-utils:
         specifier: 1.0.0-4
         version: 1.0.0-4(firebase-admin@12.0.0)
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       nocache:
         specifier: ^4.0.0
         version: 4.0.0
+      remeda:
+        specifier: ^1.56.0
+        version: 1.56.0
       ts-is-present:
         specifier: ^1.2.2
         version: 1.2.2
@@ -351,9 +342,6 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
-      '@types/lodash-es':
-        specifier: ^4.17.12
-        version: 4.17.12
       '@types/node':
         specifier: ^20.11.17
         version: 20.11.17
@@ -1767,6 +1755,7 @@ packages:
   /@npmcli/agent@2.2.1:
     resolution: {integrity: sha512-H4FrOVtNyWC8MUwL3UfjOsAihHvT1Pe8POj3JvjXhSTJipsZMtgUALCT4mGyYZNxymkUfOw3PUj6dE4QPp6osQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
+    requiresBuild: true
     dependencies:
       agent-base: 7.1.0
       http-proxy-agent: 7.0.0
@@ -2557,16 +2546,6 @@ packages:
   /@types/linkify-it@3.0.5:
     resolution: {integrity: sha512-yg6E+u0/+Zjva+buc3EIb+29XEg4wltq7cSmd4Uc2EE/1nUVmxyzpX6gUXD0V8jIrG0r7YeOGVIbYRkxeooCtw==}
     requiresBuild: true
-    dev: true
-
-  /@types/lodash-es@4.17.12:
-    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
-    dependencies:
-      '@types/lodash': 4.14.202
-    dev: true
-
-  /@types/lodash@4.14.202:
-    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
   /@types/long@4.0.2:
@@ -7920,10 +7899,6 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /lodash-es@4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
-
   /lodash._objecttypes@2.4.1:
     resolution: {integrity: sha512-XpqGh1e7hhkOzftBfWE7zt+Yn9mVHFkDhicVttvKLsoCMLVVL+xTQjfjB4X4vtznauxv0QZ5ZAeqjvat0dh62Q==}
     dev: true
@@ -10112,6 +10087,10 @@ packages:
     dependencies:
       jsesc: 0.5.0
     dev: true
+
+  /remeda@1.56.0:
+    resolution: {integrity: sha512-ZGebbddlHYNIc4P6o6B/LRiUIZyuFvO9/aKxKpzzFjJxb9maUmYk5E72VpvAooh5uFw0rSbfygIV3rc49NW2xg==}
+    dev: false
 
   /rename-overwrite@4.0.4:
     resolution: {integrity: sha512-5MC+p5npnyaJlFkwTHb0pqU2mkUkkW65ZWH8qwxcDlv+5nchtalcdzG+gaaianbWWwvwxi7vu7WSg6jdCweKug==}
