@@ -270,8 +270,8 @@ importers:
         specifier: ^20.12.2
         version: 20.12.2
       firebase-tools-with-isolate:
-        specifier: 13.6.2
-        version: 13.6.2
+        specifier: 13.6.4
+        version: 13.6.4
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -349,8 +349,8 @@ importers:
         specifier: 13.6.0
         version: 13.6.0
       isolate-package:
-        specifier: 1.13.0
-        version: 1.13.0
+        specifier: 1.13.2
+        version: 1.13.2
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -1785,6 +1785,7 @@ packages:
   /@grpc/grpc-js@1.9.14:
     resolution: {integrity: sha512-nOpuzZ2G3IuMFN+UPPpKrC6NsLmWsTqSsm66IRfnBt1D4pwTqE27lmbpcPM+l2Ua4gE7PfjRHI6uedAy7hoXUw==}
     engines: {node: ^8.13.0 || >=10.10.0}
+    requiresBuild: true
     dependencies:
       '@grpc/proto-loader': 0.7.12
       '@types/node': 20.12.2
@@ -6693,8 +6694,8 @@ packages:
       - supports-color
     dev: false
 
-  /firebase-tools-with-isolate@13.6.2:
-    resolution: {integrity: sha512-k4GFP3QouBPsJMlEu76thcK15ZXgIodw1eBlGHV96wmUUVuFTvhTYGksByF9OHLEzpBU8pM+I3pEny/EL9IzOg==}
+  /firebase-tools-with-isolate@13.6.4:
+    resolution: {integrity: sha512-XnaMx4zgsZtia21mfL58Uuu+mt79P4uW6jAGKWtQx+tTAerBIp4Z3R7b/S8BMynW/TgQa19KR08eIy8lf0gTSA==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -6726,7 +6727,7 @@ packages:
       google-auth-library: 7.14.1
       inquirer: 8.2.6
       inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
-      isolate-package: 1.13.0
+      isolate-package: 1.13.2
       js-yaml: 3.14.1
       jsonwebtoken: 9.0.2
       leven: 3.1.0
@@ -8174,8 +8175,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /isolate-package@1.13.0:
-    resolution: {integrity: sha512-RNCYkTKGwG0d1h6P6dNRC/lH2SOIIJwoowuxJFBpfF/1uELmYwP8HA8C1tMIAU8ENfPW8qymEp7uAP/+0UC+KQ==}
+  /isolate-package@1.13.2:
+    resolution: {integrity: sha512-98pE1SX6iK4P9wW5RmwYFMoS3tFCOayfaspaRAlD7ve4ut7GikquVrMbGic7WnQacas+tGCBvlbNzC9kuCpDiA==}
     hasBin: true
     dependencies:
       '@npmcli/arborist': 7.4.0
