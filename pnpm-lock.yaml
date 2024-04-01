@@ -270,8 +270,8 @@ importers:
         specifier: ^20.12.2
         version: 20.12.2
       firebase-tools-with-isolate:
-        specifier: 13.6.0
-        version: 13.6.0(@pnpm/logger@5.0.0)
+        specifier: 13.6.2
+        version: 13.6.2
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -349,8 +349,8 @@ importers:
         specifier: 13.6.0
         version: 13.6.0
       isolate-package:
-        specifier: 1.9.4
-        version: link:../../../isolate-package
+        specifier: 1.13.0
+        version: 1.13.0
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -1759,8 +1759,8 @@ packages:
       duplexify: 4.1.3
       ent: 2.2.0
       fast-xml-parser: 4.3.4
-      gaxios: 6.2.0
-      google-auth-library: 9.6.3
+      gaxios: 6.3.0
+      google-auth-library: 9.7.0
       mime: 3.0.0
       mime-types: 2.1.35
       p-limit: 3.1.0
@@ -6693,8 +6693,8 @@ packages:
       - supports-color
     dev: false
 
-  /firebase-tools-with-isolate@13.6.0(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-gnlDsMBd8nilVI2J//WUZ3rEF6TubN/5E1ega/qWe4lh7BXostzCTdV2ZGzn3W22YCjzJEX1gIiUVKZVoSJ2ew==}
+  /firebase-tools-with-isolate@13.6.2:
+    resolution: {integrity: sha512-k4GFP3QouBPsJMlEu76thcK15ZXgIodw1eBlGHV96wmUUVuFTvhTYGksByF9OHLEzpBU8pM+I3pEny/EL9IzOg==}
     engines: {node: '>=18.0.0 || >=20.0.0'}
     hasBin: true
     dependencies:
@@ -6726,7 +6726,7 @@ packages:
       google-auth-library: 7.14.1
       inquirer: 8.2.6
       inquirer-autocomplete-prompt: 2.0.1(inquirer@8.2.6)
-      isolate-package: 1.12.0(@pnpm/logger@5.0.0)
+      isolate-package: 1.13.0
       js-yaml: 3.14.1
       jsonwebtoken: 9.0.2
       leven: 3.1.0
@@ -6762,7 +6762,6 @@ packages:
       winston-transport: 4.7.0
       ws: 7.5.9
     transitivePeerDependencies:
-      - '@pnpm/logger'
       - bluebird
       - bufferutil
       - encoding
@@ -7109,21 +7108,6 @@ packages:
       - supports-color
     dev: true
 
-  /gaxios@6.2.0:
-    resolution: {integrity: sha512-H6+bHeoEAU5D6XNc6mPKeN5dLZqEDs9Gpk6I+SZBEzK5So58JVrHPmevNi35fRl1J9Y5TaeLW0kYx3pCJ1U2mQ==}
-    engines: {node: '>=14'}
-    requiresBuild: true
-    dependencies:
-      extend: 3.0.2
-      https-proxy-agent: 7.0.2
-      is-stream: 2.0.1
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-    optional: true
-
   /gaxios@6.3.0:
     resolution: {integrity: sha512-p+ggrQw3fBwH2F5N/PAI4k/G/y1art5OxKpb2J2chwNNHM4hHuAOtivjPuirMF4KNKwTTUal/lPfL2+7h2mEcg==}
     engines: {node: '>=14'}
@@ -7167,7 +7151,7 @@ packages:
     engines: {node: '>=14'}
     requiresBuild: true
     dependencies:
-      gaxios: 6.2.0
+      gaxios: 6.3.0
       json-bigint: 1.0.0
     transitivePeerDependencies:
       - encoding
@@ -7290,6 +7274,7 @@ packages:
       minimatch: 9.0.4
       minipass: 7.0.4
       path-scurry: 1.10.2
+    dev: false
 
   /glob@10.3.12:
     resolution: {integrity: sha512-TCNv8vJ+xz4QiqTpfOJA7HvYv+tNIRHKfUWw/q+v2jdgN4ebz+KY9tGx5J4rHP0o84mNP+ApH66HRX8us3Khqg==}
@@ -7301,7 +7286,6 @@ packages:
       minimatch: 9.0.4
       minipass: 7.0.4
       path-scurry: 1.10.2
-    dev: true
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
@@ -7408,23 +7392,6 @@ packages:
       - encoding
       - supports-color
     dev: true
-
-  /google-auth-library@9.6.3:
-    resolution: {integrity: sha512-4CacM29MLC2eT9Cey5GDVK4Q8t+MMp8+OEdOaqD9MG6b0dOyLORaaeJMPQ7EESVgm/+z5EKYyFLxgzBJlJgyHQ==}
-    engines: {node: '>=14'}
-    requiresBuild: true
-    dependencies:
-      base64-js: 1.5.1
-      ecdsa-sig-formatter: 1.0.11
-      gaxios: 6.2.0
-      gcp-metadata: 6.1.0
-      gtoken: 7.1.0
-      jws: 4.0.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-    optional: true
 
   /google-auth-library@9.7.0:
     resolution: {integrity: sha512-I/AvzBiUXDzLOy4iIZ2W+Zq33W4lcukQv1nl7C8WUA6SQwyQwUwu3waNmWNAvzds//FG8SZ+DnKnW/2k6mQS8A==}
@@ -7555,7 +7522,7 @@ packages:
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
-      gaxios: 6.2.0
+      gaxios: 6.3.0
       jws: 4.0.0
     transitivePeerDependencies:
       - encoding
@@ -7721,18 +7688,6 @@ packages:
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
-
-  /https-proxy-agent@7.0.2:
-    resolution: {integrity: sha512-NmLNjm6ucYwtcUmL7JQC1ZQ57LmHP4lT15FQ8D61nak1rO6DH+fz5qNK2Ap5UN4ZapYICE3/0KodcLYSPsPbaA==}
-    engines: {node: '>= 14'}
-    requiresBuild: true
-    dependencies:
-      agent-base: 7.1.1
-      debug: 4.3.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-    optional: true
 
   /https-proxy-agent@7.0.4:
     resolution: {integrity: sha512-wlwpilI7YdjSkWaQ/7omYBMTliDcmCN8OLihO6I9B86g06lMyAoqgoDpV0XqoaPOKj+0DIdAvnsWfyAAhmimcg==}
@@ -8219,12 +8174,13 @@ packages:
     requiresBuild: true
     dev: true
 
-  /isolate-package@1.12.0(@pnpm/logger@5.0.0):
-    resolution: {integrity: sha512-InMOME/wscYK2+U4yKIAR/vneQ7az0jLMWD9KvaId0d/kZqIRuv3Y13OVR3CA2hR+AvjpXyRPGT6/Z4UA1k/Yg==}
+  /isolate-package@1.13.0:
+    resolution: {integrity: sha512-RNCYkTKGwG0d1h6P6dNRC/lH2SOIIJwoowuxJFBpfF/1uELmYwP8HA8C1tMIAU8ENfPW8qymEp7uAP/+0UC+KQ==}
     hasBin: true
     dependencies:
       '@npmcli/arborist': 7.4.0
       '@pnpm/lockfile-file': 8.1.8(@pnpm/logger@5.0.0)
+      '@pnpm/logger': 5.0.0
       '@pnpm/prune-lockfile': 5.0.10
       '@pnpm/types': 9.4.2
       chalk: 5.3.0
@@ -8239,7 +8195,6 @@ packages:
       type-fest: 4.14.0
       yaml: 2.4.1
     transitivePeerDependencies:
-      - '@pnpm/logger'
       - bluebird
       - supports-color
     dev: true
@@ -9281,6 +9236,7 @@ packages:
   /minipass-collect@2.0.1:
     resolution: {integrity: sha512-D7V8PO9oaz7PWGLbCACuI1qEOsq7UKfLotx/C0Aet43fCUB/wfQ7DYeq2oR/svFJGYDHPr38SHATeaj/ZoKHKw==}
     engines: {node: '>=16 || 14 >=14.17'}
+    requiresBuild: true
     dependencies:
       minipass: 7.0.4
     dev: true
@@ -10265,7 +10221,7 @@ packages:
     dependencies:
       lilconfig: 3.0.0
       postcss: 8.4.38
-      yaml: 2.3.4
+      yaml: 2.4.1
 
   /postcss-nested@6.0.1(postcss@8.4.38):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
@@ -11705,7 +11661,7 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       commander: 4.1.1
-      glob: 10.3.10
+      glob: 10.3.12
       lines-and-columns: 1.2.4
       mz: 2.7.0
       pirates: 4.0.6
@@ -13107,15 +13063,10 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     requiresBuild: true
 
-  /yaml@2.3.4:
-    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
-    engines: {node: '>= 14'}
-
   /yaml@2.4.1:
     resolution: {integrity: sha512-pIXzoImaqmfOrL7teGUBt/T7ZDnyeGBWyXQBvOVhLkWLN37GXv8NMLK406UY6dS51JfcQHsmcW5cJ441bHg6Lg==}
     engines: {node: '>= 14'}
     hasBin: true
-    dev: true
 
   /yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
