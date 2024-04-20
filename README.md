@@ -83,7 +83,10 @@ prefer to use a different package manager, there is
 and
 [a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
 
-I encourage anyone to give PNPM a try if you haven't already.
+I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
+efficient, PNPM has better support for monorepos, and the lockfile isolation
+code is solid and works in parallel for multiple packages,
+[unlike NPM](https://github.com/0x80/isolate-package/README.md#npm)
 
 <!-- If you like to try PNPM but do not have it installed yet, follow
 [these instructions](https://pnpm.io/installation). -->
