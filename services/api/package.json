@@ -26,12 +26,12 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "firebase-admin": "^12.0.0",
-    "firebase-functions": "^4.8.2",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.9.0",
     "firestore-server-utils": "1.0.0-4",
     "nocache": "^4.0.0",
-    "remeda": "^1.56.0",
-    "zod": "^3.22.4"
+    "remeda": "^1.60.1",
+    "zod": "^3.22.5"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -40,11 +40,11 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.12.2",
+    "@types/node": "^20.12.7",
     "firebase-tools-with-isolate": "13.6.4",
     "npm-run-all": "^4.1.5",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3",
-    "vitest": "^1.4.0"
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
   }
 }
