@@ -84,7 +84,7 @@ and
 [a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
 
 I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
-efficient, PNPM has better support for monorepos, and the the lockfile isolation
+efficient, PNPM has better support for monorepos, and the lockfile isolation
 code is solid and works in parallel for multiple packages,
 [unlike NPM](https://github.com/0x80/isolate-package/README.md#npm)
 
