@@ -3,9 +3,7 @@ import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import type { Request, Response } from "express";
 import {
-  getDocument,
-  incrementField,
-  serverTimestamp,
+  getDocument
 } from "firestore-server-utils";
 import { refs } from "~/refs.js";
 
@@ -13,14 +11,16 @@ export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({
     value: 0,
     mutation_count: 0,
-    mutated_at: serverTimestamp(),
+    mutated_at: FieldValue.serverTimestamp(),
     is_flagged: false,
-  } satisfies Counter);
+  } satisfies WithFieldValue<Counter>);
 
   res.status(200).end();
 }
 
 import { z } from "zod";
+import { FieldValue } from "firebase-admin/firestore";
+import { UpdateData, WithFieldValue } from "@google-cloud/firestore";
 
 const AddPayload = z.object({
   n: z.number(),
@@ -37,8 +37,8 @@ export async function add(req: Request, res: Response) {
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
 
     await counter.ref.update({
-      value: incrementField(n),
-    } satisfies Partial<Counter>);
+      value: FieldValue.increment(n),
+    } satisfies UpdateData<Counter>);
 
     res.status(200).end();
   } catch (err) {
@@ -59,7 +59,7 @@ export async function multiply(req: Request, res: Response) {
 
     await counter.ref.update({
       value: counter.data.value * n,
-    } satisfies Partial<Counter>);
+    } satisfies UpdateData<Counter>);
 
     res.status(200).end();
   } catch (err) {

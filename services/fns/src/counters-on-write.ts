@@ -1,6 +1,6 @@
 import { areWeThereYet, type Counter } from "@repo/common";
+import { FieldValue, UpdateData } from "firebase-admin/firestore";
 import functions from "firebase-functions";
-import { incrementField, serverTimestamp } from "firestore-server-utils";
 import { counterFlagThreshold, region } from "~/config.js";
 
 /**
@@ -34,9 +34,9 @@ export const countersOnWrite = functions
     /** Just a test to link something from common */
     console.log(areWeThereYet());
 
-    const updateData: Partial<Counter> = {
-      mutated_at: serverTimestamp(),
-      mutation_count: incrementField(1),
+    const updateData: UpdateData<Counter> = {
+      mutated_at: FieldValue.serverTimestamp(),
+      mutation_count: FieldValue.increment(1),
     };
 
     if (after.value < counterFlagThreshold && after.is_flagged) {
