@@ -1,5 +1,6 @@
 import { areWeThereYet, type Counter } from "@repo/common";
-import { FieldValue, UpdateData } from "firebase-admin/firestore";
+import type { UpdateData } from "firebase-admin/firestore";
+import { FieldValue } from "firebase-admin/firestore";
 import functions from "firebase-functions";
 import { counterFlagThreshold, region } from "~/config.js";
 

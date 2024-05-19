@@ -2,10 +2,11 @@ import { isPlainObject } from "@repo/backend/utils";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import type { Request, Response } from "express";
-import {
-  getDocument
-} from "firestore-server-utils";
+import { getDocument } from "firestore-server-utils";
 import { refs } from "~/refs.js";
+import { z } from "zod";
+import { FieldValue } from "firebase-admin/firestore";
+import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
 
 export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({
@@ -17,10 +18,6 @@ export async function reset(_req: Request, res: Response) {
 
   res.status(200).end();
 }
-
-import { z } from "zod";
-import { FieldValue } from "firebase-admin/firestore";
-import { UpdateData, WithFieldValue } from "@google-cloud/firestore";
 
 const AddPayload = z.object({
   n: z.number(),
