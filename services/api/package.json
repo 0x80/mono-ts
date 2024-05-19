@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@google-cloud/functions-framework": "^3.3.0",
+    "@google-cloud/functions-framework": "^3.4.0",
     "@repo/backend": "*",
     "@repo/common": "*",
     "body-parser": "^1.20.2",
@@ -28,11 +28,11 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "firebase-admin": "^12.1.0",
-    "firebase-functions": "^4.9.0",
-    "firestore-server-utils": "1.0.0-4",
+    "firebase-functions": "^5.0.1",
+    "firestore-server-utils": "1.0.0-7",
     "nocache": "^4.0.0",
-    "remeda": "^1.60.1",
-    "zod": "^3.22.5"
+    "remeda": "^1.61.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -41,11 +41,12 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.12",
+    "eslint": "8",
     "firebase-tools-with-isolate": "13.7.3",
     "npm-run-all": "^4.1.5",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
-    "vitest": "^1.5.0"
+    "vitest": "^1.6.0"
   }
 }
