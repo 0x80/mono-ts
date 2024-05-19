@@ -7,6 +7,7 @@
 - [Install](#install)
 - [Usage](#usage)
 - [Workspace](#workspace)
+  - [Namespace](#namespace)
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
@@ -82,7 +83,10 @@ prefer to use a different package manager, there is
 and
 [a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
 
-I encourage anyone to give PNPM a try if you haven't already.
+I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
+efficient, PNPM has better support for monorepos, and the lockfile isolation
+code is solid and works in parallel for multiple packages,
+[unlike NPM](https://github.com/0x80/isolate-package/README.md#npm)
 
 <!-- If you like to try PNPM but do not have it installed yet, follow
 [these instructions](https://pnpm.io/installation). -->
@@ -250,10 +254,11 @@ But, as always, there are also some disadvantages you should be aware of:
   can start to suffer when the codebase grows. See
   [caveats](https://turbo.build/blog/you-might-not-need-typescript-project-references#caveats)
   for more info.
-- Since the consuming application is treating the package as a regular source
-  code, you can not make your package an ESM module if your consuming context is
-  not configured to use ESM. This demo shows how to use ESM for all packages
-  including the Next.js app.
+- The shared package is effectively just a source folder, and as a whole it
+  needs to be transpiled and bundled into the consuming package. This means that
+  its dependencies must also be available in the consuming package. Next.js can
+  do this for you with the `transpilePackage` setting, but this is the reason
+  `services/api` includes `remeda`, as it is used by `packages/common`.
 
 For testing and comparison, mono-ts uses the internal packages approach for
 `@repo/common` and a traditional built approach for `@repo/backend`. Both are

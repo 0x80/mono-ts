@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
+  "display": "The common base settings",
   "compilerOptions": {
     "target": "ES2022",
     "composite": false,
