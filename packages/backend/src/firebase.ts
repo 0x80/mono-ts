@@ -9,7 +9,6 @@ export type { Firestore } from "firebase-admin/firestore";
 
 export type { UpdateData } from "firebase-admin/firestore";
 
-
 if (!admin.apps.length) {
   admin.initializeApp();
 
