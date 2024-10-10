@@ -36,15 +36,12 @@ This is a personal quest for the perfect Typescript monorepo setup.
 
 It is the best I could come up with given the tooling that is available, so
 expect this repository to change over time as the ecosystem around Typescript
-and Javascript evolves.
+evolves.
 
 My current projects are based on Node.js, Next.js, and Firebase, so that is what
-I am focussing on. If you use different platforms, I believe this is still a
-great reference, as it should be easy discard anything you have no use for. The
-approach itself is largely independent of the chosen technology stack.
-
-Also, I am still working on some Firestore abstractions (server and client-side)
-that will hopefully make it in here in the coming months.
+I am focussing on primarily. If you use different a different stack, I believe
+this can still be a great reference, as the approach itself does not depend on
+it.
 
 Contributions and suggestions are welcome within the scope of this example, but
 I doubt there ever will be a one-size-fits-all solution, so this code should be
@@ -62,18 +59,20 @@ and I recommend reading
 ## Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
-  dependencies, including a watch task.
-- Showing a traditional "built package" with multiple entry points as well as
-  the ["internal package"](#the-internal-packages-strategy) strategy referencing
-  Typescript code directly
+  dependencies, including the v2 watch task.
+- Showcasing a traditional "built package" with multiple entry points, as well
+  as the ["internal package"](#the-internal-packages-strategy) strategy
+  referencing Typescript code directly.
 - Multiple isolated Firebase deployments, using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+- Firebase emulators with hot reloading
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
-- Use ESM for everything
-- Shared configurations for ESLint and Typescript
-- Path aliases
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
+- ES modules for everything
+- Path aliases
+- Shared configurations for ESLint
+- Simple standardized configuration for TypeScript
 - Vitest
 
 ## Install
@@ -99,22 +98,27 @@ Then run `pnpm install` from the repository root.
 
 ## Usage
 
-Run the following from the root of the monorepo in two separate processes:
+There are 4 commands to run in separate processes:
 
-- `pnpm watch`: Build the packages using a watch task
-- `pnpm dev`: Start the Next.js dev server and the Firebase emulators.
+- From the monorepo root, run `pnpm watch`. This builds all the code (except the
+  web app) using the Turborepo watch task.
+- From `apps/web` run `pnpm dev`. This start the Next.js dev server and builds
+  its pages on request.
+- From `services/api` run `pnpm emulate`. This starts the emulators for the API
+  server.
+- From `services/fns` run `pnpm emulate`. This starts the emulators for the
+  (other) Firebase functions.
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
 
-Alternatively, you can run the emulators and Next.js dev server in separate
-processes. It makes the console output more readable and preserves coloring:
+You should now have a working local setup, in which code changes to any package
+are picked up.
 
-- In `apps/web` run `pnpm dev`
-- In `services/fns` run `pnpm dev`
-- In `services/api` run `pnpm dev`
-
-Additional information can be found in the README files of the various packages.
+> Note that hot-reloading for the firebase packages like API are not as instant
+> as you are used to with front-end tooling like Next.js. When code changes are
+> detected, the isolate process needs to run again to compile new output and the
+> function needs to reload.
 
 ## Workspace
 

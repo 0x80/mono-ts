@@ -11,17 +11,12 @@
     "./firebase": "./dist/firebase.js"
   },
   "scripts": {
-    "bundle": "tsup-node",
-    "bundle:watch": "tsup-node --watch",
     "compile": "tsc --noEmit",
-    "type:gen": "tsc --emitDeclarationOnly",
-    "type:gen:watch": "tsc --emitDeclarationOnly --watch",
-    "build": "run-p bundle type:gen",
-    "dev": "run-p bundle:watch type:gen:watch",
-    "clean": "del dist tsconfig.tsbuildinfo",
+    "lint": "eslint . --max-warnings 0",
     "test": "vitest",
-    "coverage": "vitest run --coverage ",
-    "lint": "eslint . --max-warnings 0"
+    "build": "tsup && tsc --emitDeclarationOnly",
+    "clean": "del-cli dist tsconfig.tsbuildinfo",
+    "coverage": "vitest run --coverage "
   },
   "license": "MIT",
   "dependencies": {

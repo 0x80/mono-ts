@@ -1,12 +1,11 @@
-import { isPlainObject } from "@repo/backend/utils";
+import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import type { Request, Response } from "express";
-import { getDocument } from "firestore-server-utils";
-import { refs } from "~/refs.js";
-import { z } from "zod";
 import { FieldValue } from "firebase-admin/firestore";
-import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
+import { getDocument } from "firestore-server-utils";
+import { z } from "zod";
+import { refs } from "~/refs.js";
 
 export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({
@@ -25,10 +24,6 @@ const AddPayload = z.object({
 
 export async function add(req: Request, res: Response) {
   try {
-    if (isPlainObject(req.body)) {
-      console.log("+++ reg.body is a plain object");
-    }
-
     const { n } = AddPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");

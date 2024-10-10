@@ -4,8 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "compile": "tsc --noEmit",
     "dev": "next dev",
     "build": "next build",
+    "clean": "del-cli .next tsconfig.tsbuildinfo",
     "start": "next start",
     "lint": "next lint"
   },
@@ -32,6 +34,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.20",
+    "del-cli": "^6.0.0",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.15",
     "postcss": "^8.4.47",

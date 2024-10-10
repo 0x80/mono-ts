@@ -10,11 +10,11 @@
     "src"
   ],
   "scripts": {
-    "build?": "No build step required. This package links directly to its source files",
     "compile": "tsc --noEmit",
     "test": "vitest",
-    "coverage": "vitest run --coverage ",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "build?": "No build step required. This package links directly to its source files",
+    "coverage": "vitest run --coverage "
   },
   "license": "MIT",
   "dependencies": {

@@ -90,6 +90,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
       eslint:
         specifier: 8.57.0
         version: 8.57.0
@@ -272,6 +275,9 @@ importers:
       '@types/node':
         specifier: ^22.7.5
         version: 22.7.5
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -348,6 +354,9 @@ importers:
       '@types/node':
         specifier: ^22.7.5
         version: 22.7.5
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
       eslint:
         specifier: ^8.57.1
         version: 8.57.1

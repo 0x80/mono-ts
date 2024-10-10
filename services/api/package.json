@@ -11,7 +11,7 @@
   "scripts": {
     "compile": "tsc --noEmit",
     "build": "tsup-node",
-    "dev": "pnpm run emulate",
+    "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
     "lint": "eslint . --max-warnings 0",
     "deploy": "firebase deploy --project demo-mono-ts --only functions",
     "emulate": "firebase emulators:start --project demo-mono-ts --only functions"
@@ -40,6 +40,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^22.7.5",
+    "del-cli": "^6.0.0",
     "eslint": "^8.57.1",
     "firebase-tools-with-isolate": "13.16.0",
     "tsup": "^8.3.0",
