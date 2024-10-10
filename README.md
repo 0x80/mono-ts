@@ -67,12 +67,10 @@ and I recommend reading
   the ["internal package"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
 - Multiple isolated Firebase deployments, using
-  [isolate-package](https://github.com/0x80/isolate-package/)
-- Firebase emulators with live code updates using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
   [Tailwind CSS](https://tailwindcss.com/)
-- Using ESM throughout, including the Next.js app
+- Use ESM for everything
 - Shared configurations for ESLint and Typescript
 - Path aliases
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
@@ -84,11 +82,10 @@ In the main branch of this repo, packages are managed with PNPM.
 
 There is also a branch for [NPM](https://github.com/0x80/mono-ts/tree/use-npm)
 
-Originally I included branches for
+Originally, I included branches for
 [Yarn classic (v1)](https://github.com/0x80/mono-ts/tree/use-yarn-classic),
 [and modern (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern), but I
-stopped updating them as it is too time consuming, and hardly anyone uses Yarn
-anymore.
+stopped updating them as Yarn is not that commonly used anymore.
 
 I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
 efficient, I believe PNPM has better support for monorepos.
@@ -102,21 +99,16 @@ Then run `pnpm install` from the repository root.
 
 ## Usage
 
-To get started quickly, run this from the root in two separate terminals:
+Run the following from the root of the monorepo in two separate processes:
 
-- `pnpm watch`: This will build @repo/backend with a watch task.
-- `pnpm dev`: from the root.
-
-This will:
-
-- Build the `web` app and start its dev server
-- Build the `api` and `fns` backend services and start their emulators.
+- `pnpm watch`: Build the packages using a watch task
+- `pnpm dev`: Start the Next.js dev server and the Firebase emulators.
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
 
-Alternatively, you can start the emulators and dev server separately. It makes
-the console output more readable and preserves coloring:
+Alternatively, you can run the emulators and Next.js dev server in separate
+processes. It makes the console output more readable and preserves coloring:
 
 - In `apps/web` run `pnpm dev`
 - In `services/fns` run `pnpm dev`
@@ -134,8 +126,7 @@ might as well pick a generic one that you can use in every private codebase.
 
 At first I used `@mono`, and later I switched to `@repo` when I discovered that
 in the Turborepo examples. I like both, because they are equally short and
-clear, but I went with `@repo` because I expect it is more likely to become a
-standard.
+clear, but I went with `@repo` because I expect it will become the standard.
 
 ### Packages
 
@@ -190,10 +181,12 @@ If you use path aliases like `~/*` or `@/*` to conveniently reference top-level
 folders from deeply nested import statements, these paths are not converted by
 the standard Typescript `tsc` compiler.
 
-If your only target is a platform like Next.js, that uses a bundler under the
-hood, this is not an issue because these aliases are handled for you. But if you
-target other platforms like Firebase, you might have to convert them. A bundler
-like TSUP can do this transformation.
+A bundler will typically remove path aliases, because it combines your code into
+self-contained files that do not import other local files themselves.
+
+If you target platforms without using bundler, you will have to convert them.
+You can run something like `tsc-alias` after your build step. Note that path
+aliases can also end up in `d.ts` files.
 
 ### Write ESM without import file extensions
 

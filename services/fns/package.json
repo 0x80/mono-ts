@@ -10,11 +10,9 @@
     ".env.*"
   ],
   "scripts": {
-    "type:check": "tsc --noEmit",
+    "compile": "tsc --noEmit",
     "build": "tsup-node",
-    "?": "This is not the recommended way to integrate isolate, see services/api and docs instead",
-    "dev": "run-s build isolate emulate",
-    "isolate": "isolate",
+    "dev": "pnpm run emulate",
     "lint": "eslint . --max-warnings 0",
     "deploy": "firebase deploy",
     "emulate": "firebase emulators:start --project demo-mono-ts",
@@ -30,7 +28,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "firebase-admin": "^12.6.0",
-    "firebase-functions": "^6.0.1",
+    "firebase-functions": "^5.1.1",
     "firestore-server-utils": "1.0.0",
     "nocache": "^4.0.0",
     "remeda": "^2.15.0",
@@ -45,8 +43,7 @@
     "@types/node": "^22.7.5",
     "eslint": "^8.57.1",
     "firebase-tools": "13.22.0",
-    "isolate-package": "1.19.0",
-    "npm-run-all": "^4.1.5",
+    "firebase-tools-with-isolate": "13.16.0",
     "tsup": "^8.3.0",
     "typescript": "^5.6.3",
     "vitest": "^1.6.0"

@@ -13,7 +13,7 @@
   "scripts": {
     "bundle": "tsup-node",
     "bundle:watch": "tsup-node --watch",
-    "type:check": "tsc --noEmit",
+    "compile": "tsc --noEmit",
     "type:gen": "tsc --emitDeclarationOnly",
     "type:gen:watch": "tsc --emitDeclarationOnly --watch",
     "build": "run-p bundle type:gen",
@@ -28,7 +28,7 @@
     "@repo/common": "workspace:*",
     "@sindresorhus/is": "^7.0.1",
     "firebase-admin": "^12.6.0",
-    "firebase-functions": "^6.0.1",
+    "firebase-functions": "^5.1.1",
     "ts-is-present": "^1.2.2"
   },
   "devDependencies": {
