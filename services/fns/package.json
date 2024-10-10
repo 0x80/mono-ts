@@ -31,8 +31,7 @@
     "firebase-functions": "^5.1.1",
     "firestore-server-utils": "1.0.0",
     "nocache": "^4.0.0",
-    "remeda": "^2.15.0",
-    "ts-is-present": "^1.2.2"
+    "remeda": "^2.15.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

@@ -120,9 +120,6 @@ importers:
       firebase-functions:
         specifier: ^5.1.1
         version: 5.1.1(firebase-admin@12.6.0(encoding@0.1.13))
-      ts-is-present:
-        specifier: ^1.2.2
-        version: 1.2.2
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -332,9 +329,6 @@ importers:
       remeda:
         specifier: ^2.15.0
         version: 2.15.0
-      ts-is-present:
-        specifier: ^1.2.2
-        version: 1.2.2
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -6868,9 +6862,6 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
-
-  ts-is-present@1.2.2:
-    resolution: {integrity: sha512-cA5MPLWGWYXvnlJb4TamUUx858HVHBsxxdy8l7jxODOLDyGYnQOllob2A2jyDghGa5iJHs2gzFNHvwGJ0ZfR8g==}
 
   ts-morph@12.0.0:
     resolution: {integrity: sha512-VHC8XgU2fFW7yO1f/b3mxKDje1vmyzFXHWzOYmKEkCEwcLjDtbdLgBQviqj4ZwP4MJkQtRo6Ha2I29lq/B+VxA==}
@@ -15382,8 +15373,6 @@ snapshots:
       typescript: 5.6.3
 
   ts-interface-checker@0.1.13: {}
-
-  ts-is-present@1.2.2: {}
 
   ts-morph@12.0.0:
     dependencies:
