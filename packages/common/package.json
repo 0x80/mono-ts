@@ -10,8 +10,8 @@
     "src"
   ],
   "scripts": {
-    "?build": "This package is links directly to its source files",
-    "type-check": "tsc --noEmit",
+    "build?": "No build step required. This package links directly to its source files",
+    "compile": "tsc --noEmit",
     "test": "vitest",
     "coverage": "vitest run --coverage ",
     "lint": "eslint . --max-warnings 0"

@@ -21,12 +21,13 @@
     "url": "https://github.com/0x80/mono-ts"
   },
   "scripts": {
-    "type:check": "turbo run type:check",
+    "compile": "turbo run compile",
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
+    "watch": "turbo watch build --filter=@repo/backend",
+    "lint": "turbo run lint --parallel",
+    "test": "turbo run test -- --watch false",
     "format": "prettier --write ."
   },
   "devDependencies": {

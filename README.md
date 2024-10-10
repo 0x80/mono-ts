@@ -55,10 +55,14 @@ I ended up basing a lot of things on the
 and I recommend reading
 [their monorepo handbook](https://turbo.build/repo/docs/handbook).
 
+> For demonstration purposes, mono-ts uses the "internal packages approach" for
+> `@repo/common` and a traditional built approach for `@repo/backend`. Read
+> below for more info.
+
 ## Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
-  dependencies
+  dependencies, including a watch task.
 - Showing a traditional "built package" with multiple entry points as well as
   the ["internal package"](#the-internal-packages-strategy) strategy referencing
   Typescript code directly
@@ -76,20 +80,18 @@ and I recommend reading
 
 ## Install
 
-In the main branch of this repo, packages are managed with PNPM, but if you
-prefer to use a different package manager, there is
-[a branch using NPM](https://github.com/0x80/mono-ts/tree/use-npm),
-[a branch using classic Yarn (v1)](https://github.com/0x80/mono-ts/tree/use-yarn-classic),
-and
-[a branch using modern Yarn (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern)
+In the main branch of this repo, packages are managed with PNPM.
+
+There is also a branch for [NPM](https://github.com/0x80/mono-ts/tree/use-npm)
+
+Originally I included branches for
+[Yarn classic (v1)](https://github.com/0x80/mono-ts/tree/use-yarn-classic),
+[and modern (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern), but I
+stopped updating them as it is too time consuming, and hardly anyone uses Yarn
+anymore.
 
 I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
-efficient, PNPM has better support for monorepos, and the lockfile isolation
-code is solid and works in parallel for multiple packages,
-[unlike NPM](https://github.com/0x80/isolate-package/README.md#npm)
-
-<!-- If you like to try PNPM but do not have it installed yet, follow
-[these instructions](https://pnpm.io/installation). -->
+efficient, I believe PNPM has better support for monorepos.
 
 You can install PNPM with `corepack` which is part of modern Node.js versions:
 
@@ -100,7 +102,10 @@ Then run `pnpm install` from the repository root.
 
 ## Usage
 
-To get started quickly run `npx turbo dev` from the root.
+To get started quickly, run this from the root in two separate terminals:
+
+- `pnpm watch`: This will build @repo/backend with a watch task.
+- `pnpm dev`: from the root.
 
 This will:
 
