@@ -1,6 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env", "**/.env.*local"],
+  "globalDependencies": [
+    ".env",
+    "**/.env.*local"
+  ],
   "globalEnv": [
     "PORT",
     "NODE_ENV",
@@ -14,28 +17,45 @@
     "NEXT_PUBLIC_FIREBASE_APP_ID",
     "NEXT_PUBLIC_USE_EMULATORS"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      // note: output globs are relative to each package's `package.json`
-      // (and not the monorepo root)
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": [
+        "^lint"
+      ]
     },
     "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"],
-      // A package's `test` script should only be rerun when
-      // either a `.tsx` or `.ts` file has changed in `src` or `test` folders.
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "coverage/**"
+      ],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "test/**/*.tsx"
+      ]
     },
     "type:check": {
-      "dependsOn": ["^type:check"]
+      "dependsOn": [
+        "^type:check"
+      ]
     },
     "clean": {
-      "dependsOn": ["^clean"]
+      "dependsOn": [
+        "^clean"
+      ]
     },
     "dev": {
       "cache": false,
