@@ -1,8 +1,8 @@
 import type { Counter } from "@repo/common";
 import { doc } from "firebase/firestore";
-import { useTypedDocument } from "~/lib/firestore.js";
-import { refs } from "~/refs.js";
-import KeyValueList from "./key-value-list.jsx";
+import { useTypedDocument } from "~/lib/firestore";
+import { refs } from "~/refs";
+import KeyValueList from "./key-value-list";
 
 export function CounterView(props: { counterId: string }) {
   const [counter, isLoading] = useTypedDocument<Counter>(

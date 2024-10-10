@@ -1,3 +1,3 @@
-export * from "./are-we-there-yet.js";
-export * from "./document-types.js";
-export * from "./utils/index.js";
+export * from "./are-we-there-yet";
+export * from "./document-types";
+export * from "./utils";

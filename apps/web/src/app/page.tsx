@@ -1,10 +1,10 @@
 "use client";
 
 import { areWeThereYet } from "@repo/common";
-import { CardDescription } from "~/components/ui/card.jsx";
-import { add, multiply, reset } from "~/lib/api.js";
-import CardWithAction from "./components/card-with-action.jsx";
-import { CounterView } from "./components/counter-view.jsx";
+import { CardDescription } from "~/components/ui/card";
+import { add, multiply, reset } from "~/lib/api";
+import CardWithAction from "./components/card-with-action";
+import { CounterView } from "./components/counter-view";
 
 export default function Home() {
   return (

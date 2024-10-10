@@ -81,6 +81,9 @@ importers:
         specifier: ^5.6.3
         version: 5.6.3
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -121,6 +124,9 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(firebase-admin@12.6.0(encoding@0.1.13))
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -158,6 +164,9 @@ importers:
         specifier: ^2.15.0
         version: 2.15.0
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -182,6 +191,9 @@ importers:
 
   packages/eslint-config:
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.8.1
         version: 8.8.1(@typescript-eslint/parser@8.8.1(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3))(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.3)
@@ -207,7 +219,11 @@ importers:
         specifier: ^5.6.3
         version: 5.6.3
 
-  packages/typescript-config: {}
+  packages/typescript-config:
+    devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
 
   services/api:
     dependencies:
@@ -251,6 +267,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -330,6 +349,9 @@ importers:
         specifier: ^2.15.0
         version: 2.15.0
     devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -488,6 +510,9 @@ packages:
   '@babel/types@7.24.0':
     resolution: {integrity: sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==}
     engines: {node: '>=6.9.0'}
+
+  '@codecompose/typescript-config@1.1.3':
+    resolution: {integrity: sha512-Idjz3rkoopGTWpGGM+9aOknfp6x56DUZ7dPrigq52dN7U08JlUFKo5qTqjgqy9gpGA79UEesUz8564/jQlvpGQ==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -7615,6 +7640,8 @@ snapshots:
       '@babel/helper-string-parser': 7.24.1
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
+
+  '@codecompose/typescript-config@1.1.3': {}
 
   '@colors/colors@1.5.0':
     optional: true

@@ -1,13 +1,8 @@
 {
-  "extends": "@repo/typescript-config/library.json",
-  "compilerOptions": {
-    "target": "esnext",
-    "rootDir": "src",
-    "outDir": "dist",
-    "composite": true,
-    "paths": {
-      "~/*": ["./*"]
+  "extends": "@codecompose/typescript-config/library.json",
+  "references": [
+    {
+      "path": "../common"
     }
-  },
-  "include": ["src"]
+  ]
 }

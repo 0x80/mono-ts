@@ -4,4 +4,4 @@
  */
 import "firebase-functions/logger/compat";
 
-export * from "./server.js";
+export * from "./server";
