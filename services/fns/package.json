@@ -34,6 +34,7 @@
     "remeda": "^2.15.0"
   },
   "devDependencies": {
+    "@codecompose/typescript-config": "^1.1.3",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/body-parser": "^1.19.5",

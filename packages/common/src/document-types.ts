@@ -1,6 +1,4 @@
-/**
- * This file contains Firestore document types
- */
+/** This file contains Firestore document types */
 
 import type { Timestamp } from "firebase/firestore";
 

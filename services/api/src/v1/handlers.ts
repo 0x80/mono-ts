@@ -5,7 +5,7 @@ import type { Request, Response } from "express";
 import { FieldValue } from "firebase-admin/firestore";
 import { getDocument } from "firestore-server-utils";
 import { z } from "zod";
-import { refs } from "~/refs.js";
+import { refs } from "~/refs";
 
 export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({

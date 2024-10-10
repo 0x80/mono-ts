@@ -1,4 +1,4 @@
-import { Button } from "~/components/ui/button.jsx";
+import { Button } from "~/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card.jsx";
+} from "~/components/ui/card";
 
 export default function CardWithAction(props: {
   title: string;

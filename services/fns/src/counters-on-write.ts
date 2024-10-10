@@ -2,7 +2,7 @@ import { areWeThereYet, type Counter } from "@repo/common";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
 import functions from "firebase-functions";
-import { counterFlagThreshold, region } from "~/config.js";
+import { counterFlagThreshold, region } from "~/config";
 
 /**
  * This is a bit of a contrived example, and by no means a demonstration of

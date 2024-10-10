@@ -1,3 +1,3 @@
-export * from "./assertions.js";
-export * from "./timer.js";
+export * from "./assertions";
+export * from "./timer";
 // Compare this snippet from packages/backend/src/utils/index.ts:

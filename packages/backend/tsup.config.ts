@@ -8,9 +8,7 @@ export default defineConfig({
      */
     "utils/index": "src/utils/index.ts",
 
-    /**
-     * Files
-     */
+    /** Files */
     firebase: "src/firebase.ts",
   },
   format: ["esm"],
