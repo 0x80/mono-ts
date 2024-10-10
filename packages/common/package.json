@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "firebase": "^10.14.0",
-    "remeda": "^1.61.0"
+    "remeda": "^2.15.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
