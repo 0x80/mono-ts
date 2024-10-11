@@ -1,3 +1,4 @@
+import { startTimer } from "@repo/backend/utils";
 import { areWeThereYet, type Counter } from "@repo/common";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
@@ -12,6 +13,9 @@ export const countersOnWrite = functions
   .region(region)
   .firestore.document("counters/{documentId}")
   .onWrite(async (change) => {
+    /** Test sharing code from packages/backend */
+    const [point, end] = startTimer("countersOnWrite");
+
     const before = change.before.data() as Counter | undefined;
     const after = change.after.data() as Counter | undefined;
 
@@ -32,8 +36,10 @@ export const countersOnWrite = functions
       return;
     }
 
-    /** Just a test to link something from common */
+    /** Test sharing code from packages/common */
     console.log(areWeThereYet());
+
+    point("About to update document");
 
     const updateData: UpdateData<Counter> = {
       mutated_at: FieldValue.serverTimestamp(),
@@ -47,4 +53,6 @@ export const countersOnWrite = functions
     }
 
     await change.after.ref.update(updateData);
+
+    end();
   });

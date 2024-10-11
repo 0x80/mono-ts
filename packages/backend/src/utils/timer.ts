@@ -1,3 +1,7 @@
+/**
+ * A timer to log the duration of operations. It is here just to test sharing
+ * some code.
+ */
 export function startTimer(timerLabel = "Timer") {
   const timer = Date.now();
   let lastPoint = timer;

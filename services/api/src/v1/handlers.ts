@@ -1,4 +1,5 @@
 import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
+import { startTimer } from "@repo/backend/utils";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import type { Request, Response } from "express";
@@ -24,15 +25,24 @@ const AddPayload = z.object({
 
 export async function add(req: Request, res: Response) {
   try {
+    /** Test sharing code from packages/backend */
+    const [point, end] = startTimer("add");
+
     const { n } = AddPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
+
+    point("Got document");
 
     await counter.ref.update({
       value: FieldValue.increment(n),
     } satisfies UpdateData<Counter>);
 
+    point("Updated document");
+
     res.status(200).end();
+
+    end();
   } catch (err) {
     console.error(err);
     res.status(500).send(getErrorMessage(err));
@@ -45,15 +55,24 @@ const MultiplyPayload = z.object({
 
 export async function multiply(req: Request, res: Response) {
   try {
+    /** Test sharing code from packages/backend */
+    const [point, end] = startTimer("multiply");
+
     const { n } = MultiplyPayload.parse(req.body);
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
+
+    point("Got document");
 
     await counter.ref.update({
       value: counter.data.value * n,
     } satisfies UpdateData<Counter>);
 
+    point("Updated document");
+
     res.status(200).end();
+
+    end();
   } catch (err) {
     console.error(err);
     res.status(500).send(getErrorMessage(err));
