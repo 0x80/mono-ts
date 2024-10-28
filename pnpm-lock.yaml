@@ -87,9 +87,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -130,9 +127,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
       '@types/node':
         specifier: ^22.7.5
         version: 22.7.5
@@ -170,9 +164,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -218,12 +209,6 @@ importers:
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
-
-  packages/typescript-config:
-    devDependencies:
-      '@codecompose/typescript-config':
-        specifier: ^1.1.3
-        version: 1.1.3
 
   services/api:
     dependencies:
@@ -273,9 +258,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
       '@types/body-parser':
         specifier: ^1.19.5
         version: 1.19.5
@@ -355,9 +337,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
       '@types/body-parser':
         specifier: ^1.19.5
         version: 1.19.5
