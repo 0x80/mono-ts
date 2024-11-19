@@ -30,11 +30,9 @@ jobs:
         working-directory: ./services/backend
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v13.7.1
-        continue-on-error: false
-        with:
-          args: deploy --only firestore,functions --force
+        run: |
+          npx firebase deploy --only firestore,functions --force
+        working-directory: ./services/backend
         env:
           GCP_SA_KEY: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           PROJECT_ID: early-dev-73f4d
-        working-directory: ./services/backend
