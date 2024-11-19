@@ -3,6 +3,9 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   transpilePackages: ["@repo/common"],
+  images: {
+    domains: ['storage.googleapis.com','firebasestorage.googleapis.com'],
+  },
 
   /** This is currently required to make Next.js work with ESM style imports. */
   webpack(config) {

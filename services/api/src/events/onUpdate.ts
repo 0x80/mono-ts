@@ -137,7 +137,7 @@ export const onUpdateEvent = async (
               activateTaskId: activateTaskId,
             },
           });
-        // meter task de activar tickets, si es concurrente verlo despues pero seria una sub collection donde cada id sea date_hora, y ahi meter los tickets
+        // meter task de actilet tickets, si es concurrente verlo despues pero seria una sub collection donde cada id sea date_hora, y ahi meter los tickets
       } catch (error) {
         if (error instanceof Error) {
           throw new functions.https.HttpsError("internal", error.message);
