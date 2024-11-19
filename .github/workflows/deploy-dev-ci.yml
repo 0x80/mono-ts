@@ -36,5 +36,5 @@ jobs:
       - name: Deploy to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --only functions
+        run: npx firebase deploy
         working-directory: ./services/api
