@@ -17,6 +17,7 @@ const useStyles = makeStyles()((_) => ({
     backgroundColor: "#fff",
   },
 }));
+
 const activatedStatus = ["Active", "Expired", "Visible", "Private"];
 
 export default function ProducerEventPage() {
