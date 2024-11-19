@@ -3,10 +3,17 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "services/api/**"
+      - "packages/**"
 
 jobs:
   Firebase-Functions-Deploy:
     runs-on: ubuntu-latest
+
+    env: # Added environment variables here
+      FIREBASE_PROJECT_ID: early-prod-dddac
+      FIREBASE_STORAGE_BUCKET: early-prod-dddac.appspot.com
 
     steps:
       - name: Checkout repo
