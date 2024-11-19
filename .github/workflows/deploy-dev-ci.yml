@@ -34,9 +34,7 @@ jobs:
             ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Deploy to Firebase
-        run: |
-          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcp-key.json"
-          npx firebase deploy --only firestore,functions --force
-        working-directory: ./services/api
         env:
-          PROJECT_ID: early-dev-73f4d
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only functions
+        working-directory: ./services/api
