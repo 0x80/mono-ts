@@ -25,10 +25,18 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Authenticate to Firebase
+        run:
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" >
+          $HOME/gcp-key.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS:
+            ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+
       - name: Deploy to Firebase
         run: |
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcp-key.json"
           npx firebase deploy --only firestore,functions --force
         working-directory: ./services/api
         env:
-          GCP_SA_KEY: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           PROJECT_ID: early-dev-73f4d
