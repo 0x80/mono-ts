@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to Firebase
         run: |
           npx firebase deploy --only firestore,functions --force
-        working-directory: ./services/backend
+        working-directory: ./services/api
         env:
           GCP_SA_KEY: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           PROJECT_ID: early-dev-73f4d

@@ -22,7 +22,7 @@
     "@google-cloud/functions-framework": "^3.4.2",
     "@google-cloud/secret-manager": "^5.6.0",
     "@google-cloud/tasks": "^5.5.1",
-    "@repo/backend": "workspace:*",
+    "@repo/firebase": "workspace:*",
     "@repo/common": "workspace:*",
     "@types/node": "^20.12.12",
     "axios": "^1.7.2",

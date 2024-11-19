@@ -1,5 +1,5 @@
 {
-  "name": "@repo/backend",
+  "name": "@repo/firebase",
   "version": "0.0.0",
   "type": "module",
   "files": [
@@ -22,8 +22,8 @@
   "dependencies": {
     "@repo/common": "workspace:*",
     "@sindresorhus/is": "^7.0.1",
-    "firebase-admin": "^12.6.0",
-    "firebase-functions": "^5.1.1"
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.1.0"
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.1.3",

@@ -136,8 +136,8 @@ clear, but I went with `@repo` because I expect it will become the standard.
 
 - [common](./packages/common) Code that can shared across both front-end and
   back-end environments.
-- [backend](./packages/backend) Code that is shared between server environments
-  like cloud functions.
+- [firebase](./packages/firebase) Code that is shared between server
+  environments like cloud functions.
 
 ### Apps
 

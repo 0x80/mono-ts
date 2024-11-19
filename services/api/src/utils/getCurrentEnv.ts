@@ -1,4 +1,4 @@
-import { firebaseApp } from "@repo/backend/firebase";
+import { firebaseApp } from "@repo/firebase/firebase";
 export const getCurrentEnv = () => {
   const projectId = firebaseApp.options.projectId;
   return {

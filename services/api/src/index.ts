@@ -16,7 +16,7 @@ setGlobalOptions({
 });
 
 //import neo4j from "neo4j-driver";
-import { db, storage, auth } from "@repo/backend/firebase";
+import { db, storage, auth } from "@repo/firebase/firebase";
 
 import {
   createUser as createUserHandler,

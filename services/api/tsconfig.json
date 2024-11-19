@@ -5,7 +5,7 @@
       "path": "../../packages/common"
     },
     {
-      "path": "../../packages/backend"
+      "path": "../../packages/firebase"
     }
   ], "compilerOptions": {
     "outDir": "dist"
