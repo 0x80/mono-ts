@@ -25,10 +25,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build Backend
-        run: pnpm build
-        working-directory: ./services/backend
-
       - name: Deploy to Firebase
         run: |
           npx firebase deploy --only firestore,functions --force
