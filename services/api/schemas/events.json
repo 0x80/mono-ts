@@ -1,0 +1,55 @@
+{
+  "fields": [
+    {
+      "name": "info",
+      "type": "map",
+      "fields": [
+        { "name": "description", "type": "string" },
+        { "name": "end", "type": "timestamp" },
+        { "name": "image", "type": "string" },
+        { "name": "name", "type": "string" },
+        { "name": "start", "type": "timestamp" },
+        { "name": "status", "type": "string" },
+        { "name": "activationDate", "type": "number" },
+        { "name": "tags", "type": "string" },
+        { "name": "isConcurrent", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "schedule",
+      "type": "array",
+      "fields": [
+        { "name": "ticketCount", "type": "number" },
+        { "name": "name", "type": "string" },
+        { "name": "price", "type": "number" },
+        { "name": "serviceFeeSelled", "type": "number" },
+        { "name": "totalSelled", "type": "number" },
+        { "name": "totalWithServiceFeeSelled", "type": "number" },
+        { "name": "ticketTotal", "type": "number" },
+        { "name": "maxTicketPerBuy", "type": "number" },
+        { "name": "resellingTickets", "type": "number" },
+        { "name": "totalReselled", "type": "number" },
+        { "name": "totalReselledFee", "type": "number" },
+        { "name": "ticketReselledCount", "type": "number" },
+        { "name": "ticketSelledCount", "type": "number" }
+      ]
+    },
+    {
+      "name": "stats",
+      "type": "map",
+      "fields": [
+        { "name": "serviceFeeSelled", "type": "number" },
+        { "name": "totalSelled", "type": "number" },
+        { "name": "totalWithServiceFeeSelled", "type": "number" },
+        { "name": "ticketCount", "type": "number" },
+        { "name": "ticketValidated", "type": "number" },
+        { "name": "ticketTotal", "type": "number" },
+        { "name": "resellingTickets", "type": "number" },
+        { "name": "totalReselled", "type": "number" },
+        { "name": "totalReselledFee", "type": "number" },
+        { "name": "ticketReselledCount", "type": "number" },
+        { "name": "ticketSelledCount", "type": "number" }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,27 @@
     "turborepo",
     "nextjs"
   ],
+  "globalDependencies": [
+    ".env",
+    "**/.env.*local",
+    "FIREBASE_PROJECT_ID",
+    "FIREBASE_STORAGE_BUCKET"
+  ],
+  "globalEnv": [
+    "PORT",
+    "NODE_ENV",
+    "NEXT_PUBLIC_DEMO_API_ENDPOINT",
+    "NEXT_PUBLIC_DEMO_API_KEY",
+    "NEXT_PUBLIC_FIREBASE_API_KEY",
+    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+    "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+    "NEXT_PUBLIC_FIREBASE_APP_ID",
+    "NEXT_PUBLIC_USE_EMULATORS",
+    "FIREBASE_PROJECT_ID",
+    "FIREBASE_STORAGE_BUCKET"
+  ],
   "private": true,
   "packageManager": "pnpm@9.0.4+sha256.caa915eaae9d9aefccf50ee8aeda25a2f8684d8f9d5c6e367eaf176d97c1f89e",
   "author": "Thijs Koerselman",

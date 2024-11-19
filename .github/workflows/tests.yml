@@ -1,0 +1,20 @@
+name: Tests
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - functions/**
+jobs:
+  run-jest-tests:
+    name: Run Function Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: |
+          cd functions
+          npm install
+      - name: Run Jest Tests
+        run: |
+          cd functions
+          npm test

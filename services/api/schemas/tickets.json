@@ -1,0 +1,116 @@
+{
+  "fields": [
+    {
+      "name": "eventId",
+      "type": "string"
+    },
+    {
+      "name": "eventName",
+      "type": "string"
+    },
+    {
+      "name": "eventImageUrl",
+      "type": "string"
+    },
+    {
+      "name": "channel",
+      "type": "string"
+    },
+    {
+      "name": "eventStart",
+      "type": "timestamp"
+    },
+    {
+      "name": "eventEnd",
+      "type": "timestamp"
+    },
+    {
+      "name": "eventActivationDate",
+      "type": "timestamp"
+    },
+    {
+      "name": "locationName",
+      "type": "string"
+    },
+    {
+      "name": "address",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "userId",
+      "type": "string"
+    },
+    {
+      "name": "userMail",
+      "type": "string"
+    },
+    {
+      "name": "userName",
+      "type": "string"
+    },
+    {
+      "name": "userDni",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "createdAt",
+      "type": "timestamp"
+    },
+    {
+      "name": "updatedAt",
+      "type": "timestamp"
+    },
+    {
+      "name": "validatedAt",
+      "type": "timestamp"
+    },
+    {
+      "name": "price",
+      "type": "number"
+    },
+    {
+      "name": "date",
+      "type": "string"
+    },
+    {
+      "name": "hour",
+      "type": "number"
+    },
+    {
+      "name": "isConcurrent",
+      "type": "boolean"
+    },
+    {
+      "name": "resellRef",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+      "name": "producerId",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "metadata",
+      "type": "stringified_map"
+    }
+  ]
+}

@@ -3,8 +3,7 @@
     "source": ".",
     "runtime": "nodejs20",
     "isolate": true,
-    "predeploy": ["turbo build"],
-    "codebase": "api"
+    "predeploy": ["turbo build"]
   },
   "emulators": {
     "ui": {

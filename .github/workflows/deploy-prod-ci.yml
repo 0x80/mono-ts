@@ -1,0 +1,31 @@
+name: Deploy Production
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Firebase-Functions-Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@main
+
+      - name: Setup Node
+        uses: actions/setup-node@main
+        with:
+          node-version: "20.x"
+
+      - name: Install npm packages
+        working-directory: ./functions
+        run: npm i
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v13.7.1
+        continue-on-error: false
+        with:
+          args: deploy --only firestore,functions --force
+        env:
+          GCP_SA_KEY: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}
+          PROJECT_ID: early-prod-dddac

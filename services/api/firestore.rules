@@ -1,0 +1,62 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /events/{document} {
+      allow create: if false;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /producers/{document} {
+      allow create: if false;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /blogs/{document} {
+      allow read: if true;
+    }
+
+    match /{path=**}/tickets/{document} {
+      allow read: if (request.auth != null && (request.auth.uid == resource.data.userId || request.auth.uid == resource.data.uid)) || (request.auth.token.role == "admin");
+    }
+
+    match /{path=**}/waitingList/{document} {
+      allow read: if (request.auth != null && (request.auth.uid == resource.data.userId || request.auth.uid == resource.data.uid)) || (request.auth.token.role == "admin");
+    }
+
+    match /{path=**}/resellOrders/{document} {
+      allow read, update: if (request.auth != null && request.auth.token.role == "admin");
+    }
+
+    match /{path=**}/stats/{document} {
+      allow read, update: if (request.auth != null && request.auth.token.role == "admin");
+    }
+
+    match /{path=**}/privateList/{document} {
+      allow read: if true;
+    }
+
+    match /users/{userId} {
+      allow read, update, delete: if (request.auth != null && (request.auth.uid == userId || request.auth.uid == resource.data.uid)) || (request.auth.token.role == "admin");
+      allow create: if request.auth != null;
+    }
+
+    match /orders/{orderId} {
+    	allow read: if request.auth != null;
+      allow update: if (request.auth != null && (request.auth.uid == resource.data.userId)) || (request.auth.token.role == "admin");
+      allow create: if request.auth != null;
+    }
+
+    match /{document=**} {
+      allow read, write: if request.auth.token.email.matches("firebase@flutterflow.io");
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

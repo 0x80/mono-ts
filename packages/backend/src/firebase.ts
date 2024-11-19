@@ -10,21 +10,34 @@ export type { Firestore } from "firebase-admin/firestore";
 export type { UpdateData } from "firebase-admin/firestore";
 
 if (!admin.apps.length) {
-  admin.initializeApp();
+  try {
+    admin.initializeApp({
+      credential: admin.credential.applicationDefault(),
+      projectId: process.env.FIREBASE_PROJECT_ID || "early-dev-73f4d",
+      storageBucket:
+        process.env.FIREBASE_STORAGE_BUCKET || "early-dev-73f4d.appspot.com",
+    });
+    console.log("Firebase Admin initialized successfully");
 
-  const db = getFirestore(getApp());
+    // Get Firestore instance
+    const db = getFirestore();
 
-  db.settings({
-    ignoreUndefinedProperties: true,
-  });
+    // Configure Firestore settings
+    db.settings({
+      ignoreUndefinedProperties: true,
+      timestampsInSnapshots: true,
+    });
+  } catch (error) {
+    console.error("Firebase Admin initialization error:", error);
+    throw error;
+  }
 }
 
 function getApp() {
   return admin.apps[0] as admin.app.App;
 }
 
-const firebaseApp = getApp();
-
+export const firebaseApp = getApp();
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp);
 export const storage = getStorage(firebaseApp);

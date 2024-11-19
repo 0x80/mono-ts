@@ -1,0 +1,25 @@
+name: PR Checks
+on:
+  pull_request:
+    types: [opened, edited]
+jobs:
+  check-pr-to-develop-title:
+    name: Check Develop PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Slashgear/action-check-pr-title@v4.3.0
+        if: github.event.pull_request.base.ref == 'dev'
+        with:
+          regexp: "(chore|feature|warmfix): .+" # Regex the title should match.
+          helpMessage: "Título incorrecto, por ejemplo: 'feature: New feature'"
+  check-pr-to-main-title:
+    name: Check Main PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Slashgear/action-check-pr-title@v4.3.0
+        if: github.event.pull_request.base.ref == 'main'
+        with:
+          regexp: "(chore|hotfix): .+" # Regex the title should match.
+          helpMessage:
+            "Título incorrecto. Para pasos a producción usar titulo 'chore: ...'
+            o 'hotfix: ...'"
