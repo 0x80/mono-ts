@@ -155,16 +155,14 @@ export default function EventOperations({ event }: { event: Event }) {
               }}
             />
           </TabPanel>
-          {isAdmin && (
-            <TabPanel value={value} index={5}>
-              <CourtoisieTicket
-                event={{
-                  ...event,
-                  id: eventId,
-                }}
-              />
-            </TabPanel>
-          )}
+          <TabPanel value={value} index={5}>
+            <CourtoisieTicket
+              event={{
+                ...event,
+                id: eventId,
+              }}
+            />
+          </TabPanel>
           {isAdmin && (
             <TabPanel value={value} index={6}>
               <BlockPaymentMethods

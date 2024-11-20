@@ -19,29 +19,29 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@main
 
-      - name: Setup Node
-        uses: actions/setup-node@main
-        with:
-          node-version: "20.x"
+      # - name: Setup Node
+      #   uses: actions/setup-node@main
+      #   with:
+      #     node-version: "20.x"
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+      # - name: Setup PNPM
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: latest
 
-      - name: Install Dependencies
-        run: pnpm install
+      # - name: Install Dependencies
+      #   run: pnpm install
 
-      - name: Authenticate to Firebase
-        run:
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}" >
-          $HOME/gcp-key.json
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS:
-            ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}
+      # - name: Authenticate to Firebase
+      #   run:
+      #     echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}" >
+      #     $HOME/gcp-key.json
+      #   env:
+      #     GOOGLE_APPLICATION_CREDENTIALS:
+      #       ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}
 
-      - name: Deploy to Firebase
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
-        run: npx firebase deploy
-        working-directory: ./services/api
+      # - name: Deploy to Firebase
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
+      #   run: npx firebase deploy
+      #   working-directory: ./services/api
