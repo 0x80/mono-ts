@@ -104,9 +104,8 @@ export default function EventOperations({ event }: { event: Event }) {
             <Tab label="Generar ticket" {...a11yProps(2)} />
             <Tab label="Enviar comunicado" {...a11yProps(3)} />
             <Tab label="Añadir validadores" {...a11yProps(4)} />
-            {isAdmin && (
-              <Tab label="Generar ticket de cortesia" {...a11yProps(5)} />
-            )}
+
+            <Tab label="Generar ticket de cortesia" {...a11yProps(5)} />
             {isAdmin && (
               <Tab label="Bloquear métodos de pago" {...a11yProps(6)} />
             )}
