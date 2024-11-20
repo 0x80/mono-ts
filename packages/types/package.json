@@ -6,15 +6,11 @@
     "dist"
   ],
   "types": "./dist/index.d.ts",
-  "exports": {
-    "./events": "./dist/events.js",
-    ".": "./dist/index.js"
-  },
   "scripts": {
     "compile": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest",
-    "build": "tsup && tsc --emitDeclarationOnly",
+    "build": "tsc",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
     "coverage": "vitest run --coverage "
   },

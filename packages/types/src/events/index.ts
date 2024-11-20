@@ -1,5 +1,5 @@
 import type { Timestamp } from "firebase-admin/firestore";
-import type { ProducerRating } from "@/producers";
+import type { ProducerRating } from "../producers";
 
 export enum EventStatus {
   Draft = "Draft",

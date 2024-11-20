@@ -4,8 +4,7 @@ import { makeStyles } from "tss-react/mui";
 import { useStepperContext } from "@/context/StepperContext";
 import GoogleMaps from "@/services/googleMaps/AddressSearch";
 import type { EventForm } from "@/firebase/interfaces/events";
-import type { Location } from "@/firebase/interfaces/events";
-
+import type { Location } from "@repo/types";
 const useStyles = makeStyles()(() => ({
   column: {
     display: "flex",
