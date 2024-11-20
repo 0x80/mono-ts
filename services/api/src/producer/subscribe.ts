@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import admin from "firebase-admin";
 
-import type { EventProducer } from "../events/interfaces";
+import type { EventProducer } from "@repo/types";
 import type { CallableRequest } from "firebase-functions/https";
 
 type Data = {

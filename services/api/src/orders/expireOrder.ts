@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 import { OrderStatus, type Order } from "./interfaces";
-import type { Event } from "../events/interfaces";
+import type { Event } from "@repo/types";
 import { calculateStats } from "./approve";
 import { runTransactionWithRetries } from "../utils/transactions";
 import { getCurrentEnv } from "../utils/getCurrentEnv";

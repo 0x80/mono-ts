@@ -16,6 +16,7 @@ import Image from "next/image";
 import LoadingButton from "@/components/Materials/LoadingButton";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import type { EventForm } from "@/firebase/interfaces/events";
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",

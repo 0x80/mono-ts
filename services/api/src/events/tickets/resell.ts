@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { TicketStatus, type Ticket } from "./interfaces";
-import type { Event, Schedule } from "../interfaces";
+import type { Event, Schedule } from "@repo/types";
 import { cancelResellOrder, createResellOrder } from "../resellOrders/create";
 import { runTransactionWithRetries } from "../../utils/transactions";
 import type { CallableRequest } from "firebase-functions/https";

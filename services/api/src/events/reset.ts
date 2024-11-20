@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import type admin from "firebase-admin";
-import type { Event } from "./interfaces";
+import type { Event } from "@repo/types";
 
 export const resetEvents = (db: admin.firestore.Firestore) => {
   return functions.https.onCall({ region: "southamerica-east1" }, async () => {

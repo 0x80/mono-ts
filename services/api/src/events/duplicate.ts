@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import type { User } from "../users/interfaces";
-import type { Event, EventForm } from "./interfaces";
+import type { Event, EventForm } from "@repo/types";
 import { getEventData } from "./create";
 import type { CallableRequest } from "firebase-functions/https";
 

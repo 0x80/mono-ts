@@ -7,7 +7,7 @@ import { formatDate } from "../utils/formatDate";
 import { deleteTask } from "../utils/createTask";
 import type { Order } from "./interfaces";
 import { calculateServiceFee } from "../events/utils";
-import type { Event, Schedule } from "../events/interfaces";
+import type { Event, Schedule } from "@repo/types";
 import { calculateStats } from "./approve";
 import { approveResellOrders } from "../events/resellOrders/approve";
 import { runTransactionWithRetries } from "../utils/transactions";

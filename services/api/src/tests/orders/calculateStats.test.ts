@@ -1,8 +1,4 @@
-import {
-  type Schedule,
-  type Event,
-  EventStatus,
-} from "../../events/interfaces";
+import { type Schedule, type Event, EventStatus } from "@repo/types";
 import { calculateStats } from "../../orders/approve";
 import { Timestamp } from "firebase-admin/firestore";
 

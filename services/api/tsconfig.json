@@ -5,9 +5,13 @@
       "path": "../../packages/common"
     },
     {
+      "path": "../../packages/types"
+    },
+    {
       "path": "../../packages/firebase"
     }
-  ], "compilerOptions": {
+  ], 
+  "compilerOptions": {
     "outDir": "dist"
   }
 }

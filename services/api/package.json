@@ -24,6 +24,7 @@
     "@google-cloud/tasks": "^5.5.1",
     "@repo/firebase": "workspace:*",
     "@repo/common": "workspace:*",
+    "@repo/types": "workspace:*",
     "@types/node": "^20.12.12",
     "axios": "^1.7.2",
     "body-parser": "^1.20.3",

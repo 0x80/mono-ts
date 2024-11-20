@@ -4,6 +4,9 @@
   "references": [
     {
       "path": "../../packages/common"
+    },
+    {
+      "path": "../../packages/types"
     }
   ],
   "compilerOptions": {

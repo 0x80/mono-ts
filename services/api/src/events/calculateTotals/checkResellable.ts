@@ -1,4 +1,4 @@
-import type { Schedule } from "../interfaces";
+import type { Schedule } from "@repo/types";
 
 export type TicketCount = {
   name: string;

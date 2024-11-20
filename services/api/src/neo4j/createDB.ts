@@ -4,7 +4,7 @@ import * as functions from "firebase-functions";
 import type { UserWithId } from "../users/interfaces";
 import { createNeoUserFunction } from "./user/create";
 import { createNeoEventFunction } from "./event/create";
-import type { EventWithId } from "../events/interfaces";
+import type { EventWithId } from "@repo/types";
 
 export const createNeoDB =
   (driver: Driver) => (db: admin.firestore.Firestore) => {

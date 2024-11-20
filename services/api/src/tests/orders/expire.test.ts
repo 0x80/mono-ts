@@ -1,5 +1,5 @@
 import { Timestamp } from "firebase-admin/firestore";
-import { EventStatus, type Event } from "../../events/interfaces";
+import { EventStatus, type Event } from "@repo/types";
 import { OrderStatus, type Order } from "../../orders/interfaces";
 import { getNewScheduleAndStatsExpired } from "../../orders/expireOrder";
 

@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import type admin from "firebase-admin";
-import type { Event, Schedule, Stats } from "../interfaces";
+import type { Event, Schedule, Stats } from "@repo/types";
 import { calculateServiceFee } from "../utils";
 import { createOrder } from "../../orders/create";
 import { getCurrentEnv } from "../../utils/getCurrentEnv";

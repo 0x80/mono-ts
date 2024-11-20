@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import { createTask, deleteTask } from "../utils/createTask";
-import type { Event, Info, EventWithId } from "./interfaces";
+import type { Event, Info, EventWithId } from "@repo/types";
 import { getCurrentEnv } from "../utils/getCurrentEnv";
 import * as admin from "firebase-admin";
 // import { updateNeoEvent } from "..";

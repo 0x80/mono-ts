@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { OrderStatus, type Order, type OrderItem } from "./interfaces";
-import type { Event } from "../events/interfaces";
+import type { Event } from "@repo/types";
 import type { TotalPrices } from "../events/calculateTotals";
 import { createTask } from "../utils/createTask";
 import { Timestamp, FieldValue } from "firebase-admin/firestore";

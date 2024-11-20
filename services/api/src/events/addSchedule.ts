@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import type { Schedule, ScheduleForm, Event } from "./interfaces";
+import type { Schedule, ScheduleForm, Event } from "@repo/types";
 import type { CallableRequest } from "firebase-functions/https";
 
 export const addSchedule = (db: admin.firestore.Firestore) => {

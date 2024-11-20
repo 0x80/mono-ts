@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import type admin from "firebase-admin";
-import type { Event, Schedule } from "../interfaces";
+import type { Event, Schedule } from "@repo/types";
 import type { CallableRequest } from "firebase-functions/https";
 
 type EditScheduleData = {

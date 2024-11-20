@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { TicketStatus, type Ticket } from "./interfaces";
-import type { Event } from "../interfaces";
+import type { Event } from "@repo/types";
 import { formatDate } from "../../utils/formatDate";
 import { parsePriceToCLP } from "../../utils/parsePrice";
 import { saveQrImage } from "../../orders/onUpdate";

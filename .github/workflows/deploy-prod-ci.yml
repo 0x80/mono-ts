@@ -24,15 +24,24 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Install npm packages
-        working-directory: ./functions
-        run: npm i
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Authenticate to Firebase
+        run:
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}" >
+          $HOME/gcp-key.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS:
+            ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v13.7.1
-        continue-on-error: false
-        with:
-          args: deploy --only firestore,functions --force
         env:
-          GCP_SA_KEY: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_PROD }}
-          PROJECT_ID: early-prod-dddac
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
+        run: npx firebase deploy
+        working-directory: ./services/api

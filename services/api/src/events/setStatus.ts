@@ -1,8 +1,8 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { onUpdateEvent } from "./onUpdate";
-import type { Event } from "./interfaces";
-import { EventStatus } from "./interfaces";
+import type { Event } from "@repo/types";
+import { EventStatus } from "@repo/types";
 import type { CallableRequest } from "firebase-functions/https";
 
 type Data = {

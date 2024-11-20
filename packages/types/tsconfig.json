@@ -1,0 +1,10 @@
+{
+    "extends": "@codecompose/typescript-config/library.json",
+    "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["./src/*"]
+       }     
+    }
+}
+  

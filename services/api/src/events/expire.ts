@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { onUpdateEvent } from "./onUpdate";
-import { EventStatus, type Event } from "./interfaces";
+import { EventStatus, type Event } from "@repo/types";
 
 export const expireEvent = (db: admin.firestore.Firestore) => {
   return functions.https.onRequest(

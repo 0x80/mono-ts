@@ -1,5 +1,5 @@
 import * as admin from "firebase-admin";
-import type { Resell } from "../interfaces";
+import type { Resell } from "@repo/types";
 import type { ResellOrder } from "./interfaces";
 
 type Data = {

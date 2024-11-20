@@ -137,7 +137,7 @@ export const validateTicket = (db: admin.firestore.Firestore) => {
             request
           )
         );
-      } catch (error) {
+      } catch {
         const qrHashSplitted = qrHash.split(",");
 
         if (qrHashSplitted.length !== 3) {

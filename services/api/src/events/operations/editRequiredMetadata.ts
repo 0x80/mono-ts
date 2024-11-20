@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import type admin from "firebase-admin";
-import type { Event, RequiredMetadata } from "../interfaces";
+import type { Event, RequiredMetadata } from "@repo/types";
 import type { CallableRequest } from "firebase-functions/https";
 
 type Action = "edit" | "delete" | "add";

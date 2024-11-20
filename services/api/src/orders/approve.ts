@@ -3,7 +3,7 @@ import * as functions from "firebase-functions";
 
 import type { Ticket } from "../events/tickets/interfaces";
 import type { Order, OrderItem } from "./interfaces";
-import type { Event, Schedule, Stats } from "../events/interfaces";
+import type { Event, Schedule, Stats } from "@repo/types";
 import { deleteTask } from "../utils/createTask";
 
 export const calculateStats = (

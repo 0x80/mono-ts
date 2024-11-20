@@ -83,6 +83,9 @@ importers:
       '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@types/node':
         specifier: ^22.7.5
         version: 22.7.5
@@ -309,6 +312,37 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@edge-runtime/vm@4.0.3)(@types/node@22.7.5)(terser@5.36.0)
 
+  packages/types:
+    dependencies:
+      firebase-admin:
+        specifier: ^13.0.0
+        version: 13.0.0(encoding@0.1.13)
+    devDependencies:
+      '@codecompose/typescript-config':
+        specifier: ^1.1.3
+        version: 1.1.3
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      eslint:
+        specifier: ^8.57.1
+        version: 8.57.1
+      eslint-plugin-require-extensions:
+        specifier: ^0.1.3
+        version: 0.1.3(eslint@8.57.1)
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
+      tsup:
+        specifier: ^8.3.0
+        version: 8.3.0(jiti@2.3.3)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@edge-runtime/vm@4.0.3)(@types/node@22.9.0)(terser@5.36.0)
+
   services/api:
     dependencies:
       '@google-cloud/bigquery':
@@ -329,6 +363,9 @@ importers:
       '@repo/firebase':
         specifier: workspace:*
         version: link:../../packages/firebase
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@types/node':
         specifier: ^20.12.12
         version: 20.17.6

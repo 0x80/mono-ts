@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { uploadImageToStorageResize } from "../storage/uploadImage";
-import type { EventForm, Event } from "./interfaces";
+import type { EventForm, Event } from "@repo/types";
 import { uuid } from "uuidv4";
 import type { CallableRequest } from "firebase-functions/https";
 type Data = {
