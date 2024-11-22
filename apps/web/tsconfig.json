@@ -29,7 +29,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*", "./pages/*"]
+      "@/*": ["./src/*", "./pages/*"],
+      "@repo/types/*": ["../../packages/types/src/*"]
     }
   },
 }

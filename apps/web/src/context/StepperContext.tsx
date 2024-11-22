@@ -1,4 +1,4 @@
-import type { EventForm } from "@/firebase/interfaces/events";
+import type { EventForm } from "../firebase/interfaces/events";
 import {
   createContext,
   useState,

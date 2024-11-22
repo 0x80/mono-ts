@@ -17,6 +17,7 @@ type GetEventsTicketsFromBigQueryFunction = HttpsCallable<
     userDni: string;
     status: string;
     orderId: string;
+    userId: string;
   }[]
 >;
 

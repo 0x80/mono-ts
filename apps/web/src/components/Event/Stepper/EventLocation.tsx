@@ -3,8 +3,7 @@ import { TextField } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 import { useStepperContext } from "@/context/StepperContext";
 import GoogleMaps from "@/services/googleMaps/AddressSearch";
-import type { EventForm } from "@/firebase/interfaces/events";
-import type { Location } from "@repo/types";
+import type { EventForm, Location } from "@/firebase/interfaces/events";
 const useStyles = makeStyles()(() => ({
   column: {
     display: "flex",
