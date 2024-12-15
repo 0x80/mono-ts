@@ -53,8 +53,8 @@ and I recommend reading
 [their monorepo handbook](https://turbo.build/repo/docs/handbook).
 
 > For demonstration purposes, mono-ts uses the "internal packages approach" for
-> `@repo/common` and a traditional built approach for `@repo/backend`. Read
-> below for more info.
+> `@repo/common` and a traditional built approach for `@repo/core`. Read below
+> for more info.
 
 ## Features
 
@@ -136,8 +136,8 @@ clear, but I went with `@repo` because I expect it will become the standard.
 
 - [common](./packages/common) Code that can shared across both front-end and
   back-end environments.
-- [backend](./packages/backend) Code that is shared between server environments
-  like cloud functions.
+- [core](./packages/core) Code that is shared between server environments like
+  cloud functions.
 
 ### Apps
 
@@ -224,8 +224,8 @@ extensions, but at the time of writing it does not understand path aliases.
 Some bundlers like TSUP are capable of eliminating dead code by tree-shaking the
 build output, so that less code remains to be deployed. Eliminating dead code is
 most important for client-side code that is shipped to the user, but for the
-backend it can also reduce cold-start times for serverless functions, although
-in most situations, it is probably not going to be noticeable.
+core it can also reduce cold-start times for serverless functions, although in
+most situations, it is probably not going to be noticeable.
 
 ## The "internal packages" strategy
 
@@ -263,7 +263,7 @@ But, as always, there are also some disadvantages you should be aware of:
   `services/api` includes `remeda`, as it is used by `packages/common`.
 
 For testing and comparison, mono-ts uses the internal packages approach for
-`@repo/common` and a traditional built approach for `@repo/backend`. Both are
+`@repo/common` and a traditional built approach for `@repo/core`. Both are
 compatible with `isolate-package` for deploying to Firebase.
 
 ## Live code changes from internal packages
@@ -324,8 +324,8 @@ understand how the two are related, but it works.
 ### Running Emulators
 
 For Firebase Functions each service (api and fns) start separate emulators on
-port 5001 and 5002. The backend service (using the firebase-admin api) connects
-to emulators by setting various environment variables.
+port 5001 and 5002. The core service (using the firebase-admin api) connects to
+emulators by setting various environment variables.
 
 I have stored these in `.env` files in the respective service packages. Normally
 you would want to store them in a file that is not part of the repository like

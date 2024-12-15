@@ -1,5 +1,6 @@
 {
-  "name": "@repo/backend",
+  "name": "@repo/core",
+  "description": "Code to share between backend apps/services",
   "version": "0.0.0",
   "type": "module",
   "files": [

@@ -1,5 +1,5 @@
 import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
-import { startTimer } from "@repo/backend/utils";
+import { startTimer } from "@repo/core/utils";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import type { Request, Response } from "express";
@@ -25,7 +25,7 @@ const AddPayload = z.object({
 
 export async function add(req: Request, res: Response) {
   try {
-    /** Test sharing code from packages/backend */
+    /** Test sharing code from packages/core */
     const [point, end] = startTimer("add");
 
     const { n } = AddPayload.parse(req.body);
@@ -55,7 +55,7 @@ const MultiplyPayload = z.object({
 
 export async function multiply(req: Request, res: Response) {
   try {
-    /** Test sharing code from packages/backend */
+    /** Test sharing code from packages/core */
     const [point, end] = startTimer("multiply");
 
     const { n } = MultiplyPayload.parse(req.body);

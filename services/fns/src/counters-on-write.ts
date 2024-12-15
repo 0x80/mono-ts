@@ -1,4 +1,4 @@
-import { startTimer } from "@repo/backend/utils";
+import { startTimer } from "@repo/core/utils";
 import { areWeThereYet, type Counter } from "@repo/common";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
@@ -13,7 +13,7 @@ export const countersOnWrite = functions
   .region(region)
   .firestore.document("counters/{documentId}")
   .onWrite(async (change) => {
-    /** Test sharing code from packages/backend */
+    /** Test sharing code from packages/core */
     const [point, end] = startTimer("countersOnWrite");
 
     const before = change.before.data() as Counter | undefined;

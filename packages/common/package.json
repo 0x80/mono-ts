@@ -1,5 +1,6 @@
 {
   "name": "@repo/common",
+  "description": "Common code for both backend and frontend",
   "version": "0.0.0",
   "type": "module",
   "types": "./src/index.ts",
