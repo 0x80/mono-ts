@@ -320,6 +320,11 @@ understand how the two are related, but it works.
 With the firebase config in the root of the monorepo, you can configure and
 start the emulators for all packages at once with `pnpm emulate`.
 
+I have stored these in `.env` files in the respective service packages. Normally
+you would want to store them in a file that is not part of the repository like
+`.env.local` but by placing them in `.env` I prevent having to give instructions
+for setting them up just for running the demo.
+
 #### Secrets
 
 The api service uses a secret for DEMO_API_KEY. To make secrets work with the
