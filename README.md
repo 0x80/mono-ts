@@ -11,7 +11,6 @@
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
-- [Deployment](#deployment)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
   - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
@@ -98,27 +97,20 @@ Then run `pnpm install` from the repository root.
 
 ## Usage
 
-There are 4 commands to run in separate processes:
+To get started, execute the following 3 scripts with `pnpm [script name]` from
+the root of the monorepo:
 
-- From the monorepo root, run `pnpm watch`. This builds all the code (except the
-  web app) using the Turborepo watch task.
-- From `apps/web` run `pnpm dev`. This start the Next.js dev server and builds
-  its pages on request.
-- From `services/api` run `pnpm emulate`. This starts the emulators for the API
-  server.
-- From `services/fns` run `pnpm emulate`. This starts the emulators for the
-  (other) Firebase functions.
+| Script    | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| `watch`   | Builds all the dependencies using the Turborepo watch task. |
+| `emulate` | Starts the Firebase emulators.                              |
+| `dev`     | Starts the Next.js dev server to build the app on request.  |
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
 
 You should now have a working local setup, in which code changes to any package
 are picked up.
-
-> Note that hot-reloading for the firebase packages like API are not as instant
-> as you are used to with front-end tooling like Next.js. When code changes are
-> detected, the isolate process needs to run again to compile new output and the
-> function needs to reload.
 
 ## Workspace
 
@@ -149,21 +141,7 @@ clear, but I went with `@repo` because I expect it will become the standard.
 - [fns](./services/fns) Various Firebase functions that execute on document
   writes, pubsub events etc.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
-  as an API endpoint, using Express. This package also illustrates how to use
-  secrets.
-
-Both packages use
-[firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-to have [isolate-package](https://github.com/0x80/isolate-package) integrated as
-part of the `firebase deploy` command. In addition,
-
-## Deployment
-
-I consider deployment a bit out-of-scope for this demo.
-
-For deployment to Firebase, you will have to set up and configure an actual
-project, but it is not required to run this demo since by default it runs on
-local emulators.
+  as an API endpoint. This package also illustrates how to use secrets.
 
 ## The "built packages" strategy
 
@@ -281,6 +259,12 @@ want to use the
 
 ## Firebase
 
+In their
+[documentation for monorepos](https://firebase.google.com/docs/functions/organize-functions?gen=2nd#managing_multiple_source_packages_monorepo),
+Firebase recommends putting all configurations in the root of the monorepo. This
+makes it possible to deploy all packages at once, and most importantly, run the
+emulators shared on common ports.
+
 ### Demo Project
 
 Throughout this repository, we use a Firebase demo project called `demo-mono-ts`
@@ -295,24 +279,21 @@ the API keys as you can see in
 
 ### Deploying
 
-Deploying code to Firebase that uses shared packages from a monorepo comes with
-its own set of challenges, because the Firebase deploy pipeline requires you to
-upload a self-contained package that can be treated similarly to an NPM package,
-by installing its dependencies and executing the main entry.
+Firebase does not natively support monorepos where packages used shared code
+from other packages. The Firebase deploy pipeline wants to upload a
+self-contained package that can be treated similarly to an NPM package, so that
+it can run an install and execute the main entry from the manifest.
 
-This repo includes a solution based on
-[isolate-package](https://github.com/0x80/isolate-package/) I wrote an
+To support shared packages, this repo uses
+[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate),
+which is a firebase-tools fork I created to integrate
+[isolate-package](https://github.com/0x80/isolate-package/). I wrote an
 [article](https://thijs-koerselman.medium.com/deploy-to-firebase-without-the-hacks-e685de39025e)
 explaining what it does and why it is needed.
 
 This demo can be run using only the emulators, but if you would like to see the
 deployment to Firebase working you can simply execute
-`npx firebase deploy --project your-project-name` from any of the service
-packages. For `services/fns` this will trigger a deploy using `isolate-package`
-and the standard `firebase-tools`, and for `services/api` this will invoke a
-deploy using the
-[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-fork where both are integrated.
+`npx firebase deploy --project your-project-name` the root of the monorepo.
 
 You might notice `@google-cloud/functions-framework` as a dependency in the
 service package even though it is not being used in code imports. It is
@@ -322,9 +303,8 @@ understand how the two are related, but it works.
 
 ### Running Emulators
 
-For Firebase Functions each service (api and fns) start separate emulators on
-port 5001 and 5002. The core service (using the firebase-admin api) connects to
-emulators by setting various environment variables.
+With the firebase config in the root of the monorepo, you can configure and
+start the emulators for all packages at once with `pnpm emulate`.
 
 I have stored these in `.env` files in the respective service packages. Normally
 you would want to store them in a file that is not part of the repository like

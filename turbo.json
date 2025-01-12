@@ -17,21 +17,32 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "outputLogs": "new-only",
+      "inputs": ["$TURBO_DEFAULT$", ".env", ".env.demo-mono-ts", ".env.local"]
     },
     "test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+    },
+    "coverage": {
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"],
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
+    "lint": {
+      "dependsOn": []
+    },
     "compile": {
-      "dependsOn": ["^compile"]
+      "dependsOn": ["^build"]
     },
     "clean": {
-      "dependsOn": ["^clean"]
+      "dependsOn": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }
