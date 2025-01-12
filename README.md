@@ -11,7 +11,6 @@
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
-- [Deployment](#deployment)
 - [The "built packages" strategy](#the-built-packages-strategy)
   - [Convert path aliases](#convert-path-aliases)
   - [Write ESM without import file extensions](#write-esm-without-import-file-extensions)
@@ -98,25 +97,20 @@ Then run `pnpm install` from the repository root.
 
 ## Usage
 
-There are 4 script from the monorepo root with `pnpm [script name]`:
+To get started, execute the following 3 scripts with `pnpm [script name]` from
+the root of the monorepo:
 
-| Script    | Description                                                              |
-| --------- | ------------------------------------------------------------------------ |
-| `watch`   | Builds all the code (except the web app) using the Turborepo watch task. |
-| `dev`     | Starts the Next.js dev server and builds its pages on request.           |
-| `emulate` | Starts the Firebase emulators.                                           |
-| `deploy`  | Deploys the application.                                                 |
+| Script    | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| `watch`   | Builds all the dependencies using the Turborepo watch task. |
+| `emulate` | Starts the Firebase emulators.                              |
+| `dev`     | Starts the Next.js dev server to build the app on request.  |
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
 
 You should now have a working local setup, in which code changes to any package
 are picked up.
-
-> Note that hot-reloading for the firebase packages like API are not as instant
-> as you are used to with front-end tooling like Next.js. When code changes are
-> detected, the isolate process needs to run again to compile new output and the
-> function needs to reload.
 
 ## Workspace
 
@@ -148,14 +142,6 @@ clear, but I went with `@repo` because I expect it will become the standard.
   writes, pubsub events etc.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
   as an API endpoint. This package also illustrates how to use secrets.
-
-## Deployment
-
-I consider deployment a bit out-of-scope for this demo.
-
-For deployment to Firebase, you will have to set up and configure an actual
-project, but it is not required to run this demo since by default it runs on
-local emulators.
 
 ## The "built packages" strategy
 
