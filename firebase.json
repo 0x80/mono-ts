@@ -1,0 +1,39 @@
+{
+  "functions": [
+    {
+      "source": "services/fns",
+      "runtime": "nodejs22",
+      "isolate": true,
+      "predeploy": ["turbo build --filter=@repo/fns"],
+      "codebase": "fns"
+    },
+    {
+      "source": "services/api",
+      "runtime": "nodejs22",
+      "isolate": true,
+      "predeploy": ["turbo build --filter=@repo/api"],
+      "codebase": "api"
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "ui": {
+      "enabled": true
+    },
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "pubsub": {
+      "port": 8085
+    }
+  }
+}

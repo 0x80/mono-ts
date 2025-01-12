@@ -42,7 +42,6 @@
     "@types/node": "^22.7.5",
     "del-cli": "^6.0.0",
     "eslint": "^8.57.1",
-    "firebase-tools-with-isolate": "13.16.0",
     "tsup": "^8.3.0",
     "typescript": "^5.6.3",
     "vitest": "^1.6.0"

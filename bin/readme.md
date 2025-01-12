@@ -1,3 +1,3 @@
 ## Bin
 
-These files are here for debugging purposes
+These files are here for testing and debugging purposes
