@@ -16,9 +16,9 @@ The `firebase.json` file in this packages contains:
 
 ```json
 "functions": {
-  "source": "./isolate",
+  "source": ".",
   "runtime": "nodejs20",
-  "predeploy": ["turbo build", "isolate"],
+  "predeploy": ["turbo build"],
   "codebase": "fns"
 },
 ```

@@ -147,13 +147,15 @@ clear, but I went with `@repo` because I expect it will become the standard.
 ### Services
 
 - [fns](./services/fns) Various Firebase functions that execute on document
-  writes, pubsub events etc. This package shows how to use [isolate-package]
-  explicitly as part of the predeploy phase.
+  writes, pubsub events etc.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
-  as an API endpoint, using Express. This package shows how to use
-  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-  to have the isolation integrated as part of the `firebase deploy` command. In
-  addition, it illustrates how to use secrets.
+  as an API endpoint, using Express. This package also illustrates how to use
+  secrets.
+
+Both packages use
+[firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+to have [isolate-package](https://github.com/0x80/isolate-package) integrated as
+part of the `firebase deploy` command. In addition,
 
 ## Deployment
 
@@ -161,10 +163,7 @@ I consider deployment a bit out-of-scope for this demo.
 
 For deployment to Firebase, you will have to set up and configure an actual
 project, but it is not required to run this demo since by default it runs on
-local emulators. Additional info about the use of
-[isolate-package](https://github.com/0x80/isolate-package) (used by fns) and
-[firestore-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-(used by api) can be found in the instructions for each package.
+local emulators.
 
 ## The "built packages" strategy
 
