@@ -12,7 +12,9 @@
     "turborepo",
     "nextjs"
   ],
-  "private": true,
+  "files": [
+    "dist"
+  ],
   "packageManager": "pnpm@9.0.4+sha256.caa915eaae9d9aefccf50ee8aeda25a2f8684d8f9d5c6e367eaf176d97c1f89e",
   "author": "Thijs Koerselman",
   "license": "MIT",
