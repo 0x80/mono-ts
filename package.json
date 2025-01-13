@@ -1,5 +1,5 @@
 {
-  "name": "mono-ts",
+  "name": "@codecompose/mono-ts",
   "description": "A quest for the ideal TS monorepo setup",
   "version": "1.0.0",
   "keywords": [
@@ -15,9 +15,13 @@
   "files": [
     "dist"
   ],
+  "main": "dist/index.js",
   "packageManager": "pnpm@9.0.4+sha256.caa915eaae9d9aefccf50ee8aeda25a2f8684d8f9d5c6e367eaf176d97c1f89e",
   "author": "Thijs Koerselman",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/0x80/mono-ts"
