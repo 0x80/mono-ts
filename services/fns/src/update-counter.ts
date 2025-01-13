@@ -1,23 +1,28 @@
-import { startTimer } from "@repo/core/utils";
 import { areWeThereYet, type Counter } from "@repo/common";
+import { startTimer } from "@repo/core/utils";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
-import functions from "firebase-functions";
+import { onDocumentWritten } from "firebase-functions/v2/firestore";
 import { counterFlagThreshold, region } from "~/config";
 
 /**
- * This is a bit of a contrived example, and by no means a demonstration of
- * solid production grade code.
+ * This is a bit of a contrived example, and by no means a demonstration of how
+ * to implement a counter efficiently.
+ *
+ * I tend to name v2 functions exports using snake_case because cloud run in CGP
+ * overview will ignore casing.
  */
-export const countersOnWrite = functions
-  .region(region)
-  .firestore.document("counters/{documentId}")
-  .onWrite(async (change) => {
+export const update_counter = onDocumentWritten(
+  {
+    document: "counters/{documentId}",
+    region: region,
+  },
+  async (event) => {
     /** Test sharing code from packages/core */
     const [point, end] = startTimer("countersOnWrite");
 
-    const before = change.before.data() as Counter | undefined;
-    const after = change.after.data() as Counter | undefined;
+    const before = event.data?.before?.data() as Counter | undefined;
+    const after = event.data?.after?.data() as Counter | undefined;
 
     if (!after) {
       return;
@@ -52,7 +57,8 @@ export const countersOnWrite = functions
       updateData.is_flagged = true;
     }
 
-    await change.after.ref.update(updateData);
+    await event.data?.after?.ref.update(updateData);
 
     end();
-  });
+  }
+);

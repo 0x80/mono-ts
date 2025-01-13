@@ -100,11 +100,11 @@ Then run `pnpm install` from the repository root.
 To get started, execute the following 3 scripts with `pnpm [script name]` from
 the root of the monorepo:
 
-| Script    | Description                                                 |
-| --------- | ----------------------------------------------------------- |
-| `watch`   | Builds all the dependencies using the Turborepo watch task. |
-| `emulate` | Starts the Firebase emulators.                              |
-| `dev`     | Starts the Next.js dev server to build the app on request.  |
+| Script    | Description                                                                                                        |
+| --------- | ------------------------------------------------------------------------------------------------------------------ |
+| `watch`   | Continuously builds everything using the Turborepo watch task, except for the web app which has its own dev server |
+| `emulate` | Starts the Firebase emulators.                                                                                     |
+| `dev`     | Starts the Next.js dev server to build the app on request.                                                         |
 
 The web app should become available on http://localhost:3000 and the emulators
 UI on http://localhost:4000.
