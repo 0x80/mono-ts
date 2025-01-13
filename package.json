@@ -1,7 +1,7 @@
 {
   "name": "mono-ts",
   "description": "A quest for the ideal TS monorepo setup",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "keywords": [
     "typescript",
     "monorepo",
