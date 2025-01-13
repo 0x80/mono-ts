@@ -4,14 +4,14 @@
       "source": "services/fns",
       "runtime": "nodejs22",
       "isolate": true,
-      "predeploy": ["turbo build --filter=@repo/fns"],
+      "predeploy": ["pnpm build:fns"],
       "codebase": "fns"
     },
     {
       "source": "services/api",
       "runtime": "nodejs22",
       "isolate": true,
-      "predeploy": ["turbo build --filter=@repo/api"],
+      "predeploy": ["pnpm build:api"],
       "codebase": "api"
     }
   ],

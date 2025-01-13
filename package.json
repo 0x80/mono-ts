@@ -29,6 +29,8 @@
   "scripts": {
     "compile": "turbo run compile",
     "build": "turbo run build",
+    "build:fns": "turbo run build --filter=@repo/fns",
+    "build:api": "turbo run build --filter=@repo/api",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
     "deploy": "firebase deploy",
