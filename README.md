@@ -57,16 +57,17 @@ and I recommend reading
 
 ## Features
 
-- [Turborepo](https://turbo.build/) to orchestrate the build process and
-  dependencies, including the v2 watch task.
+- [Turborepo](https://turbo.build/) to orchestrate the build process and run a
+  watch task.
+- Multiple isolated Firebase deployments, using
+  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+- A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
+  [Tailwind CSS](https://tailwindcss.com/)
+- An API using [Hono](https://hono.dev/)
 - Showcasing a traditional "built package" with multiple entry points, as well
   as the ["internal package"](#the-internal-packages-strategy) strategy
   referencing Typescript code directly.
-- Multiple isolated Firebase deployments, using
-  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 - Firebase emulators with hot reloading
-- A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
-  [Tailwind CSS](https://tailwindcss.com/)
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ES modules for everything
 - Path aliases
@@ -140,8 +141,8 @@ clear, but I went with `@repo` because I expect it will become the standard.
 
 - [fns](./services/fns) Various Firebase functions that execute on document
   writes, pubsub events etc.
-- [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
-  as an API endpoint. This package also illustrates how to use secrets.
+- [api](./services/api) A Cloud Run Function using [Hono](https://hono.dev/) to
+  serve an API endpoint.
 
 ## The "built packages" strategy
 

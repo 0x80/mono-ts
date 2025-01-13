@@ -1,14 +1,14 @@
 import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
-import { startTimer } from "@repo/core/utils";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
-import type { Request, Response } from "express";
+import { startTimer } from "@repo/core/utils";
 import { FieldValue } from "firebase-admin/firestore";
 import { getDocument } from "firestore-server-utils";
+import type { Context } from "hono";
 import { z } from "zod";
 import { refs } from "~/refs";
 
-export async function reset(_req: Request, res: Response) {
+export async function reset(_c: Context) {
   await refs.counters.doc("my_counter").set({
     value: 0,
     mutation_count: 0,
@@ -16,19 +16,18 @@ export async function reset(_req: Request, res: Response) {
     is_flagged: false,
   } satisfies WithFieldValue<Counter>);
 
-  res.status(200).end();
+  return new Response(null, { status: 200 });
 }
 
 const AddPayload = z.object({
   n: z.number(),
 });
 
-export async function add(req: Request, res: Response) {
+export async function add(c: Context) {
   try {
-    /** Test sharing code from packages/core */
     const [point, end] = startTimer("add");
 
-    const { n } = AddPayload.parse(req.body);
+    const { n } = AddPayload.parse(await c.req.json());
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
 
@@ -40,12 +39,11 @@ export async function add(req: Request, res: Response) {
 
     point("Updated document");
 
-    res.status(200).end();
-
     end();
+    return new Response(null, { status: 200 });
   } catch (err) {
     console.error(err);
-    res.status(500).send(getErrorMessage(err));
+    return new Response(getErrorMessage(err), { status: 500 });
   }
 }
 
@@ -53,12 +51,11 @@ const MultiplyPayload = z.object({
   n: z.number(),
 });
 
-export async function multiply(req: Request, res: Response) {
+export async function multiply(c: Context) {
   try {
-    /** Test sharing code from packages/core */
     const [point, end] = startTimer("multiply");
 
-    const { n } = MultiplyPayload.parse(req.body);
+    const { n } = MultiplyPayload.parse(await c.req.json());
 
     const counter = await getDocument<Counter>(refs.counters, "my_counter");
 
@@ -70,11 +67,10 @@ export async function multiply(req: Request, res: Response) {
 
     point("Updated document");
 
-    res.status(200).end();
-
     end();
+    return new Response(null, { status: 200 });
   } catch (err) {
     console.error(err);
-    res.status(500).send(getErrorMessage(err));
+    return new Response(getErrorMessage(err), { status: 500 });
   }
 }
