@@ -41,6 +41,9 @@ importers:
       '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common
+      '@typed-firestore/react':
+        specifier: 1.0.0-0
+        version: 1.0.0-0(firebase@11.1.0)(react@19.0.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -62,9 +65,6 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
-      react-firebase-hooks:
-        specifier: ^5.1.1
-        version: 5.1.1(firebase@11.1.0)(react@19.0.0)
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
@@ -133,6 +133,9 @@ importers:
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(jiti@2.3.3)(postcss@8.4.49)(typescript@5.7.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -227,6 +230,9 @@ importers:
       '@repo/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@typed-firestore/server':
+        specifier: 1.0.0-1
+        version: 1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -245,9 +251,6 @@ importers:
       firebase-functions:
         specifier: ^6.2.0
         version: 6.2.0(firebase-admin@13.0.2(encoding@0.1.13))
-      firestore-server-utils:
-        specifier: 1.0.0
-        version: 1.0.0(firebase-admin@13.0.2(encoding@0.1.13))
       nocache:
         specifier: ^4.0.0
         version: 4.0.0
@@ -306,6 +309,9 @@ importers:
       '@repo/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@typed-firestore/server':
+        specifier: 1.0.0-1
+        version: 1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -324,9 +330,6 @@ importers:
       firebase-functions:
         specifier: ^6.2.0
         version: 6.2.0(firebase-admin@13.0.2(encoding@0.1.13))
-      firestore-server-utils:
-        specifier: 1.0.0
-        version: 1.0.0(firebase-admin@13.0.2(encoding@0.1.13))
       nocache:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1919,6 +1922,19 @@ packages:
   '@tufjs/models@2.0.1':
     resolution: {integrity: sha512-92F7/SFyufn4DXsha9+QfKnN03JGqtMFMXgSHbZOo8JG59WkTni7UzAouNQDf7AuP9OAMxVOPQcqG3sB7w+kkg==}
     engines: {node: ^16.14.0 || >=18.0.0}
+
+  '@typed-firestore/react@1.0.0-0':
+    resolution: {integrity: sha512-Zym+XuWf4/cp2xZGBDz1eY8SU/ZPqdKdZl154pYu3liRF7629zdMOg+2OTAqko0eXtAeaHvfbk290+6U3ukf3w==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      firebase: '>=10.0'
+      react: '>=16.8.0'
+
+  '@typed-firestore/server@1.0.0-1':
+    resolution: {integrity: sha512-4PKp/fsdxuGmqbMmObEKN3Aw9BgMI1E4tGh0yAVw5X7JZzAWh7eZ84M2bV9k9iTf11BQdPgEyokprsV0Ge0vnQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      firebase-admin: '>=10.0'
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -4058,12 +4074,6 @@ packages:
 
   firebase@11.1.0:
     resolution: {integrity: sha512-3OoNW3vBXmBLYJvcwbPCwfluptbDVp2zZYjrfHPVFAXfPgmyy/LWjidt+Sw2WNvRelsG0v++WN2Wor6J3OwDRg==}
-
-  firestore-server-utils@1.0.0:
-    resolution: {integrity: sha512-O7oFDGBOIN0uoCKZ0TrUtoPRv3IhDdabTJx2gpBvEBhdmacG61WEhWF4S0p7Pq73RMlHXdwuHyLypJyNE/3d5w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      firebase-admin: '>=10.0'
 
   flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
@@ -9373,6 +9383,16 @@ snapshots:
       '@tufjs/canonical-json': 2.0.0
       minimatch: 9.0.5
 
+  '@typed-firestore/react@1.0.0-0(firebase@11.1.0)(react@19.0.0)':
+    dependencies:
+      firebase: 11.1.0
+      react: 19.0.0
+      react-firebase-hooks: 5.1.1(firebase@11.1.0)(react@19.0.0)
+
+  '@typed-firestore/server@1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))':
+    dependencies:
+      firebase-admin: 13.0.2(encoding@0.1.13)
+
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
@@ -12393,10 +12413,6 @@ snapshots:
       '@firebase/vertexai': 1.0.2(@firebase/app-types@0.9.3)(@firebase/app@0.10.17)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
-
-  firestore-server-utils@1.0.0(firebase-admin@13.0.2(encoding@0.1.13)):
-    dependencies:
-      firebase-admin: 13.0.2(encoding@0.1.13)
 
   flat-cache@3.2.0:
     dependencies:

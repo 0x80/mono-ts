@@ -8,6 +8,7 @@
   ],
   "types": "./dist/index.d.ts",
   "exports": {
+    "./db-refs": "./dist/db-refs.js",
     "./utils": "./dist/utils/index.js",
     "./firebase": "./dist/firebase.js"
   },

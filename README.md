@@ -59,9 +59,9 @@ and I recommend reading
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
   dependencies, including the v2 watch task.
-- Showcasing a traditional "built package" with multiple entry points, as well
-  as the ["internal package"](#the-internal-packages-strategy) strategy
-  referencing Typescript code directly.
+- A traditional "built package" with multiple entry points, as well as the
+  ["internal package"](#the-internal-packages-strategy) strategy referencing
+  Typescript code directly.
 - Multiple isolated Firebase deployments, using
   [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
 - Firebase emulators with hot reloading
@@ -73,6 +73,8 @@ and I recommend reading
 - Shared configurations for ESLint
 - Simple standardized configuration for TypeScript
 - Vitest
+- Clean, strongly-typed Firestore code for both React (using
+  `@typed-firestore/react`) and Node.js (using `@typed-firestore/server`)
 
 ## Install
 

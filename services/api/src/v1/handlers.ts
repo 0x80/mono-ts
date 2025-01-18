@@ -1,12 +1,12 @@
-import type { UpdateData, WithFieldValue } from "@google-cloud/firestore";
-import { startTimer } from "@repo/core/utils";
+import type { WithFieldValue } from "@google-cloud/firestore";
 import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
+import { refs } from "@repo/core/db-refs";
+import { startTimer } from "@repo/core/utils";
+import { getDocument } from "@typed-firestore/server";
 import type { Request, Response } from "express";
 import { FieldValue } from "firebase-admin/firestore";
-import { getDocument } from "firestore-server-utils";
 import { z } from "zod";
-import { refs } from "~/refs";
 
 export async function reset(_req: Request, res: Response) {
   await refs.counters.doc("my_counter").set({
@@ -30,13 +30,14 @@ export async function add(req: Request, res: Response) {
 
     const { n } = AddPayload.parse(req.body);
 
-    const counter = await getDocument<Counter>(refs.counters, "my_counter");
+    const counter = await getDocument(refs.counters, "my_counter");
 
     point("Got document");
 
-    await counter.ref.update({
+    /** Note that `@typed-firestore/server` provides the typed update method ✨ */
+    await counter.update({
       value: FieldValue.increment(n),
-    } satisfies UpdateData<Counter>);
+    });
 
     point("Updated document");
 
@@ -60,13 +61,14 @@ export async function multiply(req: Request, res: Response) {
 
     const { n } = MultiplyPayload.parse(req.body);
 
-    const counter = await getDocument<Counter>(refs.counters, "my_counter");
+    const counter = await getDocument(refs.counters, "my_counter");
 
     point("Got document");
 
-    await counter.ref.update({
+    /** Note that `@typed-firestore/server` provides the typed update method ✨ */
+    await counter.update({
       value: counter.data.value * n,
-    } satisfies UpdateData<Counter>);
+    });
 
     point("Updated document");
 

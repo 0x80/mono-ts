@@ -3,18 +3,19 @@
   "description": "Common code for both backend and frontend",
   "version": "0.0.0",
   "type": "module",
-  "types": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./dist/index.js"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "compile": "tsc --noEmit",
     "test": "vitest",
     "lint": "eslint . --max-warnings 0",
-    "build?": "No build step required. This package links directly to its source files",
+    "build": "tsup && tsc --emitDeclarationOnly",
+    "clean": "del-cli dist tsconfig.tsbuildinfo",
     "coverage": "vitest run --coverage "
   },
   "license": "MIT",
@@ -28,6 +29,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-require-extensions": "^0.1.3",
     "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   }
