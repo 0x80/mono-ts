@@ -18,10 +18,13 @@ const app = express();
 // Allow cross-origin requests
 app.use(cors);
 app.use(noCache);
+// eslint-disable-next-line
 app.use(compression());
 app.use(bodyParser.json());
 app.get("/", (_, res) =>
-  res.send(`API is up and running. DEMO_ENV_VAR: ${process.env.DEMO_ENV_VAR}.`)
+  res.send(
+    `API is up and running. DEMO_ENV_VAR: ${process.env.DEMO_ENV_VAR ?? "not set"}.`
+  )
 );
 
 app.use("/v1", v1);
