@@ -6,9 +6,10 @@
     "typescript",
     "monorepo",
     "firebase",
+    "firestore",
     "isolate-package",
+    "typed-firestore",
     "esm",
-    "turbo",
     "turborepo",
     "nextjs"
   ],
