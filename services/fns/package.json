@@ -13,22 +13,20 @@
     "compile": "tsc --noEmit",
     "build": "tsup-node",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
-    "lint": "eslint . --max-warnings 0",
-    "deploy": "firebase deploy",
-    "emulate": "firebase emulators:start --project demo-mono-ts"
+    "lint": "eslint . --max-warnings 0"
   },
   "license": "MIT",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.4.5",
     "@repo/common": "workspace:*",
     "@repo/core": "workspace:*",
+    "@typed-firestore/server": "1.0.0-1",
     "body-parser": "^1.20.3",
     "compression": "^1.7.5",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "firebase-admin": "^13.0.2",
     "firebase-functions": "^6.2.0",
-    "firestore-server-utils": "1.0.0",
     "nocache": "^4.0.0",
     "remeda": "^2.19.0"
   },
