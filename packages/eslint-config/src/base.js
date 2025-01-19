@@ -19,6 +19,10 @@ export default tseslint.config(
         "warn",
         { argsIgnorePattern: "^_" },
       ],
+      /**
+       * See
+       * https://www.totaltypescript.com/type-vs-interface-which-should-you-use
+       */
       "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
     },
   }
