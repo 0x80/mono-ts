@@ -25,7 +25,7 @@ export async function fetchJson<T>(
 
   try {
     return response.json() as Promise<T>;
-  } catch (err) {
+  } catch {
     throw new Error(`Failed to parse JSON from response of ${url}`);
   }
 }
