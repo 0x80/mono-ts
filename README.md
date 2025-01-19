@@ -107,6 +107,13 @@ are picked up.
 > ["My quest for the perfect TS monorepo"](https://thijs-koerselman.medium.com/my-quest-for-the-perfect-ts-monorepo-62653d3047eb)
 > that you might want to read for context.
 
+This monorepo used to showcase the "internal packages approach" for
+`@repo/common`, as described in the article. It lets you link to sources
+directly without a build step. I removed it because I ran into some issues, and
+I can not really recommend it anyway. With proper configuration of incremental
+builds, references, and build orchestration, modern build tools seem to work
+fast and smoothly anyway.
+
 ### Namespace
 
 Typically in a monorepo, you will never publish the packages to NPM, and because
