@@ -1,17 +1,13 @@
-// /** @type {import("eslint").Linter.Config} */
-// module.exports = {
-//   plugins: ["@typescript-eslint", "unused-imports"],
-//   rules: {
-//     "@typescript-eslint/no-unused-vars": [
-//       "warn",
-//       { args: "after-used", argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-//     ],
-//     "@typescript-eslint/no-floating-promises": "warn",
-//     "@typescript-eslint/no-misused-promises": "warn",
-//     "@typescript-eslint/consistent-type-imports": "warn",
-//     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-//     "@typescript-eslint/no-import-type-side-effects": "warn",
-//     "array-callback-return": "warn",
-//     "unused-imports/no-unused-imports": "warn",
-//   },
-// };
+import tseslint from "typescript-eslint";
+
+export default tseslint.config({
+  rules: {
+    // "@typescript-eslint/no-non-null-assertion": "off", // @TODO enable later
+    // "@typescript-eslint/no-confusing-void-expression": "off", // @TODO enable later
+    // "@typescript-eslint/no-unsafe-assignment": "off", // @TODO enable later
+    // "@typescript-eslint/restrict-template-expressions": "off", // @TODO enable later
+    // "@typescript-eslint/no-deprecated": "off",
+    "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+  },
+});

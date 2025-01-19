@@ -1,21 +1,17 @@
-// @ts-check
-import baseConfig from "@repo/eslint-config/base";
-import tseslint from "typescript-eslint";
+// // @ts-check
+import base from "@repo/eslint-config/base";
+import overrides from "@repo/eslint-config/overrides";
 
-export default tseslint.config([
-  ...baseConfig,
+export default tseslint.config(
+  ...base,
   {
     languageOptions: {
-      globals: {
-        NodeJS: true,
-      },
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ["*.js"],
-        },
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
         allowDefaultProject: true,
       },
     },
   },
-]);
+  ...overrides
+);

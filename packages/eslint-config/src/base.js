@@ -1,9 +1,9 @@
 // @ts-check
-import eslint from "@eslint/js";
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  eslint.configs.recommended,
+  js.configs.recommended,
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
   {
@@ -11,11 +11,7 @@ export default tseslint.config(
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
-        allowDefaultProject: true,
       },
-    },
-    rules: {
-      // "@typescript-eslint/no-non-null-assertion": "off",
     },
   }
 );
