@@ -21,8 +21,8 @@ export const update_counter = onDocumentWritten(
     /** Test sharing code from packages/core */
     const [point, end] = startTimer("countersOnWrite");
 
-    const before = event.data?.before?.data() as Counter | undefined;
-    const after = event.data?.after?.data() as Counter | undefined;
+    const before = event.data?.before.data() as Counter | undefined;
+    const after = event.data?.after.data() as Counter | undefined;
 
     if (!after) {
       return;
@@ -57,7 +57,7 @@ export const update_counter = onDocumentWritten(
       updateData.is_flagged = true;
     }
 
-    await event.data?.after?.ref.update(updateData);
+    await event.data?.after.ref.update(updateData);
 
     end();
   }

@@ -22,6 +22,8 @@ export function CounterView(props: { counterId: string }) {
       />
     );
   } else {
-    return <div>No counter document available. Please press "reset".</div>;
+    return (
+      <div>No counter document available. Please press &quot;reset&quot;.</div>
+    );
   }
 }
