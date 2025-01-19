@@ -19,7 +19,7 @@ export default tseslint.config(
         "warn",
         { argsIgnorePattern: "^_" },
       ],
-      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
     },
   }
 );
