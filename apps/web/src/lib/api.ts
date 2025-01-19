@@ -1,4 +1,5 @@
-const endpoint = process.env.NEXT_PUBLIC_DEMO_API_ENDPOINT;
+const endpoint =
+  process.env.NEXT_PUBLIC_DEMO_API_ENDPOINT ?? "__missing_demo_api_endpoint";
 
 /**
  * In a real application you would typically not embed an API key like this, as

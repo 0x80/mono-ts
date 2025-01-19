@@ -1,6 +1,6 @@
 export async function fetchJson<T>(
   endpoint: string,
-  queryParams: { [key: string]: string | number | boolean | undefined } = {},
+  queryParams: Record<string, string | number | boolean | undefined> = {},
   options: RequestInit = {}
 ) {
   const queryString = makeQueryString(queryParams);
@@ -17,27 +17,29 @@ export async function fetchJson<T>(
 
   if (!response.ok) {
     throw new Error(
-      `Fetch to ${url} failed with status ${
+      `Fetch to ${url} failed with status ${String(
         response.status
-      }. Response text: ${await response.text()}`
+      )}. Response text: ${await response.text()}`
     );
   }
 
   try {
-    return response.json() as Promise<T>;
+    return (await response.json()) as T;
   } catch {
     throw new Error(`Failed to parse JSON from response of ${url}`);
   }
 }
 
 function makeQueryString(
-  params: { [key: string]: string | number | boolean | undefined } = {}
+  params: Record<string, string | number | boolean | undefined> = {}
 ) {
   const queryString = new URLSearchParams();
 
   Object.entries(params)
     .filter(([, value]) => value !== undefined)
-    .forEach(([name, value]) => queryString.append(name, String(value)));
+    .forEach(([name, value]) => {
+      queryString.append(name, String(value));
+    });
 
   return queryString.toString();
 }

@@ -12,11 +12,6 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.18.0",
-    "@vercel/style-guide": "^6.0.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-config-turbo": "^2.3.3",
-    "eslint-plugin-only-warn": "^1.1.0",
-    "eslint-plugin-unused-imports": "^4.1.4",
     "typescript-eslint": "^8.20.0"
   }
 }

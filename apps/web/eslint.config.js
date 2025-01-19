@@ -11,9 +11,16 @@ const compat = new FlatCompat({
 export default tseslint.config(
   ...baseConfig,
   // js.configs.recommended,
-  ...compat.extends("next"),
-  // tseslint.configs.strictTypeChecked,
-  // tseslint.configs.stylisticTypeChecked,
+  ...compat.config({
+    extends: ["next"],
+    settings: {
+      next: {
+        rootDir: "apps/web/",
+      },
+    },
+  }),
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
   {
     languageOptions: {
       parserOptions: {

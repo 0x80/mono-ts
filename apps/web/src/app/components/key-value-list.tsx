@@ -7,7 +7,7 @@ type FsValue = string | number | boolean | null | FsTimestamp;
 
 export default function KeyValueList(props: {
   data: Record<string, FsValue>;
-  labels: Array<[string, string]>;
+  labels: [string, string][];
 }) {
   const rows = props.labels.map(([key, label]) => (
     <TableRow className="bg-white" key={key}>

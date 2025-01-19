@@ -6,9 +6,6 @@ export default tseslint.config([
   ...baseConfig,
   {
     languageOptions: {
-      globals: {
-        NodeJS: true,
-      },
       parserOptions: {
         projectService: {
           allowDefaultProject: ["*.js"],
