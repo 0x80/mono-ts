@@ -61,7 +61,7 @@ and I recommend reading
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ESM everything
 - Path aliases
-- Shared configurations for ESLint
+- Shared configurations for ESLint v9 with strict type-aware rules
 - Simple standard configuration for TypeScript
 - Vitest
 - Clean, strongly-typed Firestore code for both React (using
