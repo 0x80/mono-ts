@@ -6,8 +6,7 @@
     "src"
   ],
   "exports": {
-    "./base": "./src/base.js",
-    "./overrides": "./src/overrides.js"
+    "./base": "./src/base.js"
   },
   "license": "MIT",
   "devDependencies": {

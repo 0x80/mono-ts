@@ -17,8 +17,8 @@ export function startTimer(timerLabel = "Timer") {
 
       console.log(
         `${timerLabel} @ ${
-          pointLabel ?? `point ${++pointCount}`
-        } is ${time} ms (+ ${elapsed} ms)`
+          pointLabel ?? `point ${String(++pointCount)}`
+        } is ${String(time)} ms (+ ${String(elapsed)} ms)`
       );
 
       lastPoint = now;
@@ -28,7 +28,9 @@ export function startTimer(timerLabel = "Timer") {
       const now = Date.now();
       const elapsed = now - lastPoint;
       const time = Date.now() - timer;
-      console.log(`${timerLabel} @ end is ${time} ms (+ ${elapsed} ms)`);
+      console.log(
+        `${timerLabel} @ end is ${String(time)} ms (+ ${String(elapsed)} ms)`
+      );
     },
   ] as const;
 }

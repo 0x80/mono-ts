@@ -160,6 +160,9 @@ importers:
       firebase-functions:
         specifier: ^6.2.0
         version: 6.2.0(firebase-admin@13.0.2(encoding@0.1.13))
+      get-or-throw:
+        specifier: ^1.4.0
+        version: 1.4.0
     devDependencies:
       '@codecompose/typescript-config':
         specifier: ^1.2.0
@@ -3538,6 +3541,9 @@ packages:
   get-npm-tarball-url@2.1.0:
     resolution: {integrity: sha512-ro+DiMu5DXgRBabqXupW38h7WPZ9+Ad8UjwhvsmmN8w1sU7ab0nzAXvVZ4kqYg57OrqomRtJvepX5/xvFKNtjA==}
     engines: {node: '>=12.17'}
+
+  get-or-throw@1.4.0:
+    resolution: {integrity: sha512-+tQktmI06XM5RK4gbg0wYWLzYpgCythnFOIoiSUX8KIORgTK842zL/KgdMKjEKzSq00JQEShTCYkUkaikIZ8ng==}
 
   get-proto@1.0.1:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
@@ -8629,6 +8635,14 @@ snapshots:
     optionalDependencies:
       vite: 6.0.7(@types/node@16.18.11)(jiti@2.3.3)(yaml@2.7.0)
 
+  '@vitest/mocker@3.0.2(vite@6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0))':
+    dependencies:
+      '@vitest/spy': 3.0.2
+      estree-walker: 3.0.3
+      magic-string: 0.30.17
+    optionalDependencies:
+      vite: 6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0)
+
   '@vitest/pretty-format@3.0.2':
     dependencies:
       tinyrainbow: 2.0.0
@@ -10757,6 +10771,8 @@ snapshots:
       math-intrinsics: 1.1.0
 
   get-npm-tarball-url@2.1.0: {}
+
+  get-or-throw@1.4.0: {}
 
   get-proto@1.0.1:
     dependencies:
@@ -14278,7 +14294,7 @@ snapshots:
   vitest@3.0.2(@edge-runtime/vm@4.0.3)(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0):
     dependencies:
       '@vitest/expect': 3.0.2
-      '@vitest/mocker': 3.0.2(vite@6.0.7(@types/node@16.18.11)(jiti@2.3.3)(yaml@2.7.0))
+      '@vitest/mocker': 3.0.2(vite@6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0))
       '@vitest/pretty-format': 3.0.2
       '@vitest/runner': 3.0.2
       '@vitest/snapshot': 3.0.2

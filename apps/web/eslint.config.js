@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable */
 import { FlatCompat } from "@eslint/eslintrc";
 import baseConfig from "@repo/eslint-config/base";
 import tseslint from "typescript-eslint";

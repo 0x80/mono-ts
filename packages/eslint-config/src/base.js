@@ -13,5 +13,13 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    },
   }
 );

@@ -3,11 +3,11 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getFunctions } from "firebase-admin/functions";
 import { getStorage } from "firebase-admin/storage";
+import { getOrThrow } from "get-or-throw";
+
 export type { DecodedIdToken } from "firebase-admin/auth";
 export { FieldValue, Timestamp } from "firebase-admin/firestore";
-export type { Firestore } from "firebase-admin/firestore";
-
-export type { UpdateData } from "firebase-admin/firestore";
+export type { Firestore, UpdateData } from "firebase-admin/firestore";
 
 if (!admin.apps.length) {
   admin.initializeApp();
@@ -20,7 +20,7 @@ if (!admin.apps.length) {
 }
 
 function getApp() {
-  return admin.apps[0] as admin.app.App;
+  return getOrThrow(admin.apps, 0);
 }
 
 const firebaseApp = getApp();
