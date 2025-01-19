@@ -13,10 +13,10 @@
   "scripts": {
     "compile": "tsc --noEmit",
     "test": "vitest",
-    "lint": "eslint . --max-warnings 0",
     "build": "tsup && tsc --emitDeclarationOnly",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
-    "coverage": "vitest run --coverage "
+    "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0",
+    "coverage": "vitest run --coverage"
   },
   "license": "MIT",
   "dependencies": {

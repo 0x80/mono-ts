@@ -14,7 +14,7 @@
   },
   "scripts": {
     "compile": "tsc --noEmit",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
     "test": "vitest",
     "build": "tsup && tsc --emitDeclarationOnly && tsc-alias --verbose",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
