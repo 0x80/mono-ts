@@ -1,5 +1,6 @@
 import { areWeThereYet, type Counter } from "@repo/common";
 import { startTimer } from "@repo/core/utils";
+import { getBeforeAndAfterOnWritten } from "@typed-firestore/server";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
 import { onDocumentWritten } from "firebase-functions/v2/firestore";
@@ -21,8 +22,7 @@ export const update_counter = onDocumentWritten(
     /** Test sharing code from packages/core */
     const [point, end] = startTimer("countersOnWrite");
 
-    const before = event.data?.before.data() as Counter | undefined;
-    const after = event.data?.after.data() as Counter | undefined;
+    const [before, after] = getBeforeAndAfterOnWritten<Counter>(event);
 
     if (!after) {
       return;

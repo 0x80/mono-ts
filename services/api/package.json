@@ -21,7 +21,7 @@
     "@google-cloud/functions-framework": "^3.4.5",
     "@repo/common": "workspace:*",
     "@repo/core": "workspace:*",
-    "@typed-firestore/server": "1.0.0-1",
+    "@typed-firestore/server": "1.0.0-2",
     "body-parser": "^1.20.3",
     "compression": "^1.7.5",
     "cors": "^2.8.5",

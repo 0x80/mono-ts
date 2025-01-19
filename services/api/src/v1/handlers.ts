@@ -1,20 +1,18 @@
-import type { WithFieldValue } from "@google-cloud/firestore";
-import type { Counter } from "@repo/common";
 import { getErrorMessage } from "@repo/common";
 import { refs } from "@repo/core/db-refs";
 import { startTimer } from "@repo/core/utils";
-import { getDocument } from "@typed-firestore/server";
+import { getDocument, setDocument } from "@typed-firestore/server";
 import type { Request, Response } from "express";
 import { FieldValue } from "firebase-admin/firestore";
 import { z } from "zod";
 
 export async function reset(_req: Request, res: Response) {
-  await refs.counters.doc("my_counter").set({
+  await setDocument(refs.counters, "my_counter", {
     value: 0,
     mutation_count: 0,
     mutated_at: FieldValue.serverTimestamp(),
     is_flagged: false,
-  } satisfies WithFieldValue<Counter>);
+  });
 
   res.status(200).end();
 }

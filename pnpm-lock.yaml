@@ -222,8 +222,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
       '@typed-firestore/server':
-        specifier: 1.0.0-1
-        version: 1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))
+        specifier: 1.0.0-2
+        version: 1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -307,8 +307,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
       '@typed-firestore/server':
-        specifier: 1.0.0-1
-        version: 1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))
+        specifier: 1.0.0-2
+        version: 1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -1661,11 +1661,12 @@ packages:
       firebase: '>=10.0'
       react: '>=16.8.0'
 
-  '@typed-firestore/server@1.0.0-1':
-    resolution: {integrity: sha512-4PKp/fsdxuGmqbMmObEKN3Aw9BgMI1E4tGh0yAVw5X7JZzAWh7eZ84M2bV9k9iTf11BQdPgEyokprsV0Ge0vnQ==}
-    engines: {node: '>=18'}
+  '@typed-firestore/server@1.0.0-2':
+    resolution: {integrity: sha512-knRWsHx+Zr1JKKzWi2XBtg8IILAK9vNL1VCPvD2jA+hfgTazXQ9EzygiaeEE0Y+qOIqY+AqCMIhHaB5EK+b3TA==}
+    engines: {node: '>=20'}
     peerDependencies:
-      firebase-admin: '>=10.0'
+      firebase-admin: '>=12.0'
+      firebase-functions: '>=5.0'
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -5357,6 +5358,10 @@ packages:
     resolution: {integrity: sha512-Azwzvl90HaF0aCz1JrDdXQykFakSSNPaPoiZ9fm5qJIMHioDZEi7OAdRwSm6rSoPtY3Qutnm3L7ogmg3dc+wbQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
+  process-in-chunks@1.0.0-1:
+    resolution: {integrity: sha512-7c6gASr88UNq+RUrWy18RietQp4/i7jCrNgWrjDuuo3kpdYNw22aSXfe4xbbhLZI/FFmc4QMeYCPmZ1VhjpfFA==}
+    engines: {node: '>=20'}
+
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
 
@@ -8268,9 +8273,11 @@ snapshots:
       react: 19.0.0
       react-firebase-hooks: 5.1.1(firebase@11.2.0)(react@19.0.0)
 
-  '@typed-firestore/server@1.0.0-1(firebase-admin@13.0.2(encoding@0.1.13))':
+  '@typed-firestore/server@1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))':
     dependencies:
       firebase-admin: 13.0.2(encoding@0.1.13)
+      firebase-functions: 6.2.0(firebase-admin@13.0.2(encoding@0.1.13))
+      process-in-chunks: 1.0.0-1
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -8634,14 +8641,6 @@ snapshots:
       magic-string: 0.30.17
     optionalDependencies:
       vite: 6.0.7(@types/node@16.18.11)(jiti@2.3.3)(yaml@2.7.0)
-
-  '@vitest/mocker@3.0.2(vite@6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0))':
-    dependencies:
-      '@vitest/spy': 3.0.2
-      estree-walker: 3.0.3
-      magic-string: 0.30.17
-    optionalDependencies:
-      vite: 6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0)
 
   '@vitest/pretty-format@3.0.2':
     dependencies:
@@ -12740,6 +12739,8 @@ snapshots:
 
   proc-log@5.0.0: {}
 
+  process-in-chunks@1.0.0-1: {}
+
   process-nextick-args@2.0.1: {}
 
   process@0.11.10: {}
@@ -14294,7 +14295,7 @@ snapshots:
   vitest@3.0.2(@edge-runtime/vm@4.0.3)(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0):
     dependencies:
       '@vitest/expect': 3.0.2
-      '@vitest/mocker': 3.0.2(vite@6.0.7(@types/node@22.10.7)(jiti@2.3.3)(yaml@2.7.0))
+      '@vitest/mocker': 3.0.2(vite@6.0.7(@types/node@16.18.11)(jiti@2.3.3)(yaml@2.7.0))
       '@vitest/pretty-format': 3.0.2
       '@vitest/runner': 3.0.2
       '@vitest/snapshot': 3.0.2
