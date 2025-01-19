@@ -45,10 +45,6 @@ I ended up basing a lot of things on the
 and I recommend reading
 [their monorepo handbook](https://turbo.build/repo/docs/handbook).
 
-> For demonstration purposes, mono-ts uses the "internal packages approach" for
-> `@repo/common` and a traditional built approach for `@repo/core`. Read below
-> for more info.
-
 ## Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
