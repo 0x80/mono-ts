@@ -1,6 +1,6 @@
 import { areWeThereYet, type Counter } from "@repo/common";
 import { startTimer } from "@repo/core/utils";
-import { getBeforeAndAfterOnWritten } from "@typed-firestore/server";
+import { getBeforeAndAfterOnWritten } from "@typed-firestore/server/functions";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
 import { onDocumentWritten } from "firebase-functions/v2/firestore";

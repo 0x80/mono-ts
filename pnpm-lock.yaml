@@ -222,8 +222,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
       '@typed-firestore/server':
-        specifier: 1.0.0-2
-        version: 1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
+        specifier: 1.0.0-4
+        version: 1.0.0-4(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -307,8 +307,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
       '@typed-firestore/server':
-        specifier: 1.0.0-2
-        version: 1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
+        specifier: 1.0.0-4
+        version: 1.0.0-4(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))
       body-parser:
         specifier: ^1.20.3
         version: 1.20.3
@@ -1661,12 +1661,17 @@ packages:
       firebase: '>=10.0'
       react: '>=16.8.0'
 
-  '@typed-firestore/server@1.0.0-2':
-    resolution: {integrity: sha512-knRWsHx+Zr1JKKzWi2XBtg8IILAK9vNL1VCPvD2jA+hfgTazXQ9EzygiaeEE0Y+qOIqY+AqCMIhHaB5EK+b3TA==}
+  '@typed-firestore/server@1.0.0-4':
+    resolution: {integrity: sha512-L+0D3m3HmLqQPNeUvFr0mdIv73zaSZl5T6MLf4IiShg9iu41hqUaj4yr9Ypxk2/Nm1dMzZaRSS+/+9ZMKnfH+g==}
     engines: {node: '>=20'}
     peerDependencies:
       firebase-admin: '>=12.0'
       firebase-functions: '>=5.0'
+    peerDependenciesMeta:
+      firebase-admin:
+        optional: true
+      firebase-functions:
+        optional: true
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -8273,11 +8278,12 @@ snapshots:
       react: 19.0.0
       react-firebase-hooks: 5.1.1(firebase@11.2.0)(react@19.0.0)
 
-  '@typed-firestore/server@1.0.0-2(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))':
+  '@typed-firestore/server@1.0.0-4(firebase-admin@13.0.2(encoding@0.1.13))(firebase-functions@6.2.0(firebase-admin@13.0.2(encoding@0.1.13)))':
     dependencies:
+      process-in-chunks: 1.0.0-1
+    optionalDependencies:
       firebase-admin: 13.0.2(encoding@0.1.13)
       firebase-functions: 6.2.0(firebase-admin@13.0.2(encoding@0.1.13))
-      process-in-chunks: 1.0.0-1
 
   '@types/body-parser@1.19.5':
     dependencies:
