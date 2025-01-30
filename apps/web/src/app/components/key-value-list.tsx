@@ -1,4 +1,3 @@
-import type { FsTimestamp } from "@repo/common";
 import { isDefined } from "@repo/common";
 import { Timestamp } from "firebase/firestore";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";

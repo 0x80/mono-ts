@@ -21,18 +21,18 @@
   "license": "MIT",
   "dependencies": {
     "firebase": "^11.2.0",
-    "remeda": "^2.19.2"
+    "remeda": "^2.20.0"
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
-    "@eslint/js": "^9.18.0",
+    "@eslint/js": "^9.19.0",
     "@repo/eslint-config": "workspace:*",
     "del-cli": "^6.0.0",
-    "eslint": "^9.18.0",
+    "eslint": "^9.19.0",
     "prettier": "^3.4.2",
-    "tsup": "^8.3.5",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0",
-    "vitest": "^3.0.2"
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^3.0.4"
   }
 }
