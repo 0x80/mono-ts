@@ -60,8 +60,9 @@ and I recommend reading
 - Shared configurations for ESLint v9 with strict type-aware rules
 - Simple standard configuration for TypeScript
 - Vitest
-- Clean, strongly-typed Firestore code for both React (using
-  `@typed-firestore/react`) and Node.js (using `@typed-firestore/server`)
+- Clean, typed Firestore abstractions using
+  [@typed-firestore/react](https://github.com/0x80/typed-firestore) and
+  [@typed-firestore/server](https://github.com/0x80/typed-firestore-server)
 
 ## Install
 
@@ -74,8 +75,8 @@ Originally, I included branches for
 [and modern (v4)](https://github.com/0x80/mono-ts/tree/use-yarn-modern), but I
 stopped updating them as Yarn is not that commonly used anymore.
 
-I recommended using `pnpm` over `npm` or `yarn`. Apart from being fast and
-efficient, I believe PNPM has better support for monorepos.
+I recommend using `pnpm` over `npm` or `yarn`. Apart from being fast and
+efficient, PNPM has better support for monorepos.
 
 You can install PNPM with `corepack` which is part of modern Node.js versions:
 
@@ -108,28 +109,35 @@ are picked up.
 > that you might want to read for context.
 
 This monorepo used to showcase the "internal packages approach" for
-`@repo/common`, as described in the article. It lets you link to sources
-directly without a build step. I removed it because I ran into some issues, and
-I can not really recommend it anyway. With proper configuration of incremental
-builds, references, and build orchestration, modern build tools seem to work
-fast and smoothly anyway.
+`@repo/common`, as described in the article, which lets you link to sources
+directly without a build step.
+
+I removed it because I ran into some issues, and I can not really recommend it.
+With the right configuration of incremental builds, references, and build
+orchestration, modern build tools seem to work fast and smoothly enough.
 
 ### Namespace
 
-Typically in a monorepo, you will never publish the packages to NPM, and because
-of that, the namespace you use to prefix your package names does not matter. You
-might as well pick a generic one that you can use in every private codebase.
+Often in a monorepo, you will never publish the shared packages to NPM or some
+other registry, and because of that, the namespace you use to prefix your
+package names does not matter. You might as well pick a standard one that you
+can use in every project.
 
-At first I used `@mono`, and later I switched to `@repo` when I discovered that
+At first I used `@mono`, and later I switched to `@repo` when I encountered that
 in the Turborepo examples. I like both, because they are equally short and
-clear, but I went with `@repo` because I expect it will become the standard.
+clear, but I went with `@repo` because I expect it might become a standard
+sooner.
 
 ### Packages
 
-- [common](./packages/common) Code that can shared across both front-end and
-  back-end environments.
-- [core](./packages/core) Code that is shared between server environments like
-  cloud functions.
+- [common](./packages/common) Code that is shared across both front-end and
+  back-end environments simultaneously.
+- [core](./packages/core) Code that is only shared between server environments,
+  like cloud functions, containing mostly "core" business logic.
+
+A standard name for a package that is only shared between client-side apps is
+`ui`. Besides sharing UI components, I also use it to share other things that
+are solely relevant to the clients.
 
 ### Apps
 
@@ -206,3 +214,13 @@ emulator you currently have to add the secret to `.secret.local` and also a
 info. I have placed it in `.env` which is part of the repo, so you don't have to
 set anything up, but .env.local is the proper location probably because that
 file is not checked into git.
+
+## Typed Firestore
+
+This repo uses [@typed-firestore/react](https://github.com/0x80/typed-firestore)
+and [@typed-firestore/server](https://github.com/0x80/typed-firestore-server) to
+provide typed Firestore abstractions for both React and Node.js.
+
+If you're interested here is an
+[in-depth article](https://dev.to/0x80/how-to-write-clean-typed-firestore-code-37j2)
+of how they came about.
