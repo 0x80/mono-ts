@@ -26,6 +26,6 @@ export default [
     },
   },
   {
-    ignores: ["dist/**", "node_modules/**", "isolate/**", "*.{js,ts}"],
+    ignores: ["dist/**", "node_modules/**", "isolate/**", "**/*.test.{js,ts}", "**/*.spec.{js,ts}"],
   },
 ];
