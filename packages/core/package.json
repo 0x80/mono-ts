@@ -21,13 +21,13 @@
     "@sindresorhus/is": "^7.0.1",
     "firebase-admin": "^13.0.2",
     "firebase-functions": "^6.3.0",
-    "get-or-throw": "^1.4.0"
+    "get-or-throw": "^2.1.0"
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
     "@eslint/js": "^9.19.0",
     "@repo/eslint-config": "workspace:*",
-    "@types/node": "^22.10.10",
+    "@types/node": "^24.2.1",
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
     "eslint": "^9.19.0",

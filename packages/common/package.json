@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "firebase": "^11.2.0",
+    "firebase": "^12.1.0",
     "remeda": "^2.20.0"
   },
   "devDependencies": {
