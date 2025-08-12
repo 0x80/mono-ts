@@ -26,6 +26,7 @@ export default [
     },
     rules: {
       "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",
+      "no-html-link-for-pages": "off",
     },
   },
 ];
