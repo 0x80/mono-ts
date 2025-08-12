@@ -37,7 +37,7 @@
     "dev": "turbo dev",
     "deploy": "firebase deploy",
     "watch": "turbo watch build --filter=@repo/core --filter=@repo/fns --filter=@repo/api",
-    "lint": "turbo lint --parallel",
+    "lint": "turbo lint",
     "test": "turbo test -- --watch false",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
