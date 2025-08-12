@@ -16,6 +16,7 @@
   - [Deploying](#deploying)
   - [Running Emulators](#running-emulators)
     - [Secrets](#secrets)
+- [Typed Firestore](#typed-firestore)
 
 <!-- /TOC -->
 
