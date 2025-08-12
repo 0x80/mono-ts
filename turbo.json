@@ -31,15 +31,13 @@
       "outputs": ["coverage/**"],
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
-    "lint": {
-      "dependsOn": []
-    },
     "check-types": {
       "dependsOn": ["^build"]
     },
     "check-circular": {},
+    "lint": {},
     "clean": {
-      "dependsOn": []
+      "cache": false
     },
     "dev": {
       "cache": false,
