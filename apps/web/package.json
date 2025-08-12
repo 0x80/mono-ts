@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "check-types": "tsc --noEmit",
+    "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
     "dev": "next dev",
     "build": "next build",
     "clean": "del-cli .next tsconfig.tsbuildinfo",
@@ -36,6 +37,7 @@
     "autoprefixer": "^10.4.20",
     "del-cli": "^6.0.0",
     "eslint-config-next": "^15.1.6",
+    "madge": "^8.0.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17"
   }

@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
+    "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
     "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
@@ -45,6 +46,7 @@
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
     "eslint": "^9.19.0",
+    "madge": "^8.0.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
     "vitest": "^3.0.4"

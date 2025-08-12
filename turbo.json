@@ -37,6 +37,7 @@
     "check-types": {
       "dependsOn": ["^build"]
     },
+    "check-circular": {},
     "clean": {
       "dependsOn": []
     },
