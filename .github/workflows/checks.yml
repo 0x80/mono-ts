@@ -1,0 +1,58 @@
+name: Checks
+
+on:
+  pull_request: # push is handled in the deploy workflows
+    branches: ["**"]
+  workflow_call:
+
+concurrency:
+  # Skip concurrency restriction when called from another workflow
+  # This prevents deadlocks between parent workflow and this one
+  group:
+    ${{ github.workflow_ref != '' && format('{0}-{1}', github.workflow,
+    github.run_id) || format('{0}-{1}', github.workflow, github.ref) }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        command: [check-types, check-format, check-circular, lint, test]
+
+    name: ${{ matrix.command }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable corepack
+        run: corepack enable pnpm
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          # First tries exact match with lock file hash. If not found,
+          # falls back to any cache starting with 'pnpm-store-'.
+          # This way we get exact cache on repeated runs, but can still
+          # use older cache as starting point when dependencies change.
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run ${{ matrix.command }}
+        run: pnpm ${{ matrix.command }}

@@ -4,6 +4,7 @@
   "globalEnv": [
     "PORT",
     "NODE_ENV",
+    "DEMO_ENV_VAR",
     "NEXT_PUBLIC_DEMO_API_ENDPOINT",
     "NEXT_PUBLIC_DEMO_API_KEY",
     "NEXT_PUBLIC_FIREBASE_API_KEY",
@@ -31,14 +32,15 @@
       "outputs": ["coverage/**"],
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
-    "lint": {
-      "dependsOn": []
-    },
     "check-types": {
       "dependsOn": ["^build"]
     },
+    "check-circular": {},
+    "lint": {
+      "dependsOn": ["^build"]
+    },
     "clean": {
-      "dependsOn": []
+      "cache": false
     },
     "dev": {
       "cache": false,

@@ -1,9 +1,10 @@
 import { areWeThereYet, type Counter } from "@repo/common";
 import { refs } from "@repo/core/db-refs";
 import { startTimer } from "@repo/core/utils";
-import { getBeforeAndAfterOnWritten } from "@typed-firestore/server/functions";
+import { getBeforeAndAfterOnWritten } from "@typed-firestore/server";
 import type { UpdateData } from "firebase-admin/firestore";
 import { FieldValue } from "firebase-admin/firestore";
+import { logger } from "firebase-functions/v2";
 import { onDocumentWritten } from "firebase-functions/v2/firestore";
 import { counterFlagThreshold, region } from "~/config";
 
@@ -43,7 +44,7 @@ export const update_counter = onDocumentWritten(
     }
 
     /** Test sharing code from packages/common */
-    console.log(areWeThereYet());
+    logger.info(areWeThereYet());
 
     point("About to update document");
 

@@ -1,15 +1,4 @@
-// @ts-check
-import base from "@repo/eslint-config/base";
-import tseslint from "typescript-eslint";
+import config from "@repo/eslint-config/library";
 
-export default tseslint.config([
-  ...base,
-  {
-    languageOptions: {
-      parserOptions: {
-        tsconfigRootDir: import.meta.dirname,
-        allowDefaultProject: true,
-      },
-    },
-  },
-]);
+/** @type {import("eslint").Linter.Config} */
+export default config;

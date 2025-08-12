@@ -20,9 +20,7 @@ let db: Firestore | undefined;
 let auth: Auth | undefined;
 
 export function getFirebaseApp(): FirebaseApp {
-  if (!app) {
-    app = initializeApp(firebaseConfig);
-  }
+  app ??= initializeApp(firebaseConfig);
   return app;
 }
 
@@ -37,8 +35,6 @@ export function getFirestoreDb(): Firestore {
 }
 
 export function getFirebaseAuth(): Auth {
-  if (!auth) {
-    auth = getAuth(getFirebaseApp());
-  }
+  auth ??= getAuth(getFirebaseApp());
   return auth;
 }

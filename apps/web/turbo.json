@@ -17,24 +17,6 @@
       ],
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
-    },
-    "check-types": {
-      "dependsOn": ["^check-types"]
-    },
-    "clean": {
-      "dependsOn": ["^clean"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
     }
   }
 }
