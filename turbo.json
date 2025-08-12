@@ -4,6 +4,7 @@
   "globalEnv": [
     "PORT",
     "NODE_ENV",
+    "DEMO_ENV_VAR",
     "NEXT_PUBLIC_DEMO_API_ENDPOINT",
     "NEXT_PUBLIC_DEMO_API_KEY",
     "NEXT_PUBLIC_FIREBASE_API_KEY",
