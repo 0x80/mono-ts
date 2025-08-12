@@ -1,8 +1,7 @@
 // @ts-check
 import baseConfig from "@repo/eslint-config/base";
-import tseslint from "typescript-eslint";
 
-export default tseslint.config([
+export default [
   ...baseConfig,
   {
     languageOptions: {
@@ -18,4 +17,4 @@ export default tseslint.config([
       },
     },
   },
-]);
+];
