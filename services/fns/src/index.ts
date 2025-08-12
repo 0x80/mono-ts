@@ -1,4 +1,11 @@
 /**
+ * Firebase functions still do not support native source maps, so we need to
+ * install source-map-support to get stack traces in error reporting.
+ */
+import sourceMapSupport from "source-map-support";
+sourceMapSupport.install();
+
+/**
  * This file exports all cloud functions and forms the entry point for Firebase
  * functions deployment, as referenced in package.json > main.
  *
@@ -13,7 +20,6 @@ import "firebase-functions/logger/compat";
  * Firebase functions still do not support native source maps, so we need to
  * install source-map-support to get stack traces in error reporting.
  */
-import sourceMapSupport from "source-map-support";
 sourceMapSupport.install();
 
 export * from "./update-counter";
