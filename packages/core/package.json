@@ -45,8 +45,8 @@
       "default": "./dist/firebase.js"
     },
     "./utils": {
-      "types": "./dist/utils.d.ts",
-      "default": "./dist/utils.js"
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
     }
   }
 }
