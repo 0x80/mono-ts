@@ -245,6 +245,9 @@ importers:
       remeda:
         specifier: ^2.20.0
         version: 2.20.0
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -273,6 +276,9 @@ importers:
       '@types/node':
         specifier: ^22.10.10
         version: 22.10.10
+      '@types/source-map-support':
+        specifier: ^0.5.10
+        version: 0.5.10
       bunchee:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.7.3)
@@ -330,6 +336,9 @@ importers:
       remeda:
         specifier: ^2.20.0
         version: 2.20.0
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
     devDependencies:
       '@codecompose/typescript-config':
         specifier: ^1.2.0
@@ -352,6 +361,9 @@ importers:
       '@types/node':
         specifier: ^22.10.10
         version: 22.10.10
+      '@types/source-map-support':
+        specifier: ^0.5.10
+        version: 0.5.10
       bunchee:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.7.3)
@@ -1995,6 +2007,9 @@ packages:
 
   '@types/serve-static@1.15.7':
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
+
+  '@types/source-map-support@0.5.10':
+    resolution: {integrity: sha512-tgVP2H469x9zq34Z0m/fgPewGhg/MLClalNOiPIzQlXrSS2YrKu/xCdSCKnEDwkFha51VKEKB6A9wW26/ZNwzA==}
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -8594,6 +8609,10 @@ snapshots:
       '@types/http-errors': 2.0.4
       '@types/node': 22.10.10
       '@types/send': 0.17.4
+
+  '@types/source-map-support@0.5.10':
+    dependencies:
+      source-map: 0.6.1
 
   '@types/tough-cookie@4.0.5': {}
 
