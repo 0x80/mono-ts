@@ -35,7 +35,9 @@
       "dependsOn": ["^build"]
     },
     "check-circular": {},
-    "lint": {},
+    "lint": {
+      "dependsOn": ["^build"]
+    },
     "clean": {
       "cache": false
     },
