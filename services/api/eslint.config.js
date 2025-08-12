@@ -1,14 +1,9 @@
-// @ts-check
-import base from "@repo/eslint-config/base";
+import config from "@repo/eslint-config/service";
 
+/** @type {import("eslint").Linter.Config[]} */
 export default [
-  ...base,
+  ...config,
   {
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
+    ignores: ["dist/**", "node_modules/**", "*.{js,ts}"],
   },
 ];

@@ -2,19 +2,31 @@
   "name": "@repo/eslint-config",
   "version": "0.0.0",
   "type": "module",
-  "files": [
-    "src"
-  ],
+  "private": true,
   "exports": {
-    "./base": "./src/base.js"
+    "./base": "./base.js",
+    "./library": "./library.js",
+    "./service": "./service.js",
+    "./next-js": "./next.js",
+    "./react-internal": "./react-internal.js",
+    "./typescript-overrides": "./typescript-overrides.js",
+    "./legacy": "./legacy.js",
+    "./legacy-react": "./legacy-react.js"
   },
-  "license": "MIT",
-  "dependencies": {
-    "typescript-eslint": "^8.39.1"
+  "scripts": {
+    "format": "prettier --write .",
+    "check-format": "prettier --check ."
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "bunchee": "^6.6.0",
-    "madge": "^8.0.0"
+    "@eslint/js": "^9.31.0",
+    "@next/eslint-plugin-next": "^15.3.5",
+    "eslint": "^9.31.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-turbo": "^2.5.4",
+    "globals": "^16.3.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.36.0"
   }
 }
