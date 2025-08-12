@@ -28,7 +28,7 @@
     "url": "https://github.com/0x80/mono-ts"
   },
   "scripts": {
-    "compile": "turbo run compile",
+    "check-types": "turbo run check-types",
     "build": "turbo run build",
     "build:fns": "turbo run build --filter=@repo/fns",
     "build:api": "turbo run build --filter=@repo/api",

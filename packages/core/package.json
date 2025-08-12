@@ -13,7 +13,7 @@
     "./firebase": "./dist/firebase.js"
   },
   "scripts": {
-    "compile": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
     "test": "vitest",
     "build": "tsup && tsc --emitDeclarationOnly && tsc-alias --verbose",

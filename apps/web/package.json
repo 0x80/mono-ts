@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "compile": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "dev": "next dev",
     "build": "next build",
     "clean": "del-cli .next tsconfig.tsbuildinfo",

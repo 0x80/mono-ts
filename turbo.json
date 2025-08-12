@@ -34,7 +34,7 @@
     "lint": {
       "dependsOn": []
     },
-    "compile": {
+    "check-types": {
       "dependsOn": ["^build"]
     },
     "clean": {

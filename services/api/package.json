@@ -9,7 +9,7 @@
     ".env.*"
   ],
   "scripts": {
-    "compile": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "build": "tsup-node",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",

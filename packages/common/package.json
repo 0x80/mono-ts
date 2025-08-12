@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "compile": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "test": "vitest",
     "build": "tsup && tsc --emitDeclarationOnly",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
