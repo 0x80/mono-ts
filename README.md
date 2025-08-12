@@ -57,9 +57,9 @@ and I recommend reading
   [Tailwind CSS](https://tailwindcss.com/)
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ESM everything
-- Path aliases
+- Typescript path aliases (that get resolved in build output)
 - Shared configurations for ESLint v9 with strict type-aware rules
-- Simple standard configuration for TypeScript
+- Shared standardized configuration for TypeScript
 - Vitest
 - Clean, typed Firestore abstractions using
   [@typed-firestore/react](https://github.com/0x80/typed-firestore) and

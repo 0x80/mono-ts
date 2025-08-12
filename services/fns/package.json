@@ -4,14 +4,13 @@
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "files": [
     "dist",
     ".env.*"
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
-    "build": "tsup-node",
+    "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
     "deploy": "firebase deploy",
@@ -40,9 +39,9 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.10",
+    "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
     "eslint": "^9.19.0",
-    "tsup": "^8.3.6",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
     "vitest": "^3.0.4"
