@@ -6,17 +6,11 @@
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "./db-refs": "./dist/db-refs.js",
-    "./utils": "./dist/utils/index.js",
-    "./firebase": "./dist/firebase.js"
-  },
   "scripts": {
     "check-types": "tsc --noEmit",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
     "test": "vitest",
-    "build": "tsup && tsc --emitDeclarationOnly && tsc-alias --verbose",
+    "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
     "coverage": "vitest run --coverage "
   },
@@ -36,10 +30,22 @@
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
     "eslint": "^9.19.0",
-    "npm-run-all": "^4.1.5",
-    "tsc-alias": "^1.8.10",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
     "vitest": "^3.0.4"
+  },
+  "exports": {
+    "./db-refs": {
+      "types": "./dist/db-refs.d.ts",
+      "default": "./dist/db-refs.js"
+    },
+    "./firebase": {
+      "types": "./dist/firebase.d.ts",
+      "default": "./dist/firebase.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "default": "./dist/utils.js"
+    }
   }
 }

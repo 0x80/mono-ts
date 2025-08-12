@@ -4,14 +4,13 @@
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "files": [
     "dist",
     ".env.*"
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
-    "build": "tsup-node",
+    "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
     "lint": "eslint src --flag unstable_config_lookup_from_file --max-warnings 0 ",
     "deploy": "firebase deploy",

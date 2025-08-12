@@ -1,6 +1,13 @@
 import type { Counter } from "@repo/common";
 import type { CollectionReference } from "firebase-admin/firestore";
-import { db } from "./firebase";
+/**
+ * Here we are using a path alias ~/ to be able to reference the src directory
+ * from anywhere. This is configured out-of-the box via
+ * codecompose/typescript-config. This is the responsibility of the bundler
+ * (Bunchee), because the Typescript compiler does not do this for us. Not all
+ * bundlers have this feature.
+ */
+import { db } from "~/firebase";
 
 /**
  * Here we defined reusable references to collections and type each of them so
