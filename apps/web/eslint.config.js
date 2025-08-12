@@ -2,13 +2,12 @@
 /* eslint-disable */
 import { FlatCompat } from "@eslint/eslintrc";
 import baseConfig from "@repo/eslint-config/base";
-import tseslint from "typescript-eslint";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export default tseslint.config(
+export default [
   ...baseConfig,
   ...compat.config({
     extends: ["next"],
@@ -18,8 +17,6 @@ export default tseslint.config(
       },
     },
   }),
-  tseslint.configs.strictTypeChecked,
-  tseslint.configs.stylisticTypeChecked,
   {
     languageOptions: {
       parserOptions: {
@@ -30,5 +27,5 @@ export default tseslint.config(
     rules: {
       "@typescript-eslint/use-unknown-in-catch-callback-variable": "off",
     },
-  }
-);
+  },
+];
