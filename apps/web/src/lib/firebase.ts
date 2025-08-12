@@ -1,6 +1,10 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+import { initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+  type Firestore,
+} from "firebase/firestore";
 
 export const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,15 +15,30 @@ export const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+let app: FirebaseApp | undefined;
+let db: Firestore | undefined;
+let auth: Auth | undefined;
 
-if (process.env.NEXT_PUBLIC_USE_EMULATORS) {
-  connectFirestoreEmulator(db, "127.0.0.1", 8080);
-  /**
-   * Enable this if you use auth. For the demo we don't need it and it generates
-   * a warning at the bottom of the screen.
-   */
-  // connectAuthEmulator(auth, "http://127.0.0.1:9099");
+export function getFirebaseApp(): FirebaseApp {
+  if (!app) {
+    app = initializeApp(firebaseConfig);
+  }
+  return app;
+}
+
+export function getFirestoreDb(): Firestore {
+  if (!db) {
+    db = getFirestore(getFirebaseApp());
+    if (process.env.NEXT_PUBLIC_USE_EMULATORS) {
+      connectFirestoreEmulator(db, "127.0.0.1", 8080);
+    }
+  }
+  return db;
+}
+
+export function getFirebaseAuth(): Auth {
+  if (!auth) {
+    auth = getAuth(getFirebaseApp());
+  }
+  return auth;
 }
