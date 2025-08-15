@@ -2,14 +2,14 @@
   "functions": [
     {
       "source": "services/fns",
-      "runtime": "nodejs20",
+      "runtime": "nodejs22",
       "isolate": true,
       "predeploy": ["pnpm build:fns"],
       "codebase": "fns"
     },
     {
       "source": "services/api",
-      "runtime": "nodejs20",
+      "runtime": "nodejs22",
       "isolate": true,
       "predeploy": ["pnpm build:api"],
       "codebase": "api"
