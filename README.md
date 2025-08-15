@@ -58,7 +58,7 @@ and I recommend reading
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ESM everything
 - Typescript path aliases (that get resolved in build output)
-- Shared configurations for ESLint v9 with strict type-aware rules
+- Unified linting and formatting with Biome v2.2.0
 - Shared standardized configuration for TypeScript
 - Vitest
 - Clean, typed Firestore abstractions using

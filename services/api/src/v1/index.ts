@@ -7,7 +7,6 @@ const router: Router = express.Router();
 
 router.all("*", verifyApiKey);
 
-/* eslint @typescript-eslint/no-misused-promises: 0 */
 router.post("/add", add);
 router.post("/multiply", multiply);
 router.get("/reset", reset);

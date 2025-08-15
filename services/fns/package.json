@@ -13,7 +13,7 @@
     "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
     "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
-    "lint": "eslint src --max-warnings 0",
+    "lint": "biome check src",
     "deploy": "firebase deploy",
     "emulate": "firebase emulators:start --project demo-mono-ts"
   },
@@ -35,8 +35,6 @@
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
-    "@eslint/js": "^9.19.0",
-    "@repo/eslint-config": "workspace:*",
     "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
@@ -44,7 +42,6 @@
     "@types/source-map-support": "^0.5.10",
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
-    "eslint": "^9.19.0",
     "madge": "^8.0.0",
     "typescript": "^5.9.2",
     "vitest": "^3.0.4"
