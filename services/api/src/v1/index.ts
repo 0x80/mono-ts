@@ -5,7 +5,7 @@ import { add, multiply, reset } from "./handlers";
 
 const router: Router = express.Router();
 
-router.all("*", verifyApiKey);
+router.use(verifyApiKey);
 
 router.post("/add", add);
 router.post("/multiply", multiply);
