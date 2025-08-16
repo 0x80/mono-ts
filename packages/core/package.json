@@ -9,7 +9,7 @@
   "scripts": {
     "check-types": "tsc --noEmit",
     "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
-    "lint": "eslint src --max-warnings 0",
+    "lint": "biome check src",
     "test": "vitest",
     "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
@@ -25,12 +25,9 @@
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
-    "@eslint/js": "^9.19.0",
-    "@repo/eslint-config": "workspace:*",
     "@types/node": "^24.2.1",
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
-    "eslint": "^9.19.0",
     "madge": "^8.0.0",
     "typescript": "^5.9.2",
     "vitest": "^3.0.4"
