@@ -5,9 +5,8 @@ import { add, multiply, reset } from "./handlers";
 
 const router: Router = express.Router();
 
-router.all("*", verifyApiKey);
+router.use(verifyApiKey);
 
-/* eslint @typescript-eslint/no-misused-promises: 0 */
 router.post("/add", add);
 router.post("/multiply", multiply);
 router.get("/reset", reset);
