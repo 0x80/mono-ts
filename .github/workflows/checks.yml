@@ -1,7 +1,9 @@
 name: Checks
 
 on:
-  pull_request: # push is handled in the deploy workflows
+  push:
+    branches: [main]
+  pull_request:
     branches: ["**"]
   workflow_call:
 
