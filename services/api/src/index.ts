@@ -11,4 +11,4 @@ sourceMapSupport.install();
  */
 import "firebase-functions/logger/compat";
 
-export * from "./server";
+export * from "./server.ts";

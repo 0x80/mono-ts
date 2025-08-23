@@ -1,7 +1,7 @@
 import type { Router } from "express";
 import express from "express";
 import { verifyApiKey } from "~/lib/utils";
-import { add, multiply, reset } from "./handlers";
+import { add, multiply, reset } from "./handlers.ts";
 
 const router: Router = express.Router();
 

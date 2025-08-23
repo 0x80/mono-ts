@@ -1,6 +1,6 @@
 import { useDocumentMaybe } from "@typed-firestore/react";
 import { refs } from "~/db-refs";
-import KeyValueList from "./key-value-list";
+import KeyValueList from "./key-value-list.tsx";
 
 export function CounterView(props: { counterId: string }) {
   /**

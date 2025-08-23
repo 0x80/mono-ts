@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isEmpty } from "./is-empty";
+import { isEmpty } from "./is-empty.ts";
 
 describe("isEmpty", () => {
   it("should return true for empty arrays", () => {

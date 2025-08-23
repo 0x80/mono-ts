@@ -3,8 +3,8 @@
 import { areWeThereYet } from "@repo/common";
 import { CardDescription } from "~/components/ui/card";
 import { add, multiply, reset } from "~/lib/api";
-import CardWithAction from "./components/card-with-action";
-import { CounterView } from "./components/counter-view";
+import CardWithAction from "./components/card-with-action.tsx";
+import { CounterView } from "./components/counter-view.tsx";
 
 export default function Home() {
   return (

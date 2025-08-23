@@ -3,92 +3,27 @@
   "assist": { "actions": { "source": { "organizeImports": "off" } } },
   "linter": {
     "enabled": true,
-    "includes": ["**"],
+    "domains": {
+      "react": "all",
+      "next": "all",
+      "project": "all",
+      "test": "all"
+    },
     "rules": {
-      // "correctness": {
-      //   "useExhaustiveDependencies": "off",
-      //   "noInnerDeclarations": "off",
-      //   "noConstructorReturn": "off"
-      // },
-      // "suspicious": {
-      //   "noImplicitAnyLet": "off",
-      //   "noConfusingVoidType": "off",
-      //   "noEmptyInterface": "off",
-      //   "noExplicitAny": "off",
-      //   "noArrayIndexKey": "off",
-      //   "noDoubleEquals": "off",
-      //   "noAssignInExpressions": "off",
-      //   "noRedeclare": "off",
-      //   "noConsole": {
-      //     "level": "error",
-      //     "options": { "allow": ["log", "error"] }
-      //   }
-      // },
-      // "style": {
-      //   "noParameterAssign": "off",
-      //   "noNonNullAssertion": "off",
-      //   "noUnusedTemplateLiteral": "off",
-      //   "useDefaultParameterLast": "off",
-      //   "useConst": "off",
-      //   "useEnumInitializers": "off",
-      //   "useTemplate": "off",
-      //   "useSelfClosingElements": "off",
-      //   "useImportType": "error"
-      // },
-      // "security": {
-      //   "noDangerouslySetInnerHtml": "off",
-      //   "noDangerouslySetInnerHtmlWithChildren": "off"
-      // },
-      // "performance": {
-      //   "noDelete": "off",
-      //   "noAccumulatingSpread": "off"
-      // },
-      // "complexity": {
-      //   "noForEach": "off",
-      //   "noBannedTypes": "off",
-      //   "noUselessFragments": "off",
-      //   "useLiteralKeys": "off",
-      //   "useSimplifiedLogicExpression": "off",
-      //   "useOptionalChain": "off",
-      //   "noUselessContinue": "off",
-      //   "noArguments": "off"
-      // },
-      // "a11y": {
-      //   "noSvgWithoutTitle": "off",
-      //   "useMediaCaption": "off",
-      //   "noHeaderScope": "off",
-      //   "useAltText": "off",
-      //   "useButtonType": "off"
-      // }
+      "nursery": {
+        "noFloatingPromises": "error"
+      },
+      "suspicious": {
+        "noUnknownAtRules": "off" // required for tailwind?
+      }
     }
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80,
-    "includes": [
-      "**"
-      // "!**/dist/**",
-      // "!**/node_modules/**",
-      // "!**/isolate/**",
-      // "!**/*.d.ts",
-      // "!**/tsconfig.json",
-      // "!**/package.json",
-      // "!**/.vscode",
-      // "!**/.next/**",
-      // "!**/build/**",
-      // "!**/.claude/**"
-    ]
+    "lineWidth": 80
   },
-  // "javascript": {
-  //   "formatter": {
-  //     "trailingCommas": "es5",
-  //     "jsxQuoteStyle": "double",
-  //     "semicolons": "always",
-  //     "quoteStyle": "double"
-  //   }
-  // },
   "vcs": {
     "enabled": true,
     "clientKind": "git",

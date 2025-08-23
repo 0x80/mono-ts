@@ -6,7 +6,7 @@ import { onRequest } from "firebase-functions/https";
 import { defineSecret } from "firebase-functions/params";
 import noCache from "nocache";
 import { region } from "~/config";
-import v1 from "./v1";
+import v1 from "./v1/index.ts";
 
 const demoApiKey = defineSecret("DEMO_API_KEY");
 
