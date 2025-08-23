@@ -22,4 +22,4 @@ import "firebase-functions/logger/compat";
  */
 sourceMapSupport.install();
 
-export * from "./update-counter.ts";
+export * from "./update-counter";

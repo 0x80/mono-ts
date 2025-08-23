@@ -6,7 +6,7 @@ import { onRequest } from "firebase-functions/https";
 import { defineSecret } from "firebase-functions/params";
 import noCache from "nocache";
 import { region } from "~/config";
-import v1 from "./v1/index.ts";
+import v1 from "./v1";
 
 const demoApiKey = defineSecret("DEMO_API_KEY");
 
@@ -19,7 +19,9 @@ app.use(bodyParser.json());
 
 app.get("/", (_, res) => {
   res.send(
-    `API is up and running. DEMO_ENV_VAR: ${process.env.DEMO_ENV_VAR ?? "not set"}.`,
+    `API is up and running. DEMO_ENV_VAR: ${
+      process.env.DEMO_ENV_VAR ?? "not set"
+    }.`,
   );
 });
 

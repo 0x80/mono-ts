@@ -1,1 +1,1 @@
-export * from "./verify-api-key.ts";
+export * from "./verify-api-key";

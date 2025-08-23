@@ -1,3 +1,3 @@
-export * from "./assertions.ts";
-export * from "./timer.ts";
+export * from "./assertions";
+export * from "./timer";
 // Compare this snippet from packages/core/src/utils/index.ts:

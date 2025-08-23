@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { startTimer } from "./timer.ts";
+import { startTimer } from "./timer";
 
 describe("startTimer", () => {
   beforeEach(() => {

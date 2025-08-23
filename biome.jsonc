@@ -15,6 +15,9 @@
       },
       "suspicious": {
         "noUnknownAtRules": "off" // required for tailwind?
+      },
+      "correctness": {
+        "useImportExtensions": "off"
       }
     }
   },
