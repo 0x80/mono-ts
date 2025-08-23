@@ -1,4 +1,5 @@
 import { assert } from "@sindresorhus/is";
+
 declare type PropertyKey = string | number | symbol;
 
 /**

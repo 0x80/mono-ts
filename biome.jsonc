@@ -1,6 +1,5 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  // "assist": { "actions": { "source": { "organizeImports": "off" } } },
   "linter": {
     "domains": {
       "react": "all",
@@ -9,6 +8,7 @@
       "test": "all"
     },
     "rules": {
+      "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off" // required for tailwind?
       },
