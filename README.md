@@ -56,7 +56,7 @@ and I recommend reading
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ESM everything
 - Typescript path aliases (that get resolved in build output)
-- Linting and formatting with Biome
+- Unified linting and formatting with Biome
 - Shared standardized configuration for TypeScript
 - Vitest
 - Multiple isolated Firebase deployments, using

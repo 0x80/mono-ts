@@ -13,7 +13,7 @@
     "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
     "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist isolate tsconfig.tsbuildinfo",
-    "lint": "biome check .",
+    "lint": "biome check",
     "deploy": "firebase deploy",
     "emulate": "firebase emulators:start --project demo-mono-ts"
   },

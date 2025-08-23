@@ -10,8 +10,7 @@ In order to deploy this, first create a Firebase project and set the name in
 Then run `npx firebase deploy --only functions:api` from the root of the
 monorepo, to deploy only this package.
 
-The first time you deploy the function, Firebase will notice that a secret is
-being used but not set yet. The CLI will ask you for the value, you can enter
+The first time you deploy the function, Firebase will notice that a secret is being used but not set yet. The CLI will ask you for the value, you can enter
 some random string, but you'll need to match it with the apps/web `.env.local`
 setting for `NEXT_PUBLIC_DEMO_API_KEY`.
 

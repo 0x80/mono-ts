@@ -2,7 +2,6 @@
   "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
   "assist": { "actions": { "source": { "organizeImports": "off" } } },
   "linter": {
-    "enabled": true,
     "domains": {
       "react": "all",
       "next": "all",
@@ -17,15 +16,16 @@
         "noUnknownAtRules": "off" // required for tailwind?
       },
       "correctness": {
+        /**
+         * To allow this, we would first need to get rid of TS project references, because it allows noEmit set to true, which is not compatible with references.
+         */
         "useImportExtensions": "off"
       }
     }
   },
   "formatter": {
-    "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 80
+    "indentWidth": 2
   },
   "vcs": {
     "enabled": true,
