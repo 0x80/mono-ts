@@ -37,7 +37,7 @@ describe("startTimer", () => {
     point();
 
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ point 1 is 500 ms (+ 500 ms)"
+      "TestTimer @ point 1 is 500 ms (+ 500 ms)",
     );
   });
 
@@ -55,7 +55,7 @@ describe("startTimer", () => {
     point("custom point");
 
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ custom point is 500 ms (+ 500 ms)"
+      "TestTimer @ custom point is 500 ms (+ 500 ms)",
     );
   });
 
@@ -76,7 +76,7 @@ describe("startTimer", () => {
     end();
 
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ end is 1000 ms (+ 500 ms)"
+      "TestTimer @ end is 1000 ms (+ 500 ms)",
     );
   });
 
@@ -98,13 +98,13 @@ describe("startTimer", () => {
     point();
 
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ point 1 is 500 ms (+ 500 ms)"
+      "TestTimer @ point 1 is 500 ms (+ 500 ms)",
     );
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ point 2 is 1000 ms (+ 500 ms)"
+      "TestTimer @ point 2 is 1000 ms (+ 500 ms)",
     );
     expect(console.log).toHaveBeenCalledWith(
-      "TestTimer @ point 3 is 1500 ms (+ 500 ms)"
+      "TestTimer @ point 3 is 1500 ms (+ 500 ms)",
     );
   });
 });

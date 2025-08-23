@@ -19,10 +19,11 @@ app.use(bodyParser.json());
 
 app.get("/", (_, res) => {
   res.send(
-    `API is up and running. DEMO_ENV_VAR: ${process.env.DEMO_ENV_VAR ?? "not set"}.`
+    `API is up and running. DEMO_ENV_VAR: ${
+      process.env.DEMO_ENV_VAR ?? "not set"
+    }.`,
   );
 });
-
 app.use("/v1", v1);
 
 /**
@@ -38,5 +39,5 @@ export const api = onRequest(
     region,
     secrets: [demoApiKey],
   },
-  app
+  app,
 );

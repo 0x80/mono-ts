@@ -9,7 +9,7 @@
   "scripts": {
     "check-types": "tsc --noEmit",
     "check-circular": "madge --circular --extensions ts ./src --ts-config ./tsconfig.json",
-    "lint": "biome check src",
+    "lint": "biome check",
     "test": "vitest",
     "build": "bunchee --sourcemap --runtime node --target es2022",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
-    "@types/node": "^24.2.1",
+    "@types/node": "^24.3.0",
     "bunchee": "^6.6.0",
     "del-cli": "^6.0.0",
     "madge": "^8.0.0",

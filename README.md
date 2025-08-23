@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [Introduction](#introduction)
-- [Features](#features)
+- [Notable Features](#notable-features)
 - [Install](#install)
 - [Usage](#usage)
 - [Monorepo Setup](#monorepo-setup)
@@ -11,6 +11,7 @@
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
+- [Prettier + ESLint vs Biome](#prettier--eslint-vs-biome)
 - [Firebase](#firebase)
   - [Demo Project](#demo-project)
   - [Deploying](#deploying)
@@ -46,21 +47,21 @@ I ended up basing a lot of things on the
 and I recommend reading
 [their monorepo handbook](https://turbo.build/repo/docs/handbook).
 
-## Features
+## Notable Features
 
 - [Turborepo](https://turbo.build/) to orchestrate the build process and
   dependencies, including the v2 watch task.
-- Multiple isolated Firebase deployments, using
-  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
-- Firebase emulators with hot reloading
 - A web app based on Next.js with [ShadCN](https://ui.shadcn.com/) and
-  [Tailwind CSS](https://tailwindcss.com/)
+  [Tailwind CSS v4](https://tailwindcss.com/)
 - Working IDE go-to-definition and go-to-type-definition using `.d.ts.map` files
 - ESM everything
 - Typescript path aliases (that get resolved in build output)
-- Unified linting and formatting with Biome v2.2.0
+- Unified linting and formatting with Biome
 - Shared standardized configuration for TypeScript
 - Vitest
+- Multiple isolated Firebase deployments, using
+  [firebase-tools-with-isolate](https://github.com/0x80/firebase-tools-with-isolate)
+- Firebase emulators with hot reloading
 - Clean, typed Firestore abstractions using
   [@typed-firestore/react](https://github.com/0x80/typed-firestore) and
   [@typed-firestore/server](https://github.com/0x80/typed-firestore-server)
@@ -151,6 +152,29 @@ are solely relevant to the clients.
   writes, pubsub events etc.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
   as an API endpoint. This package also illustrates how to use secrets.
+
+## Prettier + ESLint vs Biome
+
+I have switched from using Prettier + ESLint to Biome, because it is much faster
+but it seems it is not a full replacement yet.
+
+Biome (as of v2.2) does not have the type-aware rules that typescript-eslint
+provides. I find those rules the most valuable, and this is holding me back from
+using Biome on a large codebase.
+
+Most notably, the `noFloatingPromises` rule does not seem to be working reliably
+yet.
+
+Things I miss from Prettier are:
+
+- Markdown formatting
+- JSDoc formatting (via plugin)
+
+For this reason I have kept prettier for markdown formatting. For JSDoc
+formatting I have no solution yet.
+
+If you want to see a working (shared) ESLint configuration, just hop back a few
+commits to before Biome was introduced.
 
 ## Firebase
 

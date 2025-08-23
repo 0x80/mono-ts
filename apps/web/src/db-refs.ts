@@ -13,6 +13,6 @@ import { getFirestoreDb } from "~/lib/firebase";
 export const refs = {
   counters: collection(
     getFirestoreDb(),
-    "counters"
+    "counters",
   ) as CollectionReference<Counter>,
 };

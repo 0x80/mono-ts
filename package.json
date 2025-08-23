@@ -37,20 +37,21 @@
     "dev": "turbo dev",
     "deploy": "firebase deploy",
     "watch": "turbo watch build --filter=@repo/core --filter=@repo/fns --filter=@repo/api",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
     "test": "turbo test -- --watch false",
-    "format": "biome format --write .",
-    "check-format": "biome check .",
+    "format": "biome format --write",
+    "check-format": "biome check",
     "emulate": "firebase emulators:start --project demo-mono-ts",
     "db:get-indexes": "firebase firestore:indexes > firestore.indexes.json"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
     "firebase-tools-with-isolate": "14.10.1",
-    "turbo": "^2.3.4",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
     "typescript": "^5.9.2",
-    "vercel": "^44.7.3",
+    "vercel": "^46.0.2",
     "vitest": "^3.0.4"
   }
 }

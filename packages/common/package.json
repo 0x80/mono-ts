@@ -18,7 +18,7 @@
     "test": "vitest",
     "build": "bunchee --sourcemap --target es2022",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
-    "lint": "biome check src",
+    "lint": "biome check",
     "coverage": "vitest run --coverage"
   },
   "license": "MIT",

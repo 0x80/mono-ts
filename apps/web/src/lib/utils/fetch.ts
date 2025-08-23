@@ -1,7 +1,7 @@
 export async function fetchJson<T>(
   endpoint: string,
   queryParams: Record<string, string | number | boolean | undefined> = {},
-  options: RequestInit = {}
+  options: RequestInit = {},
 ) {
   const queryString = makeQueryString(queryParams);
 
@@ -18,8 +18,8 @@ export async function fetchJson<T>(
   if (!response.ok) {
     throw new Error(
       `Fetch to ${url} failed with status ${String(
-        response.status
-      )}. Response text: ${await response.text()}`
+        response.status,
+      )}. Response text: ${await response.text()}`,
     );
   }
 
@@ -31,7 +31,7 @@ export async function fetchJson<T>(
 }
 
 function makeQueryString(
-  params: Record<string, string | number | boolean | undefined> = {}
+  params: Record<string, string | number | boolean | undefined> = {},
 ) {
   const queryString = new URLSearchParams();
 
