@@ -1,0 +1,11 @@
+{
+  /**
+    Because Biome doesn't yet support Markdown formatting, we use Prettier for that. In your editor you can set something like
+    ```json
+    "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+    ```
+    */
+  "proseWrap": "always"
+}

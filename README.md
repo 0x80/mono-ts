@@ -11,7 +11,7 @@
   - [Packages](#packages)
   - [Apps](#apps)
   - [Services](#services)
-- [Biome vs ESLint](#biome-vs-eslint)
+- [Prettier + ESLint vs Biome](#prettier--eslint-vs-biome)
 - [Firebase](#firebase)
   - [Demo Project](#demo-project)
   - [Deploying](#deploying)
@@ -153,11 +153,22 @@ are solely relevant to the clients.
 - [api](./services/api) A 2nd gen Firebase function (based on Cloud Run) serving
   as an API endpoint. This package also illustrates how to use secrets.
 
-## Biome vs ESLint
+## Prettier + ESLint vs Biome
 
-I have switched to Biome from ESLint because it is much faster but it seems it is not a full replacement for ESLint yet.
+I have switched from using Prettier + ESLint to Biome, because it is much faster
+but it seems it is not a full replacement yet.
 
-Biome (as of v2.2) does not have the type-aware rules that ESLint has. I find those types of rules the most valuable. Most notably, the noFloatingPromises rule does not seem to be working reliably yet.
+Biome (as of v2.2) does not have the type-aware rules that ESLint has. I find
+those types of rules the most valuable. Most notably, the noFloatingPromises
+rule does not seem to be working reliably yet.
+
+Things I miss from Prettier are:
+
+- Markdown formatting
+- JSDoc formatting (via plugin)
+
+For this reason I have kept prettier for markdown formatting. For JSDoc
+formatting I have no solution yet.
 
 ## Firebase
 
