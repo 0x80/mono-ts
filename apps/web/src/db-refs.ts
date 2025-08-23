@@ -1,5 +1,5 @@
 import type { Counter } from "@repo/common";
-import { collection, type CollectionReference } from "firebase/firestore";
+import { type CollectionReference, collection } from "firebase/firestore";
 import { getFirestoreDb } from "~/lib/firebase";
 
 /**
