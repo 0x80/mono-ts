@@ -62,5 +62,5 @@ export const update_counter = onDocumentWritten(
     await event.data?.after.ref.update(updateData);
 
     end();
-  }
+  },
 );

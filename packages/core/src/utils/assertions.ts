@@ -6,7 +6,7 @@ declare type PropertyKey = string | number | symbol;
  * see if it ends up getting installed with the isolated output
  */
 export function isPlainObject(
-  value: unknown
+  value: unknown,
 ): value is Record<PropertyKey, unknown> {
   assert.plainObject(value);
 

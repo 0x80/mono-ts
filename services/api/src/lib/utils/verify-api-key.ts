@@ -9,7 +9,7 @@ const API_KEY_HEADER_NAME = "X-Demo-API-Key";
 export function verifyApiKey(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void {
   const apiKey = req.header(API_KEY_HEADER_NAME);
 

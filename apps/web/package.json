@@ -10,7 +10,7 @@
     "build": "next build",
     "clean": "del-cli .next tsconfig.tsbuildinfo",
     "start": "next start",
-    "lint": "biome check src"
+    "lint": "biome check ."
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",

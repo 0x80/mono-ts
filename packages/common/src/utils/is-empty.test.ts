@@ -22,7 +22,7 @@ describe("isEmpty", () => {
       isEmpty([
         [1, 2],
         [3, 4],
-      ])
+      ]),
     ).toBe(false);
   });
 
