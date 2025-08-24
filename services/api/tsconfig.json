@@ -1,5 +1,37 @@
 {
-  "extends": "@codecompose/typescript-config/service.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  // This is for debugging Biome's type-aware rules that do not seem to be working. The config below is what extends should be, but to be sure that Biome is picking up the correct config, we're writing it out explicitly.
+  //"extends": "@codecompose/typescript-config/service.json",
+  "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "lib": ["esnext"],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    /* Opinion */
+    "incremental": true,
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo",
+    "module": "preserve",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "include": ["./src", "./src/**/*.json"],
+  "exclude": ["./node_modules", "./dist"],
   "references": [
     {
       "path": "../../packages/common"
