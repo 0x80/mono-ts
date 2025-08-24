@@ -5,8 +5,8 @@ import { getFunctions } from "firebase-admin/functions";
 import { getStorage } from "firebase-admin/storage";
 
 export type { DecodedIdToken } from "firebase-admin/auth";
-export { FieldValue, Timestamp } from "firebase-admin/firestore";
 export type { Firestore, UpdateData } from "firebase-admin/firestore";
+export { FieldValue, Timestamp } from "firebase-admin/firestore";
 
 if (!admin.apps.length) {
   admin.initializeApp();

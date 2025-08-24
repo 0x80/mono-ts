@@ -3,6 +3,7 @@
  * install source-map-support to get stack traces in error reporting.
  */
 import sourceMapSupport from "source-map-support";
+
 sourceMapSupport.install();
 
 /**
